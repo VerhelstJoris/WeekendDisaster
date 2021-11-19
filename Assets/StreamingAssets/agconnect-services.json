@@ -1,47 +1,12 @@
 {
-	"agcgw_all":{
-		"CN":"connect-drcn.dbankcloud.cn",
-		"CN_back":"connect-drcn.hispace.hicloud.com",
-		"DE":"connect-dre.dbankcloud.cn",
-		"DE_back":"connect-dre.hispace.hicloud.com",
-		"RU":"connect-drru.dbankcloud.cn",
-		"RU_back":"connect-drru.hispace.hicloud.com",
-		"SG":"connect-dra.dbankcloud.cn",
-		"SG_back":"connect-dra.hispace.hicloud.com"
-	},
 	"client":{
-		"cp_id":"5190358000023459693",
-		"product_id":"737518067793728360",
-		"client_id":"761559050574906560",
-		"client_secret":"6077D5B3A64414EA8087B344D99F2C1C8BAE732A35EA8A90E151A737EC33D1E7",
-		"project_id":"737518067793728360",
-		"app_id":"104978119",
-		"api_key":"CwEAAAAAGiNh/Wn0Q0KuUkZsrswT2V0yBhcNvVWGkpkXSVIoLcuUnet4TTOufPM6SRusnbfFiQI2kG5sD/zj5xfWISSMmQ4In9Y=",
-		"package_name":"com.junction21.huawei"
+		"cp_id":"890034000004105619",
+		"product_id":"9105385871708180467",
+		"client_id":"216523459440673792",
+		"client_secret":"757250B4EDB145465555F3DA1DCED0DE80FEBCC62F1DB54179386D97BE84BFFB",
+		"app_id":"101282883",
+		"package_name":"com.evilmind.huawei",
+		"api_key":"CV6ZZ1VxmIBeluFQcSgu2kMVxZTApK1jXplA26sUDZZ+e553ywArAzLCHSSpnQAnCV2fZP6GY8LoC+lI+80vtUwV0dct"
 	},
-	"oauth_client":{
-		"client_id":"104978119",
-		"client_type":1
-	},
-	"app_info":{
-		"app_id":"104978119",
-		"package_name":"com.junction21.huawei"
-	},
-	"configuration_version":"3.0",
-	"appInfos":[
-		{
-			"package_name":"com.junction21.huawei",
-			"client":{
-				"app_id":"104978119"
-			},
-			"app_info":{
-				"package_name":"com.junction21.huawei",
-				"app_id":"104978119"
-			},
-			"oauth_client":{
-				"client_type":1,
-				"client_id":"104978119"
-			}
-		}
-	]
+	"configuration_version":"1.0"
 }
