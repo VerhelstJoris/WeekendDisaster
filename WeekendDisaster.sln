@@ -1,24 +1,23 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HuaweiMobileServices.Core", "HuaweiMobileServices.Core.csproj", "{72BC4BA8-49C9-3756-504C-DB54644B6A2B}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HuaweiMobileServices.Core", "HuaweiMobileServices.Core.csproj", "{a84bbc72-c949-5637-504c-db54644b6a2b}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HuaweiMobileServices.Editor", "HuaweiMobileServices.Editor.csproj", "{28DF979D-BE26-93DE-D20F-050981CED466}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{02013af8-2c47-3d9e-352b-396cb2bf5980}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HuaweiMobileServices.Editor", "HuaweiMobileServices.Editor.csproj", "{9d97df28-26be-de93-d20f-050981ced466}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{72BC4BA8-49C9-3756-504C-DB54644B6A2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{72BC4BA8-49C9-3756-504C-DB54644B6A2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{72BC4BA8-49C9-3756-504C-DB54644B6A2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{72BC4BA8-49C9-3756-504C-DB54644B6A2B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{28DF979D-BE26-93DE-D20F-050981CED466}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{28DF979D-BE26-93DE-D20F-050981CED466}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{28DF979D-BE26-93DE-D20F-050981CED466}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{28DF979D-BE26-93DE-D20F-050981CED466}.Release|Any CPU.Build.0 = Release|Any CPU
+		{a84bbc72-c949-5637-504c-db54644b6a2b}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{a84bbc72-c949-5637-504c-db54644b6a2b}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02013af8-2c47-3d9e-352b-396cb2bf5980}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02013af8-2c47-3d9e-352b-396cb2bf5980}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9d97df28-26be-de93-d20f-050981ced466}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9d97df28-26be-de93-d20f-050981ced466}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
