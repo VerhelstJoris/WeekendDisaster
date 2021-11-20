@@ -218,6 +218,51 @@ public class Simulation : MonoBehaviour
         // Update Temperature
 
     }
+
+    public bool IsConditionMet(BillCondition condi)
+    {
+        foreach (var r in worldData.Values.Where(r => condi.RegionsAffected.HasFlag(r.location)))
+        {
+            float compareValue = 0;
+            switch (condi.Resource)
+            {
+                case ResourceType.None:
+                    continue;
+                case ResourceType.Carbon:
+                    compareValue = r.energy;
+                    break;
+                case ResourceType.Money:
+                    compareValue = r.money;
+                    break;
+                case ResourceType.Energy:
+                    compareValue = r.energy;
+                    break;
+                case ResourceType.Happiness:
+                    compareValue = r.happinessStat;
+                    break;
+                default:
+                    continue;
+            }
+
+            if (condi.MoreThan)
+            {
+                if (condi.Value > compareValue)
+                {
+                    continue;
+                }
+            }
+            else
+            {
+                if (condi.Value <= compareValue)
+                {
+                    continue;
+                }
+            }
+            return false;
+        }
+        return true;
+    }
+
 }
 
 

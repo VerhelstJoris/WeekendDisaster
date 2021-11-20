@@ -23,6 +23,22 @@ public class AvailableBillList : ScriptableObject
         }
 
         System.Random random = new System.Random();
-        return Bills[random.Next(Bills.Count)];
+        while (true)
+        {
+            Bill_Data nextBill = Bills[random.Next(Bills.Count)];
+            bool meetsConditions = true;
+            foreach (BillCondition condi in nextBill.BillConditions)
+            {
+                if (!Sim.IsConditionMet(condi))
+                {
+                    meetsConditions = false;
+                    break;
+                }
+            }
+            if (meetsConditions)
+            {
+                return nextBill;
+            }
+        }
     }
 }

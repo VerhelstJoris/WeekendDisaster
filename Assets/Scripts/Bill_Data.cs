@@ -15,6 +15,15 @@ public enum Regions
     All = 1 << 6
 }
 
+public enum ResourceType
+{
+    None,
+    Carbon,
+    Money,
+    Energy,
+    Happiness,
+}
+
 [System.Serializable]
 public class BillEffects
 {
@@ -24,6 +33,15 @@ public class BillEffects
     public int Money;
     public int Energy;
     public int Happiness;
+}
+
+[System.Serializable]
+public class BillCondition
+{
+    public Regions RegionsAffected;
+    public ResourceType Resource;
+    public bool MoreThan;
+    public int Value;
 }
 
 [CreateAssetMenu(fileName = "BillData", menuName = "ScriptableObjects/BillData", order = 1)]
@@ -38,6 +56,8 @@ public class Bill_Data : ScriptableObject
 
     public Bill_Data FollowUpAccepted;
     public Bill_Data FollowUpDenied;
+
+    public List<BillCondition> BillConditions;
 
     [HideInInspector]
     public bool accepted;
