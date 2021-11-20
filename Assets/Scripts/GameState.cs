@@ -49,6 +49,13 @@ public class GameState : MonoBehaviour
     private float _startTime;
     private float _travelTime = 0.5f;
 
+    private bool _optionChosen = false;
+    private bool _movingStamp =false;
+    private bool _moveStampDown = true;
+    private float _stampStartTime;
+    private StampMode _chosenMode;
+
+
     public SFXPlaying soundManager; 
 
     private AudioSource _source; 
@@ -68,8 +75,13 @@ public class GameState : MonoBehaviour
 
     public void TryStamp(Bill_Object obj,  StampMode mode)
     {
-        if (!_currentlyMoving && _setTurned)
+        if (!_currentlyMoving && _setTurned && !_optionChosen)
         {
+            _optionChosen = true;
+            _movingStamp = true;
+            _moveStampDown = true;
+            _stampStartTime= Time.deltaTime;
+            _chosenMode = mode;
             if(mode == StampMode.APPROVE)
             {
                 ApproveBill();
@@ -93,22 +105,24 @@ public class GameState : MonoBehaviour
 
     public void TrySelectBill(Bill_Object obj)
     {
-        soundManager.PlayBookPage();
-
         if (_selectedBill != obj)
         {
+            soundManager.PlayBookPage();
             LerpCamera(obj.CamPos);
+            _selectedBill = obj;
         }
     }
 
     public void TrySelectMap()
     {
         LerpCamera(MapViewPos);
+        _selectedBill = null;
     }
 
     public void TrySelectDesk()
     {
         LerpCamera(DeskViewPos);
+        _selectedBill = null;
     }
 
     public void TryTurnSet()
@@ -166,7 +180,27 @@ public class GameState : MonoBehaviour
             {
                 _setTurned = !_setTurned;
                 _turningSet = false;
+
+                
             }
+        }
+
+        if(_movingStamp)
+        {
+            float distCovered = (Time.time - _stampStartTime);
+
+            // Fraction of journey completed equals current distance divided by total distance.
+
+            if(!_moveStampDown)
+            {
+                float fractionOfJourney = distCovered / 0.1f;
+
+                //StampObj.transform.position.y = float.Lerp(Quaternion.Euler(0,90,0), Quaternion.Euler(0,0,0), fractionOfJourney);
+            }
+            else
+            {
+            }
+
         }
     }
 
