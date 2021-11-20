@@ -20,8 +20,7 @@ public class Bill_Object : MonoBehaviour
     public Bill_resource EffectMoney;
     public Bill_resource EffectHappiness;
     public Bill_resource EffectCarbon;
-
-
+    public MeshCollider StampCollider;
 
     void Start()
     {
@@ -68,16 +67,27 @@ public class Bill_Object : MonoBehaviour
 
             Countries.text = countryText;
 
-            CostEnergy.UpdateValue(Data.BillCosts.Energy);
-            CostMoney.UpdateValue(Data.BillCosts.Money);
-            CostHappiness.UpdateValue(Data.BillCosts.Happiness);
+            float defaultPos = CostEnergy.gameObject.transform.localPosition.y;
+            float copyPos = defaultPos;
 
-            EffectEnergy.UpdateValue(Data.BillEffects.Energy);
-            EffectMoney.UpdateValue(Data.BillEffects.Money);
-            EffectHappiness.UpdateValue(Data.BillEffects.Happiness);
-            EffectCarbon.UpdateValue(Data.BillEffects.Carbon);
+            CostEnergy.UpdateValue(Data.BillCosts.Energy, ref defaultPos);
+            CostMoney.UpdateValue(Data.BillCosts.Money, ref defaultPos);
+            CostHappiness.UpdateValue(Data.BillCosts.Happiness, ref defaultPos);
+
+            EffectEnergy.UpdateValue(Data.BillEffects.Energy,ref copyPos);
+            EffectMoney.UpdateValue(Data.BillEffects.Money, ref copyPos);
+            EffectHappiness.UpdateValue(Data.BillEffects.Happiness, ref copyPos);
+            EffectCarbon.UpdateValue(Data.BillEffects.Carbon, ref copyPos);
 
         }
 
     }
+    
+    //clicking on the stamp?
+    public void OnCollisionEnter()
+    {
+    Debug.Log("HIT STAMP");
+    }
+
 }
+

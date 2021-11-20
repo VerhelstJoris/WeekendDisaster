@@ -11,7 +11,7 @@ public class Bill_resource : MonoBehaviour
     [SerializeField]
     private TextMesh _text;
 
-    public void UpdateValue(int val)
+    public void UpdateValue(int val, ref float pos)
     {
         if(val==0)
         {
@@ -22,6 +22,10 @@ public class Bill_resource : MonoBehaviour
         if(_image != null && _text != null)
         {
             _text.text = "x " + val;
+            this.gameObject.transform.localPosition = 
+            new Vector3(this.gameObject.transform.localPosition.x, 
+            pos, this.gameObject.transform.localPosition.z);
+            pos -= 0.75f;
         }
         }
     } 
