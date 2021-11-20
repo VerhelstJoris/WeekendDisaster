@@ -47,7 +47,7 @@ public class GameState : MonoBehaviour
     private Transform _startTrans;
     private Transform _goalTransform;
     private float _startTime;
-    private float _travelTime = 0.25f;
+    private float _travelTime = 0.5f;
 
     public void Start()
     {
@@ -77,6 +77,11 @@ public class GameState : MonoBehaviour
 
     }
 
+    public void TrySelectDesk()
+    {
+        LerpCamera(DeskViewPos);
+    }
+
     public void Update()
     {
         if (_currentlyMoving)
@@ -84,11 +89,16 @@ public class GameState : MonoBehaviour
             //time moved
             float distCovered = (Time.time - _startTime);
 
+            Debug.Log("DistCovered: " + distCovered);
+
             // Fraction of journey completed equals current distance divided by total distance.
             float fractionOfJourney = distCovered / _travelTime;
+            Debug.Log("Fraction: " + fractionOfJourney);
 
 
-            transform.position = Vector3.Lerp(_startTrans.position, _goalTransform.position, fractionOfJourney);
+            MainCam.transform.position = Vector3.Lerp(_startTrans.position, _goalTransform.position, fractionOfJourney);
+            MainCam.transform.rotation = Quaternion.Lerp(_startTrans.rotation, _goalTransform.rotation, fractionOfJourney);
+
 
             if (fractionOfJourney >= 1.0f)
             {

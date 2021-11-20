@@ -60,6 +60,12 @@ public class InputSelectionHelper : MonoBehaviour
                 {
                     GameState.Instance.TrySelectBill(hitBill);
                 }
+
+                Desk hitDesk = hitInfo.collider.GetComponent<Desk>();
+                if (hitDesk != null)
+                {
+                    GameState.Instance.TrySelectDesk();
+                }
             }
         }
     }

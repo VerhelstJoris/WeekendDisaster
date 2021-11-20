@@ -189,6 +189,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &248298602 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 96054d926b9e275468ee8fb9d817f710, type: 3}
+  m_PrefabInstance: {fileID: 1928201077}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &248298603
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248298602}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.02517025, y: 0.05991715, z: 0.022089783}
+  m_Center: {x: 0, y: 0, z: 0.0010448929}
+--- !u!114 &248298604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248298602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3f71b237b608fe41aa7c706921af176, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &608396288
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,8 +693,6 @@ MonoBehaviour:
   RightBill: {fileID: 2037350052}
   DeskViewPos: {fileID: 1729272923}
   MapViewPos: {fileID: 0}
-  LeftBillViewPos: {fileID: 1972196028}
-  RightBillViewPos: {fileID: 1936426621}
   MainCam: {fileID: 1607818124}
 --- !u!4 &1721798783
 Transform:
@@ -838,6 +866,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 110496385266993983, guid: 90ceff8dcc233b04e96b0ad98ff09c7a, type: 3}
+      propertyPath: CamPos
+      value: 
+      objectReference: {fileID: 1936426621}
     - target: {fileID: 2373261984287006011, guid: 90ceff8dcc233b04e96b0ad98ff09c7a, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
@@ -1055,6 +1087,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 110496385266993983, guid: 90ceff8dcc233b04e96b0ad98ff09c7a, type: 3}
+      propertyPath: CamPos
+      value: 
+      objectReference: {fileID: 1972196028}
     - target: {fileID: 2373261984287006011, guid: 90ceff8dcc233b04e96b0ad98ff09c7a, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
