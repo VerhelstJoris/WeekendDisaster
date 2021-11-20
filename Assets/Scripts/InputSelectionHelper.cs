@@ -55,6 +55,12 @@ public class InputSelectionHelper : MonoBehaviour
                     hitStamp.DoStamp();
                 }
 
+                StampSet hitSet = hitInfo.collider.GetComponent<StampSet>();
+                if (hitSet != null)
+                {
+                    GameState.Instance.TryTurnSet();
+                }
+
                 Bill_Object hitBill = hitInfo.collider.GetComponent<Bill_Object>();
                 if (hitBill != null)
                 {
@@ -65,6 +71,12 @@ public class InputSelectionHelper : MonoBehaviour
                 if (hitDesk != null)
                 {
                     GameState.Instance.TrySelectDesk();
+                }
+
+                World hitWorld = hitInfo.collider.GetComponent<World>();
+                if (hitWorld != null)
+                {
+                    GameState.Instance.TrySelectMap();
                 }
             }
         }

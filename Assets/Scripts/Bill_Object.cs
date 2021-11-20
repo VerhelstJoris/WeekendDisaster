@@ -7,7 +7,6 @@ using TMPro;
 public class Bill_Object : MonoBehaviour
 {
     public Bill_Data Data;
-
     public TextMeshPro Title;
     public TextMeshPro Description;
     public TextMeshPro Countries;
@@ -22,6 +21,9 @@ public class Bill_Object : MonoBehaviour
     public Bill_resource EffectCarbon;
 
     public Transform CamPos;
+
+    public GameObject StampSetObj;
+
     void Start()
     {
       UpdateText();

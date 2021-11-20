@@ -31,16 +31,16 @@ public class GameState : MonoBehaviour
             Destroy(this);
         }
     }
-
-    public Bill_Object LeftBill;
-    public Bill_Object RightBill;
-
     public Transform DeskViewPos;
     public Transform MapViewPos;
 
     private Bill_Object _selectedBill = null;
 
     public Camera MainCam;
+    public GameObject StampObj;
+    private bool _setTurned = false;
+    private bool _turningSet = false;
+    private float _startTurnTime;
 
 
     private bool _currentlyMoving = false;
@@ -66,12 +66,29 @@ public class GameState : MonoBehaviour
 
     }
 
-    public void TryStamp(Bill_Object obj)
+    public void TryStamp(Bill_Object obj,  StampMode mode)
     {
-        if (_selectedBill == obj && !_currentlyMoving)
+        if (!_currentlyMoving && _setTurned)
         {
-            Debug.LogError("STAMP STAMP");
+            if(mode == StampMode.APPROVE)
+            {
+                ApproveBill();
+            }
+            else
+            {
+                DenyBill();
+            }
         }
+    }
+
+    public void ApproveBill()
+    {
+
+    }
+
+    public void DenyBill()
+    {
+
     }
 
     public void TrySelectBill(Bill_Object obj)
@@ -86,13 +103,23 @@ public class GameState : MonoBehaviour
 
     public void TrySelectMap()
     {
-
+        LerpCamera(MapViewPos);
     }
 
     public void TrySelectDesk()
     {
         LerpCamera(DeskViewPos);
     }
+
+    public void TryTurnSet()
+    {
+        if(!_turningSet)
+        {
+            _turningSet = true;
+            _startTurnTime = Time.time;
+        }
+    }
+
 
     public void Update()
     {
@@ -101,11 +128,8 @@ public class GameState : MonoBehaviour
             //time moved
             float distCovered = (Time.time - _startTime);
 
-            Debug.Log("DistCovered: " + distCovered);
-
             // Fraction of journey completed equals current distance divided by total distance.
             float fractionOfJourney = distCovered / _travelTime;
-            Debug.Log("Fraction: " + fractionOfJourney);
 
 
             MainCam.transform.position = Vector3.Lerp(_startTrans.position, _goalTransform.position, fractionOfJourney);
@@ -118,7 +142,34 @@ public class GameState : MonoBehaviour
             }
 
         }
+
+        if(_turningSet)
+        {
+            float distCovered = (Time.time - _startTurnTime);
+
+            // Fraction of journey completed equals current distance divided by total distance.
+            float fractionOfJourney = distCovered / _travelTime;
+
+
+            if(!_setTurned)
+            {
+                StampObj.transform.rotation = Quaternion.Lerp(Quaternion.Euler(0,90,0), Quaternion.Euler(0,0,0), fractionOfJourney);
+            }
+            else
+            {
+                StampObj.transform.rotation = Quaternion.Lerp(Quaternion.Euler(0,0,0), Quaternion.Euler(0,90,0), fractionOfJourney);
+
+            }
+
+
+            if (fractionOfJourney >= 1.0f)
+            {
+                _setTurned = !_setTurned;
+                _turningSet = false;
+            }
+        }
     }
+
 
     private void LerpCamera(Transform goal)
     {
