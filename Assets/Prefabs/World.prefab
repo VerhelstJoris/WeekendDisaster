@@ -95,7 +95,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25d39e2bbcdf3e34ab69a6d271fc9896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  region: 16
+  regionData:
+    location: 16
+    population: 0
+    co2: 0
+    co2_growth_abs: 0
+    co2_per_capita: 0
+    share_global_co2: 0
+    cumulative_co2: 0
+    share_global_cumulative_co2: 0
+    coal_co2: 0
+    cement_co2: 0
+    flaring_co2: 0
+    gas_co2: 0
+    oil_co2: 0
+    other_industry_co2: 0
+    cement_co2_per_capita: 0
+    coal_co2_per_capita: 0
+    flaring_co2_per_capita: 0
+    gas_co2_per_capita: 0
+    oil_co2_per_capita: 0
+    other_co2_per_capita: 0
+    share_global_cement_co2: 0
+    share_global_coal_co2: 0
+    share_global_flaring_co2: 0
+    share_global_gas_co2: 0
+    share_global_oil_co2: 0
+    share_global_other_co2: 0
+    cumulative_cement_co2: 0
+    cumulative_coal_co2: 0
+    cumulative_flaring_co2: 0
+    cumulative_gas_co2: 0
+    cumulative_oil_co2: 0
+    cumulative_other_co2: 0
+    share_global_cumulative_cement_co2: 0
+    share_global_cumulative_coal_co2: 0
+    share_global_cumulative_flaring_co2: 0
+    share_global_cumulative_gas_co2: 0
+    share_global_cumulative_oil_co2: 0
+    share_global_cumulative_other_co2: 0
 --- !u!64 &7258054585431569229
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -205,7 +243,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25d39e2bbcdf3e34ab69a6d271fc9896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  region: 1
+  regionData:
+    location: 1
+    population: 0
+    co2: 0
+    co2_growth_abs: 0
+    co2_per_capita: 0
+    share_global_co2: 0
+    cumulative_co2: 0
+    share_global_cumulative_co2: 0
+    coal_co2: 0
+    cement_co2: 0
+    flaring_co2: 0
+    gas_co2: 0
+    oil_co2: 0
+    other_industry_co2: 0
+    cement_co2_per_capita: 0
+    coal_co2_per_capita: 0
+    flaring_co2_per_capita: 0
+    gas_co2_per_capita: 0
+    oil_co2_per_capita: 0
+    other_co2_per_capita: 0
+    share_global_cement_co2: 0
+    share_global_coal_co2: 0
+    share_global_flaring_co2: 0
+    share_global_gas_co2: 0
+    share_global_oil_co2: 0
+    share_global_other_co2: 0
+    cumulative_cement_co2: 0
+    cumulative_coal_co2: 0
+    cumulative_flaring_co2: 0
+    cumulative_gas_co2: 0
+    cumulative_oil_co2: 0
+    cumulative_other_co2: 0
+    share_global_cumulative_cement_co2: 0
+    share_global_cumulative_coal_co2: 0
+    share_global_cumulative_flaring_co2: 0
+    share_global_cumulative_gas_co2: 0
+    share_global_cumulative_oil_co2: 0
+    share_global_cumulative_other_co2: 0
 --- !u!64 &7068724754407792256
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -315,7 +391,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25d39e2bbcdf3e34ab69a6d271fc9896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  region: 2
+  regionData:
+    location: 2
+    population: 0
+    co2: 0
+    co2_growth_abs: 0
+    co2_per_capita: 0
+    share_global_co2: 0
+    cumulative_co2: 0
+    share_global_cumulative_co2: 0
+    coal_co2: 0
+    cement_co2: 0
+    flaring_co2: 0
+    gas_co2: 0
+    oil_co2: 0
+    other_industry_co2: 0
+    cement_co2_per_capita: 0
+    coal_co2_per_capita: 0
+    flaring_co2_per_capita: 0
+    gas_co2_per_capita: 0
+    oil_co2_per_capita: 0
+    other_co2_per_capita: 0
+    share_global_cement_co2: 0
+    share_global_coal_co2: 0
+    share_global_flaring_co2: 0
+    share_global_gas_co2: 0
+    share_global_oil_co2: 0
+    share_global_other_co2: 0
+    cumulative_cement_co2: 0
+    cumulative_coal_co2: 0
+    cumulative_flaring_co2: 0
+    cumulative_gas_co2: 0
+    cumulative_oil_co2: 0
+    cumulative_other_co2: 0
+    share_global_cumulative_cement_co2: 0
+    share_global_cumulative_coal_co2: 0
+    share_global_cumulative_flaring_co2: 0
+    share_global_cumulative_gas_co2: 0
+    share_global_cumulative_oil_co2: 0
+    share_global_cumulative_other_co2: 0
 --- !u!64 &2273278936258698784
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -544,7 +658,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25d39e2bbcdf3e34ab69a6d271fc9896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  region: 4
+  regionData:
+    location: 4
+    population: 0
+    co2: 0
+    co2_growth_abs: 0
+    co2_per_capita: 0
+    share_global_co2: 0
+    cumulative_co2: 0
+    share_global_cumulative_co2: 0
+    coal_co2: 0
+    cement_co2: 0
+    flaring_co2: 0
+    gas_co2: 0
+    oil_co2: 0
+    other_industry_co2: 0
+    cement_co2_per_capita: 0
+    coal_co2_per_capita: 0
+    flaring_co2_per_capita: 0
+    gas_co2_per_capita: 0
+    oil_co2_per_capita: 0
+    other_co2_per_capita: 0
+    share_global_cement_co2: 0
+    share_global_coal_co2: 0
+    share_global_flaring_co2: 0
+    share_global_gas_co2: 0
+    share_global_oil_co2: 0
+    share_global_other_co2: 0
+    cumulative_cement_co2: 0
+    cumulative_coal_co2: 0
+    cumulative_flaring_co2: 0
+    cumulative_gas_co2: 0
+    cumulative_oil_co2: 0
+    cumulative_other_co2: 0
+    share_global_cumulative_cement_co2: 0
+    share_global_cumulative_coal_co2: 0
+    share_global_cumulative_flaring_co2: 0
+    share_global_cumulative_gas_co2: 0
+    share_global_cumulative_oil_co2: 0
+    share_global_cumulative_other_co2: 0
 --- !u!64 &407173133905838844
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -750,7 +902,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25d39e2bbcdf3e34ab69a6d271fc9896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  region: 32
+  regionData:
+    location: 32
+    population: 0
+    co2: 0
+    co2_growth_abs: 0
+    co2_per_capita: 0
+    share_global_co2: 0
+    cumulative_co2: 0
+    share_global_cumulative_co2: 0
+    coal_co2: 0
+    cement_co2: 0
+    flaring_co2: 0
+    gas_co2: 0
+    oil_co2: 0
+    other_industry_co2: 0
+    cement_co2_per_capita: 0
+    coal_co2_per_capita: 0
+    flaring_co2_per_capita: 0
+    gas_co2_per_capita: 0
+    oil_co2_per_capita: 0
+    other_co2_per_capita: 0
+    share_global_cement_co2: 0
+    share_global_coal_co2: 0
+    share_global_flaring_co2: 0
+    share_global_gas_co2: 0
+    share_global_oil_co2: 0
+    share_global_other_co2: 0
+    cumulative_cement_co2: 0
+    cumulative_coal_co2: 0
+    cumulative_flaring_co2: 0
+    cumulative_gas_co2: 0
+    cumulative_oil_co2: 0
+    cumulative_other_co2: 0
+    share_global_cumulative_cement_co2: 0
+    share_global_cumulative_coal_co2: 0
+    share_global_cumulative_flaring_co2: 0
+    share_global_cumulative_gas_co2: 0
+    share_global_cumulative_oil_co2: 0
+    share_global_cumulative_other_co2: 0
 --- !u!64 &4212402093141607727
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -860,7 +1050,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25d39e2bbcdf3e34ab69a6d271fc9896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  region: 8
+  regionData:
+    location: 8
+    population: 0
+    co2: 0
+    co2_growth_abs: 0
+    co2_per_capita: 0
+    share_global_co2: 0
+    cumulative_co2: 0
+    share_global_cumulative_co2: 0
+    coal_co2: 0
+    cement_co2: 0
+    flaring_co2: 0
+    gas_co2: 0
+    oil_co2: 0
+    other_industry_co2: 0
+    cement_co2_per_capita: 0
+    coal_co2_per_capita: 0
+    flaring_co2_per_capita: 0
+    gas_co2_per_capita: 0
+    oil_co2_per_capita: 0
+    other_co2_per_capita: 0
+    share_global_cement_co2: 0
+    share_global_coal_co2: 0
+    share_global_flaring_co2: 0
+    share_global_gas_co2: 0
+    share_global_oil_co2: 0
+    share_global_other_co2: 0
+    cumulative_cement_co2: 0
+    cumulative_coal_co2: 0
+    cumulative_flaring_co2: 0
+    cumulative_gas_co2: 0
+    cumulative_oil_co2: 0
+    cumulative_other_co2: 0
+    share_global_cumulative_cement_co2: 0
+    share_global_cumulative_coal_co2: 0
+    share_global_cumulative_flaring_co2: 0
+    share_global_cumulative_gas_co2: 0
+    share_global_cumulative_oil_co2: 0
+    share_global_cumulative_other_co2: 0
 --- !u!64 &3945104708580616700
 MeshCollider:
   m_ObjectHideFlags: 0

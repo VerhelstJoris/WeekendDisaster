@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class GameRegion : MonoBehaviour
 {
-    [SerializeField]
-    private Regions region;
+	[SerializeField]
+	private RegionData regionData = new RegionData();
+	
     private float happiness = 1.0f, money = 1.0f, energy = 1.0f;
 
     public float Happiness
@@ -23,7 +24,7 @@ public class GameRegion : MonoBehaviour
 
     public void Select()
     {
-        Debug.Log("Selected: " + region.ToString());
+        Debug.Log("Selected: " + regionData.location.ToString());
     }
 
     public void Deselect()

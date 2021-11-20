@@ -42,6 +42,12 @@ public class InputSelectionHelper : MonoBehaviour
                 {
                     SelectRegion(hitRegion);
                 }
+
+                Stamp hitStamp = hitInfo.collider.GetComponent<Stamp>();
+                if (hitStamp != null)
+                {
+                    hitStamp.DoStamp();
+                }
             }
         }
     }
