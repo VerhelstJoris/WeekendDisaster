@@ -26,7 +26,8 @@ public class BillCosts
 [System.Serializable]
 public class BillEffects : BillCosts
 {
-    public int Carbon;
+    public float Carbon;
+    public SimulationIndustries Industry;
 }
 
 [CreateAssetMenu(fileName = "BillData", menuName = "ScriptableObjects/BillData", order = 1)]
@@ -43,5 +44,7 @@ public class Bill_Data : ScriptableObject
    public BillEffects BillEffects;
 
    public DateTime BillEffectEnd;
+
+   public bool applied = false;
 }
 

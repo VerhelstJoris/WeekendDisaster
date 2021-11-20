@@ -47,4 +47,47 @@ public class RegionData
     public float share_global_cumulative_gas_co2;
     public float share_global_cumulative_oil_co2;
     public float share_global_cumulative_other_co2;
+
+    public void SetCO2(SimulationIndustries industry, float value)
+    {
+        switch (industry)
+        {
+            case SimulationIndustries.Coal:
+                coal_co2 = value;
+                break;
+            case SimulationIndustries.Cement:
+                cement_co2 = value;
+                break;
+            case SimulationIndustries.Flaring:
+                flaring_co2 = value;
+                break;
+            case SimulationIndustries.Gas:
+                gas_co2 = value;
+                break;
+            case SimulationIndustries.Oil:
+                oil_co2 = value;
+                break;
+            case SimulationIndustries.Other:
+                other_industry_co2 = value;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(industry), industry, $"No idea how to update for industry type {Enum.GetName(typeof(SimulationIndustries), industry)}");
+        }
+    }
+}
+
+public enum SimulationMode
+{
+    Step,
+    Continuous
+}
+
+public enum SimulationIndustries
+{ 
+    Coal,
+    Cement,
+    Flaring,
+    Gas,
+    Oil,
+    Other
 }

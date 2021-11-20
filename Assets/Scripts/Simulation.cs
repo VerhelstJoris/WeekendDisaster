@@ -2,14 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 using UnityEngine;
-
-public enum SimulationMode
-{
-    Step,
-    Continuous
-}
+using UnityEngine.Serialization;
 
 public class Simulation : MonoBehaviour
 {
@@ -26,10 +20,15 @@ public class Simulation : MonoBehaviour
     // Current Data
     public DateTime CurrentDate = DateTime.UtcNow;
     public Dictionary<Regions, RegionData> worldData = new Dictionary<Regions, RegionData>();
-    public List<Bill_Data> activeModifiers = new List<Bill_Data>();
+    [FormerlySerializedAs("activeModifiers")] public List<Bill_Data> bills = new List<Bill_Data>();
     
-    public float globalC02 = 0;
+    public float globalCO2 = 0;
+    public float globalCO2TargetMultiplier = 13.5f;
+    public float globalCO2Target = 0;
     public float currentRelativeTemp = 0;
+    public float currentTemp = 0;
+
+    public Dictionary<SimulationIndustries, float> GlobalIndustryOutput = new Dictionary<SimulationIndustries, float>();
 
     // Settings
     public SimulationMode simMode = SimulationMode.Step;
@@ -57,6 +56,7 @@ public class Simulation : MonoBehaviour
         {
             Debug.Log("Starting Sim in continuous mode");
             StartCoroutine(TimedUpdate());
+            return;
         }
         Debug.Log("Starting Sim in Step mode, Don't forget to call step!");
     }
@@ -65,8 +65,6 @@ public class Simulation : MonoBehaviour
     {
 
         #region LoadDataFromDisk
-
-        
 
         var lines = dataFile.text.Split('\n');
 
@@ -140,8 +138,10 @@ public class Simulation : MonoBehaviour
 
         #region SimSetup
 
-        globalC02 = worldData.Values.Sum(data => data.co2);
-        currentRelativeTemp = 0.8f;
+        // Global State Values
+        globalCO2 = worldData.Values.Sum(data => data.cumulative_co2);
+        globalCO2Target = globalCO2 * globalCO2TargetMultiplier;
+        //
 
         #endregion
 
@@ -149,7 +149,45 @@ public class Simulation : MonoBehaviour
     
     public void StepSim()
     {
-         
+        // Update the bills
+        foreach(var b in bills)
+        {
+            var affectedRegions = new List<Regions>();
+
+            if (b.RegionsAffected.HasFlag(Regions.North_America)) affectedRegions.Add(Regions.North_America);
+            if (b.RegionsAffected.HasFlag(Regions.South_America)) affectedRegions.Add(Regions.South_America);
+            if (b.RegionsAffected.HasFlag(Regions.Africa)) affectedRegions.Add(Regions.Africa);
+            if (b.RegionsAffected.HasFlag(Regions.Australia)) affectedRegions.Add(Regions.Australia);
+            if (b.RegionsAffected.HasFlag(Regions.Asia)) affectedRegions.Add(Regions.Asia);
+            if (b.RegionsAffected.HasFlag(Regions.Europe)) affectedRegions.Add(Regions.Europe);
+            if (b.RegionsAffected.HasFlag(Regions.All))
+            {
+                affectedRegions.AddRange(Enum.GetValues(typeof(Regions)).Cast<Regions>());
+            }
+            
+            foreach (var r in worldData.Values.Where(r => affectedRegions.Contains(r.location)))
+            {
+                r.SetCO2(b.BillEffects.Industry, b.BillEffects.Carbon);
+            }
+        }
+
+        // Update Global Totals
+        GlobalIndustryOutput[SimulationIndustries.Coal] = worldData.Values.Sum(date => date.coal_co2);
+        GlobalIndustryOutput[SimulationIndustries.Cement] = worldData.Values.Sum(date => date.cement_co2);
+        GlobalIndustryOutput[SimulationIndustries.Flaring] = worldData.Values.Sum(date => date.flaring_co2);
+        GlobalIndustryOutput[SimulationIndustries.Gas] = worldData.Values.Sum(date => date.gas_co2);
+        GlobalIndustryOutput[SimulationIndustries.Oil] = worldData.Values.Sum(date => date.oil_co2);
+        GlobalIndustryOutput[SimulationIndustries.Other] = worldData.Values.Sum(date => date.other_industry_co2);
+        
+        // Debug output for globals
+        // foreach (var industry in Enum.GetValues(typeof(SimulationIndustries)))
+        // {
+        //     var i = (SimulationIndustries) industry;
+        //     Debug.Log($"{Enum.GetName(typeof(SimulationIndustries), industry)} - [{GlobalIndustryOutput[i]}]");
+        // }
+        
+        
+        // Update Temperature
         
     }
 }
