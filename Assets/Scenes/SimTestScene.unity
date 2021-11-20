@@ -329,12 +329,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataFile: {fileID: 4900000, guid: acb7f452843e42444ae6c33e10535d9a, type: 3}
-  activeModifiers: []
-  globalC02: 0
+  bills: []
+  globalCO2: 0
+  globalCO2TargetMultiplier: 13.5
+  globalCO2Target: 0
   currentRelativeTemp: 0
+  currentTemp: 0
   simMode: 1
   runSim: 1
-  DaysPerTick: 7
+  gameEnded: 0
+  stepMonths: 3
+  stepDays: 29
 --- !u!4 &1458222805
 Transform:
   m_ObjectHideFlags: 0
