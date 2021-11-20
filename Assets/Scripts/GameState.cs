@@ -130,7 +130,7 @@ public class GameState : MonoBehaviour
 
     public bool IsSimRunning()
     {
-        return !_shouldResumeSim && !sim.runSim;
+        return _shouldResumeSim || sim.runSim;
     }
 
     public bool IsMoving()

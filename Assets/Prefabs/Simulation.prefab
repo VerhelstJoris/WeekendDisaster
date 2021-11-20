@@ -51,7 +51,7 @@ MonoBehaviour:
   currentRelativeTemp: 0
   currentTemp: 0
   simMode: 1
-  runSim: 1
+  runSim: 0
   gameEnded: 0
   stepMonths: 1
   stepDays: 0

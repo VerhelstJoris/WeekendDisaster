@@ -51,15 +51,19 @@ MonoBehaviour:
   MainCam: {fileID: 0}
   StampObj: {fileID: 0}
   AssignmentPaper: {fileID: 0}
+  WinPaper: {fileID: 0}
+  LosePaper: {fileID: 0}
   MovingAssignMent: 0
   MovedAssignment: 0
   _assignmentStartTime: 0
   _startAssignRot: {x: 0, y: 0, z: 0, w: 0}
-  _travelTime: 1
+  _travelTime: 0.5
   soundManager: {fileID: 3660460538955357075}
   sim: {fileID: 0}
   worldStats: {fileID: 0}
   monthsToNewBill: 4
+  GameFinished: 0
+  RestartButton: {fileID: 0}
 --- !u!114 &3660460538955357075
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -37,7 +37,7 @@ public class Simulation : MonoBehaviour
 
     // Settings
     public SimulationMode simMode = SimulationMode.Step;
-    public bool runSim = true;
+    public bool runSim = false;
     public bool gameEnded = false;
     public int stepMonths = 3;
     public float stepDays = 29;
