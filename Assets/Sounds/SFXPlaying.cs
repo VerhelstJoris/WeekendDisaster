@@ -8,6 +8,7 @@ public class SFXPlaying : MonoBehaviour
     public AudioClip Writing; 
     public AudioClip YouLose; 
     public AudioClip YouWin; 
+    public AudioClip Stamp;
 
     public GameState State; 
 
@@ -28,5 +29,9 @@ public class SFXPlaying : MonoBehaviour
     public void PlayYouWin(){
          State.PlayAudioClip(YouWin);
     
+    }
+
+    public void PlayStamp(){
+        State.PlayAudioClip(Stamp);
     }
 }
