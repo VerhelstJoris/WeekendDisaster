@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HuaweiMobileServices.Core", "HuaweiMobileServices.Core.csproj", "{72BC4BA8-49C9-3756-504C-DB54644B6A2B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityEngine.UI", "UnityEngine.UI.csproj", "{950AE8D9-4A5A-5A05-72FB-07D3CCF21F59}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{F83A0102-472C-9E3D-352B-396CB2BF5980}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityEditor.UI", "UnityEditor.UI.csproj", "{B3C0124F-48B8-C504-28A8-650B7D32A850}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HuaweiMobileServices.Editor", "HuaweiMobileServices.Editor.csproj", "{28DF979D-BE26-93DE-D20F-050981CED466}"
 EndProject
@@ -17,10 +21,18 @@ Global
 		{72BC4BA8-49C9-3756-504C-DB54644B6A2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72BC4BA8-49C9-3756-504C-DB54644B6A2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72BC4BA8-49C9-3756-504C-DB54644B6A2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{950AE8D9-4A5A-5A05-72FB-07D3CCF21F59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{950AE8D9-4A5A-5A05-72FB-07D3CCF21F59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{950AE8D9-4A5A-5A05-72FB-07D3CCF21F59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{950AE8D9-4A5A-5A05-72FB-07D3CCF21F59}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F83A0102-472C-9E3D-352B-396CB2BF5980}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F83A0102-472C-9E3D-352B-396CB2BF5980}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F83A0102-472C-9E3D-352B-396CB2BF5980}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F83A0102-472C-9E3D-352B-396CB2BF5980}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3C0124F-48B8-C504-28A8-650B7D32A850}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3C0124F-48B8-C504-28A8-650B7D32A850}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3C0124F-48B8-C504-28A8-650B7D32A850}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3C0124F-48B8-C504-28A8-650B7D32A850}.Release|Any CPU.Build.0 = Release|Any CPU
 		{28DF979D-BE26-93DE-D20F-050981CED466}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{28DF979D-BE26-93DE-D20F-050981CED466}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28DF979D-BE26-93DE-D20F-050981CED466}.Release|Any CPU.ActiveCfg = Release|Any CPU
