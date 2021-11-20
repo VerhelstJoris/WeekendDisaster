@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -41,5 +42,6 @@ public class Bill_Data : ScriptableObject
 
    public BillEffects BillEffects;
 
+   public DateTime BillEffectEnd;
 }
 

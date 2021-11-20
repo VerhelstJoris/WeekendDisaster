@@ -51,3 +51,7 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+WeekendDisaster.sln
+Assembly-CSharp.csproj
+HuaweiMobileServices.Core.csproj
+HuaweiMobileServices.Editor.csproj
