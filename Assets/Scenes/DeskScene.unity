@@ -189,6 +189,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &241321401 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5909235020958611789, guid: 1e97a15bbd82d394c9ace37d9432c1a7, type: 3}
+  m_PrefabInstance: {fileID: 6019445806601047249}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a3d19cef06ce0c41a63865a094f883e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &248298602 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 96054d926b9e275468ee8fb9d817f710, type: 3}
@@ -986,6 +997,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DeskViewPos: {fileID: 1729272923}
   MapViewPos: {fileID: 1205019678}
+  MainBill: {fileID: 241321401}
   AvailableBills: {fileID: 11400000, guid: 5cb1284f21d1502479347a7724114141, type: 2}
   MainCam: {fileID: 1607818124}
   StampObj: {fileID: 9200885074745545350}
@@ -1016,10 +1028,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a3aee1375f34b042b36a69ff6983604, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BookPage: {fileID: 8300000, guid: 0d1ca7756b569de4f86d59006d4ffbb2, type: 3}
+  BookPage: {fileID: 8300000, guid: 5d807431d5dfaf0419f69a624b4feb92, type: 3}
   Writing: {fileID: 8300000, guid: ec53b4d31dbba804287eedb25c24166d, type: 3}
   YouLose: {fileID: 8300000, guid: e378b70015a3b004cb84ce0734222333, type: 3}
   YouWin: {fileID: 8300000, guid: 65e9e06e7cbe57a4cb598c31b44983f7, type: 3}
+  Stamp: {fileID: 8300000, guid: ea9c01b5e33026d488af94fb00124b5e, type: 3}
   State: {fileID: 1721798782}
 --- !u!1 &1729272922
 GameObject:
@@ -1426,6 +1439,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 102258786288134341, guid: 1e97a15bbd82d394c9ace37d9432c1a7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 102258786288134341, guid: 1e97a15bbd82d394c9ace37d9432c1a7, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2138357321942942954, guid: 1e97a15bbd82d394c9ace37d9432c1a7, type: 3}
       propertyPath: stampObj
       value: 
@@ -1438,10 +1459,50 @@ PrefabInstance:
       propertyPath: stampObj
       value: 
       objectReference: {fileID: 8241278954918829277}
+    - target: {fileID: 5243629560922592700, guid: 1e97a15bbd82d394c9ace37d9432c1a7, type: 3}
+      propertyPath: m_fontSize
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 5243629560922592700, guid: 1e97a15bbd82d394c9ace37d9432c1a7, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 5243629560922592700, guid: 1e97a15bbd82d394c9ace37d9432c1a7, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 5243629560922592700, guid: 1e97a15bbd82d394c9ace37d9432c1a7, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 5243629560922592700, guid: 1e97a15bbd82d394c9ace37d9432c1a7, type: 3}
+      propertyPath: m_enableKerning
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5243629560922592700, guid: 1e97a15bbd82d394c9ace37d9432c1a7, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 5243629560922592700, guid: 1e97a15bbd82d394c9ace37d9432c1a7, type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5243629560922592700, guid: 1e97a15bbd82d394c9ace37d9432c1a7, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5909235020958611789, guid: 1e97a15bbd82d394c9ace37d9432c1a7, type: 3}
       propertyPath: CamPos
       value: 
       objectReference: {fileID: 1936426621}
+    - target: {fileID: 6760358103286633012, guid: 1e97a15bbd82d394c9ace37d9432c1a7, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760358103286633012, guid: 1e97a15bbd82d394c9ace37d9432c1a7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 8311794363719634041, guid: 1e97a15bbd82d394c9ace37d9432c1a7, type: 3}
       propertyPath: stampObj
       value: 
@@ -1494,7 +1555,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6525788691522032404, guid: 1e97a15bbd82d394c9ace37d9432c1a7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1e97a15bbd82d394c9ace37d9432c1a7, type: 3}
 --- !u!1 &6019445806601047250 stripped
 GameObject:

@@ -34,6 +34,8 @@ public class GameState : MonoBehaviour
     public Transform DeskViewPos;
     public Transform MapViewPos;
 
+    public Bill_Object MainBill = null;
+
     private Bill_Object _selectedBill = null;
 
     public AvailableBillList AvailableBills;
@@ -57,6 +59,9 @@ public class GameState : MonoBehaviour
     private bool _moveStampDown = true;
     private float _stampStartTime;
     private StampMode _chosenMode;
+    private GameObject _chosenStampObj =null;
+    float _stampMove = 0.5f;
+    Vector3 _stampStartPos;
 
 
     public SFXPlaying soundManager; 
@@ -80,19 +85,28 @@ public class GameState : MonoBehaviour
 
     public void TryStamp(GameObject obj,  StampMode mode)
     {
+
+        if(!_currentlyMoving && !_setTurned)
+        {
+            TryTurnSet();
+        }
+
         if (!_currentlyMoving && _setTurned && !_optionChosen)
         {
             _optionChosen = true;
             _movingStamp = true;
             _moveStampDown = true;
-            _stampStartTime= Time.deltaTime;
+            _stampStartTime= Time.time;
             _chosenMode = mode;
+
+            _chosenStampObj = obj;
+            _stampStartPos = _chosenStampObj.transform.localPosition;
             if(mode == StampMode.APPROVE)
             {
                 _selectedBill.Data.accepted = true;
             }
             sim.bills.Add(_selectedBill.Data);
-            LerpCamera(MapViewPos);
+
         }
     }
 
@@ -120,11 +134,19 @@ public class GameState : MonoBehaviour
 
     public void TryTurnSet()
     {
-        if(!_turningSet)
+        if(_selectedBill == null)
         {
-            _turningSet = true;
-            _startTurnTime = Time.time;
+            TrySelectBill(MainBill);
         }
+        else
+        {
+            if(!_turningSet)
+            {
+                _turningSet = true;
+                _startTurnTime = Time.time;
+            }
+        }
+ 
     }
 
 
@@ -186,18 +208,57 @@ public class GameState : MonoBehaviour
 
         if(_movingStamp)
         {
-            float distCovered = (Time.time - _stampStartTime);
 
-            // Fraction of journey completed equals current distance divided by total distance.
-
-            if(!_moveStampDown)
+            if(_moveStampDown)
             {
-                float fractionOfJourney = distCovered / 0.1f;
+                float distCovered = (Time.time - _stampStartTime);
 
-                //StampObj.transform.position.y = float.Lerp(Quaternion.Euler(0,90,0), Quaternion.Euler(0,0,0), fractionOfJourney);
+                float time = 0.25f;
+
+                float fractionOfJourney = distCovered / time;
+
+                _chosenStampObj.transform.localPosition =new Vector3(  _chosenStampObj.transform.localPosition.x,
+                Mathf.Lerp(_stampStartPos.y,_stampStartPos.y - _stampMove, fractionOfJourney),
+                 _chosenStampObj.transform.localPosition.z);
+
+
+                 if(fractionOfJourney >= 1.0f)
+                 {
+                    _stampStartPos = _chosenStampObj.transform.localPosition;
+                    _moveStampDown = false;
+
+                    _stampStartTime = Time.time;
+
+                    Debug.Log("FINISHED MOVING DOWN");
+                    //AUDIO HERE
+                    soundManager.PlayStamp();
+                 }
             }
             else
             {
+                float distCovered = (Time.time - _stampStartTime);
+
+
+                float time = 0.25f;
+
+                float fractionOfJourney = distCovered / time;
+
+
+                 _chosenStampObj.transform.localPosition =new Vector3(  _chosenStampObj.transform.localPosition.x,
+                Mathf.Lerp(_stampStartPos.y,_stampStartPos.y + _stampMove, fractionOfJourney),
+                 _chosenStampObj.transform.localPosition.z);
+
+
+                 if(fractionOfJourney >= 1.0f)
+                 {
+                     _moveStampDown = true;
+                     _movingStamp = false;
+
+                    LerpCamera(MapViewPos);
+                    TryTurnSet();
+                    _optionChosen = false;
+                 }
+
             }
 
         }

@@ -38,11 +38,11 @@ public class Bill_Object : MonoBehaviour
 
     private void UpdateText()
     {
-        // if (Data !=null)
-        // {
-        //     Title.text = Data.BillName;
-        //     Description.text = Data.BillText;
-        //
+        if (Data !=null)
+        {
+            Title.text = Data.BillName;
+            Description.text = Data.BillText;
+        }
         //     //set up the list of countries affected
         //     string countryText = "Affects: \r\n";
         //

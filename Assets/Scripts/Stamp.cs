@@ -12,8 +12,6 @@ public class Stamp : MonoBehaviour
 {
     public StampMode Mode;
 
-    public StampSet Set;
-
     public GameObject stampObj;
 
     public void DoStamp()
