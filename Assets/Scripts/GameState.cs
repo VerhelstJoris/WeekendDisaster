@@ -123,9 +123,24 @@ public class GameState : MonoBehaviour
         if (sim != null)
         {
             sim.OnStepped += UpdateWorldStats;
-            sim.OnSimPaused += UpdateWorldStats;
+            sim.OnSimPaused += ReachedNewBillTime;
             sim.OnSimFinalDateReached += GameOver;
         }
+    }
+
+    public bool IsSimRunning()
+    {
+        return !_shouldResumeSim && !sim.runSim;
+    }
+
+    public bool IsMoving()
+    {
+        return _currentlyMoving || _movingStamp || _turningSet;
+    }
+
+    private void ReachedNewBillTime()
+    {
+        TrySelectDesk();
     }
 
     private void GameOver()
@@ -168,7 +183,6 @@ public class GameState : MonoBehaviour
             _stampStartTime= Time.time;
             _chosenMode = mode;
 
-
             _chosenStampObj = obj;
             _stampStartPos = _chosenStampObj.transform.localPosition;
             if(mode == StampMode.APPROVE)
@@ -176,8 +190,6 @@ public class GameState : MonoBehaviour
                 _selectedBill.Data.accepted = true;
             }
             sim.bills.Add(_selectedBill.Data);
-
-            _selectedBill = null;
         }
     }
 
@@ -199,7 +211,7 @@ public class GameState : MonoBehaviour
 
     public void TrySelectBill(Bill_Object obj)
     {
-        if (_selectedBill != obj)
+        if (_selectedBill != obj && !_currentlyMoving)
         {
             soundManager.PlayBookPage();
             LerpCamera(obj.CamPos);
@@ -222,7 +234,7 @@ public class GameState : MonoBehaviour
 
     public void TryTurnSet()
     {
-        if(_selectedBill == null)
+        if(!_setTurned && _selectedBill == null)
         {
             TrySelectBill(MainBill);
         }
@@ -264,6 +276,7 @@ public class GameState : MonoBehaviour
         {
             _selectedBill.UpdateBillData(AvailableBills.SelectNextBill(_selectedBill.Data, sim));
             _shouldResumeSim = false;
+            _selectedBill = null;
 
             sim.StartSim(monthsToNewBill);
         }

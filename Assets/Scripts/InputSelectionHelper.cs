@@ -34,60 +34,62 @@ public class InputSelectionHelper : MonoBehaviour
 
     private void HandleTouch(Vector2 TouchPos, TouchPhase TouchPhase)
     {
+        if (GameState.Instance.IsMoving() || GameState.Instance.TryMoveAssignment() || GameState.Instance.GameFinished || GameState.Instance.IsSimRunning())
+        {
+            return;
+        }
+
         if (TouchPhase == TouchPhase.Ended)
         {
             Ray ray = cam.ScreenPointToRay(TouchPos);
             RaycastHit hitInfo;
             if (Physics.Raycast(ray, out hitInfo))
             {
-                if(!GameState.Instance.TryMoveAssignment() && !GameState.Instance.GameFinished)
+                GameRegion hitRegion = hitInfo.collider.GetComponent<GameRegion>();
+                if (hitRegion != null)
                 {
-                    GameRegion hitRegion = hitInfo.collider.GetComponent<GameRegion>();
-                    if (hitRegion != null)
-                    {
-                        SelectRegion(hitRegion);
-                    }
-                    else
-                    {
-                        SelectRegion(null);
-                    }
+                    SelectRegion(hitRegion);
+                }
+                else
+                {
+                    SelectRegion(null);
+                }
 
-                    Stamp hitStamp = hitInfo.collider.GetComponent<Stamp>();
-                    if (hitStamp != null)
-                    {
-                        hitStamp.DoStamp();
-                    }
+                Stamp hitStamp = hitInfo.collider.GetComponent<Stamp>();
+                if (hitStamp != null)
+                {
+                    hitStamp.DoStamp();
+                }
 
-                    StampSet hitSet = hitInfo.collider.GetComponent<StampSet>();
-                    if (hitSet != null)
-                    {
-                        GameState.Instance.TryTurnSet();
-                    }
+                StampSet hitSet = hitInfo.collider.GetComponent<StampSet>();
+                if (hitSet != null)
+                {
+                    GameState.Instance.TryTurnSet();
+                }
 
-                    Bill_Object hitBill = hitInfo.collider.GetComponent<Bill_Object>();
-                    if (hitBill != null)
-                    {
-                        GameState.Instance.TrySelectBill(hitBill);
-                    }
+                Bill_Object hitBill = hitInfo.collider.GetComponent<Bill_Object>();
+                if (hitBill != null)
+                {
+                    GameState.Instance.TrySelectBill(hitBill);
+                }
 
-                    Desk hitDesk = hitInfo.collider.GetComponent<Desk>();
-                    if (hitDesk != null)
-                    {
-                        GameState.Instance.TrySelectDesk();
-                    }
+                Desk hitDesk = hitInfo.collider.GetComponent<Desk>();
+                if (hitDesk != null)
+                {
+                    GameState.Instance.TrySelectDesk();
+                }
 
-                    World hitWorld = hitInfo.collider.GetComponent<World>();
-                    if (hitWorld != null)
-                    {
-                         GameState.Instance.TrySelectMap();
-                    }
+                World hitWorld = hitInfo.collider.GetComponent<World>();
+                if (hitWorld != null)
+                {
+                    GameState.Instance.TrySelectMap();
                 }
 
                 RestartButton hitButton = hitInfo.collider.GetComponent<RestartButton>();
                 if (hitButton != null)
                 {
                     //restart
-                     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 }
             }
         }

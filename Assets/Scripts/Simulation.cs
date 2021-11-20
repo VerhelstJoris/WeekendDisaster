@@ -77,6 +77,7 @@ public class Simulation : MonoBehaviour
     public void StartSim(int monthsToTick)
     {
         PauseDate = CurrentDate.AddMonths(monthsToTick).AddDays(Random.value * stepDays);
+        runSim = true;
         StartCoroutine(TimedUpdate());
     }
 
@@ -177,18 +178,24 @@ public class Simulation : MonoBehaviour
 
         if (CurrentDate >= PauseDate)
         {
+            runSim = false;
+            Debug.Log("Sim has paused");
             bills.Clear();
             if (OnSimPaused != null)
             {
                 OnSimPaused();
             }
+            return;
         }
 
         if (gameEnded)
         {
             runSim = false;
             Debug.Log("Sim has finished");
-            OnSimFinalDateReached();
+            if (OnSimFinalDateReached != null)
+            {
+                OnSimFinalDateReached();
+            }
             return;
         }
         
