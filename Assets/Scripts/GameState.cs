@@ -76,14 +76,26 @@ public class GameState : MonoBehaviour
 
     public void PlayAudioClip(AudioClip Clip)
     {
-        _source.PlayOneShot(Clip);
+        _source.PlayOneShot(clip);
     }    
+
+    public void PlayAudioClipLoop(AudioClip clip){
+       
+        _source.clip = clip;
+
+        _source.loop = true;
+        
+        _source.Play();
+
+
+    }
 
     public void Start()
     {
         MainCam.gameObject.transform.position = DeskViewPos.position;
         MainCam.gameObject.transform.rotation = DeskViewPos.rotation;
         _source = MainCam.gameObject.GetComponent<AudioSource>();
+        soundManager.PlayBackground();
 
         if (sim != null)
         {
@@ -135,6 +147,7 @@ public class GameState : MonoBehaviour
 
     public void TrySelectMap()
     {
+        soundManager.PlayWaves();
         LerpCamera(MapViewPos);
         _selectedBill = null;
     }

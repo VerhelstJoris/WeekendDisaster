@@ -10,6 +10,7 @@ public class SFXPlaying : MonoBehaviour
     public AudioClip YouWin; 
     public AudioClip Stamp;
     public AudioClip Waves;
+    public AudioClip BackgroundSounds; 
 
     public GameState State; 
 
@@ -38,6 +39,11 @@ public class SFXPlaying : MonoBehaviour
 
     public void PlayWaves() {
         State.PlayAudioClip(Waves);
+    }
+
+    public void PlayBackground() {
+        State.PlayAudioClipLoop(BackgroundSounds);
+
     }
 
 }
