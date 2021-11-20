@@ -11,7 +11,7 @@ public class Bill_resource : MonoBehaviour
     [SerializeField]
     private TextMesh _text;
 
-    public void UpdateValue(int val, ref float pos)
+    public void UpdateValue(float val, ref float pos)
     {
         if(val==0)
         {
