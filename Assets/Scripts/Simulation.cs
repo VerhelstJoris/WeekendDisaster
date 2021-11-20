@@ -233,9 +233,12 @@ public class Simulation : MonoBehaviour
         GlobalIndustryOutput[SimulationIndustries.Other] = worldData.Values.Sum(date => date.other_industry_co2);
         
         // Work out new doomsday value (temp increase)
-
         float diff = globalCO2Target - globalCO2;
         currentTemp = globalCO2Target / diff;
+        
+        
+        // Update Global CO2
+        globalCO2 = worldData.Values.Sum(data => data.cumulative_co2);
 
         // Debug output for globals
         // foreach (var industry in Enum.GetValues(typeof(SimulationIndustries)))
@@ -243,10 +246,6 @@ public class Simulation : MonoBehaviour
         //     var i = (SimulationIndustries) industry;
         //     Debug.Log($"{Enum.GetName(typeof(SimulationIndustries), industry)} - [{GlobalIndustryOutput[i]}]");
         // }
-
-
-        // Update Temperature
-
     }
 
     public bool IsConditionMet(BillCondition condi)

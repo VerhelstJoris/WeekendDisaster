@@ -30,9 +30,13 @@ public class BillEffects
     public Regions RegionsAffected;
     public float Carbon;
     public SimulationIndustries Industry;
-    public int Money;
-    public int Energy;
-    public int Happiness;
+    
+    [Range(0, 2)] 
+    public float Money;
+    [Range(0, 2)] 
+    public float Energy;
+    [Range(0, 2)] 
+    public float Happiness;
 }
 
 [System.Serializable]
