@@ -75,7 +75,7 @@ public class GameState : MonoBehaviour
 
     }
 
-    public void TryStamp(Bill_Object obj,  StampMode mode)
+    public void TryStamp(GameObject obj,  StampMode mode)
     {
         if (!_currentlyMoving && _setTurned && !_optionChosen)
         {

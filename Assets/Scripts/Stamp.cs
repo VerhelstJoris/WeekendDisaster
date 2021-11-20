@@ -10,15 +10,14 @@ public enum StampMode
 
 public class Stamp : MonoBehaviour
 {
-    public Bill_Object obj;
-
     public StampMode Mode;
 
     public StampSet Set;
 
+    public GameObject stampObj;
+
     public void DoStamp()
     {
-        Debug.Log("DO");
-        GameState.Instance.TryStamp(obj,Mode);
+        GameState.Instance.TryStamp(stampObj,Mode);
     }
 }
