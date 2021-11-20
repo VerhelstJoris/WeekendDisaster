@@ -68,7 +68,11 @@ public class GameState : MonoBehaviour
 
     private AudioSource _source;
 
+    [SerializeField]
     private Simulation sim;
+
+    [SerializeField]
+    private WorldMapStats worldStats;
 
     public void PlayAudioClip(AudioClip Clip)
     {
@@ -81,6 +85,15 @@ public class GameState : MonoBehaviour
         MainCam.gameObject.transform.rotation = DeskViewPos.rotation;
         _source = MainCam.gameObject.GetComponent<AudioSource>();
 
+        if (sim != null)
+        {
+            sim.OnStepped += UpdateWorldStats;
+        }
+    }
+
+    private void UpdateWorldStats()
+    {
+        worldStats.UpdateStats(sim);
     }
 
     public void TryStamp(GameObject obj,  StampMode mode)

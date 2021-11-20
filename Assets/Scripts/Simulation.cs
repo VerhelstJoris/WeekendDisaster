@@ -9,6 +9,8 @@ using Random = UnityEngine.Random;
 
 public class Simulation : MonoBehaviour
 {
+    public event Action OnStepped;
+
     // Data Input
     public TextAsset dataFile;
     
@@ -49,6 +51,10 @@ public class Simulation : MonoBehaviour
         while(runSim)
         {
             StepSim();
+            if (OnStepped != null)
+            {
+                OnStepped();
+            }
             yield return new WaitForSeconds(1);
         }
     }
