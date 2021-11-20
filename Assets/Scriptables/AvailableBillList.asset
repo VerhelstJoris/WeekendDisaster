@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 2d54cb81daaebeb4d94a5aa2a565e58f, type: 3}
   m_Name: AvailableBillList
-  m_EditorClassIdentifier: Assembly-CSharp::AvailableBillList
+  m_EditorClassIdentifier: 
   Bills:
   - {fileID: 11400000, guid: 8ff0bb595009e554ca011dc6ecc1eddc, type: 2}

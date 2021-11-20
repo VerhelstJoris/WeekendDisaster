@@ -986,6 +986,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DeskViewPos: {fileID: 1729272923}
   MapViewPos: {fileID: 1205019678}
+  AvailableBills: {fileID: 11400000, guid: 5cb1284f21d1502479347a7724114141, type: 2}
   MainCam: {fileID: 1607818124}
   StampObj: {fileID: 9200885074745545350}
   soundManager: {fileID: 1721798784}
