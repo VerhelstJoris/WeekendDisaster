@@ -16,19 +16,14 @@ public enum Regions
 }
 
 [System.Serializable]
-public class BillCosts
-{
-    public int Money;
-    public int Energy;
-    public int Happiness;
-}
-
-[System.Serializable]
-public class BillEffects : BillCosts
+public class BillEffects
 {
     public Regions RegionsAffected;
     public float Carbon;
     public SimulationIndustries Industry;
+    public int Money;
+    public int Energy;
+    public int Happiness;
 }
 
 [CreateAssetMenu(fileName = "BillData", menuName = "ScriptableObjects/BillData", order = 1)]
@@ -41,13 +36,13 @@ public class Bill_Data : ScriptableObject
     public string BillAcceptedOutcome;
     public string BillDeniedOutcome;
 
-    public BillCosts BillCosts;
-
     public BillEffects BillAcceptedEffects;
     public BillEffects BillDeniedEffects;
 
     public Bill_Data FollowUpAccepted;
     public Bill_Data FollowUpDenied;
+
+    public bool accepted;
 }
 
 [CreateAssetMenu(fileName = "BillData", menuName = "ScriptableObjects/BillData", order = 1)]

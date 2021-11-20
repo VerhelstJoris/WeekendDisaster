@@ -165,17 +165,19 @@ public class Simulation : MonoBehaviour
         Debug.Log($"Stepping Sim for date {CurrentDate.ToString(CultureInfo.CurrentCulture)}");
         
         // Update the bills
-        foreach(var b in bills.Where(bill => !bill.applied))
+        foreach(var b in bills)
         {
             var affectedRegions = new List<Regions>();
 
-            if (b.RegionsAffected.HasFlag(Regions.North_America)) affectedRegions.Add(Regions.North_America);
-            if (b.RegionsAffected.HasFlag(Regions.South_America)) affectedRegions.Add(Regions.South_America);
-            if (b.RegionsAffected.HasFlag(Regions.Africa)) affectedRegions.Add(Regions.Africa);
-            if (b.RegionsAffected.HasFlag(Regions.Australia)) affectedRegions.Add(Regions.Australia);
-            if (b.RegionsAffected.HasFlag(Regions.Asia)) affectedRegions.Add(Regions.Asia);
-            if (b.RegionsAffected.HasFlag(Regions.Europe)) affectedRegions.Add(Regions.Europe);
-            if (b.RegionsAffected.HasFlag(Regions.All))
+            var effects = b.accepted ? b.BillAcceptedEffects : b.BillDeniedEffects;
+
+            if (effects.RegionsAffected.HasFlag(Regions.North_America)) affectedRegions.Add(Regions.North_America);
+            if (effects.RegionsAffected.HasFlag(Regions.South_America)) affectedRegions.Add(Regions.South_America);
+            if (effects.RegionsAffected.HasFlag(Regions.Africa)) affectedRegions.Add(Regions.Africa);
+            if (effects.RegionsAffected.HasFlag(Regions.Australia)) affectedRegions.Add(Regions.Australia);
+            if (effects.RegionsAffected.HasFlag(Regions.Asia)) affectedRegions.Add(Regions.Asia);
+            if (effects.RegionsAffected.HasFlag(Regions.Europe)) affectedRegions.Add(Regions.Europe);
+            if (effects.RegionsAffected.HasFlag(Regions.All))
             {
                 affectedRegions.AddRange(Enum.GetValues(typeof(Regions)).Cast<Regions>());
             }
@@ -184,14 +186,12 @@ public class Simulation : MonoBehaviour
             foreach (var r in worldData.Values.Where(r => affectedRegions.Contains(r.location)))
             {
                 
-                r.happinessStat = Mathf.Clamp01(r.happinessStat * b.BillEffects.Happiness);
-                r.money = Mathf.Clamp01(r.money * b.BillEffects.Money);
-                r.energy = Mathf.Clamp01(r.energy * b.BillEffects.Energy);
+                r.happinessStat = Mathf.Clamp01(r.happinessStat * effects.Happiness);
+                r.money = Mathf.Clamp01(r.money * effects.Money);
+                r.energy = Mathf.Clamp01(r.energy * effects.Energy);
                 
-                r.SetCO2(b.BillEffects.Industry, b.BillEffects.Carbon);
+                r.SetCO2(effects.Industry, effects.Carbon);
             }
-
-            b.applied = true;
         }
 
         // Update Global Totals

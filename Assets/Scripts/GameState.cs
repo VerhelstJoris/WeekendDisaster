@@ -67,7 +67,7 @@ public class GameState : MonoBehaviour
     }
 
     public void TryStamp(Bill_Object obj)
-    {+
+    {
         if (_selectedBill == obj && !_currentlyMoving)
         {
             Debug.LogError("STAMP STAMP");
