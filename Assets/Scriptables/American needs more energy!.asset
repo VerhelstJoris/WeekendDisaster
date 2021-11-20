@@ -10,24 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6948453f4a4c3084c9f925a49ceb3047, type: 3}
-  m_Name: BillData 1
+  m_Name: American needs more energy!
   m_EditorClassIdentifier: 
-  BillName: 
-  BillText: 
+  BillName: American needs more energy!
+  BillText: 'Increase coal production '
   BillAcceptedEffects:
-    RegionsAffected: 0
-    Carbon: 0
+    RegionsAffected: 15
+    Carbon: 1000
     Industry: 0
-    Money: 0
-    Energy: 0
-    Happiness: 0
+    Money: 500
+    Energy: 1000
+    Happiness: -500
   BillDeniedEffects:
-    RegionsAffected: 0
-    Carbon: 0
+    RegionsAffected: 1
+    Carbon: -250
     Industry: 0
-    Money: 0
-    Energy: 0
-    Happiness: 0
+    Money: -500
+    Energy: -1000
+    Happiness: 100
   FollowUpAccepted: {fileID: 0}
   FollowUpDenied: {fileID: 0}
   BillConditions: []

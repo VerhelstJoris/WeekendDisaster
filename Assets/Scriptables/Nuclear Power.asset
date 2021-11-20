@@ -10,19 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6948453f4a4c3084c9f925a49ceb3047, type: 3}
-  m_Name: Bill1
+  m_Name: Nuclear Power
   m_EditorClassIdentifier: 
-  BillName: FirstBIll
-  BillText: This is the first bill in a chain.
-  BillAcceptedOutcome: You accepted the bill.
-  BillDeniedOutcome: You denied the bill.
+  BillName: Nuclear Power
+  BillText: Asia and Austrailia to build nuclear reactors to reduce their carbon
+    footprint
   BillAcceptedEffects:
     RegionsAffected: 9
-    Carbon: 2000
+    Carbon: -1000
     Industry: 4
     Money: -5000
-    Energy: 2000
-    Happiness: -30
+    Energy: 1000
+    Happiness: 20
   BillDeniedEffects:
     RegionsAffected: 9
     Carbon: 6000
@@ -32,4 +31,9 @@ MonoBehaviour:
     Happiness: 30
   FollowUpAccepted: {fileID: 11400000, guid: ab3ca802b71a5db4098672b6e0dd550f, type: 2}
   FollowUpDenied: {fileID: 11400000, guid: fc4b2fb9846698648af5ae7ee0c73599, type: 2}
+  BillConditions:
+  - RegionsAffected: 32
+    Resource: 2
+    MoreThan: 1
+    Value: 5000
   accepted: 0
