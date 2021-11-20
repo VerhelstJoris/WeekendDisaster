@@ -1,16 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+
 
 public class Bill_Object : MonoBehaviour
 {
     public Bill_Data Data;
 
-    public TextMesh Title;
-    public TextMesh Description;
-    public TextMesh Countries;
-    public TextMesh Costs; 
-    public TextMesh Effects; 
+    public TextMeshPro Title;
+    public TextMeshPro Description;
+    public TextMeshPro Countries;
+
+    public Bill_resource CostEnergy;
+    public Bill_resource CostMoney;
+    public Bill_resource CostHappiness;
+
+    public Bill_resource EffectEnergy;
+    public Bill_resource EffectMoney;
+    public Bill_resource EffectHappiness;
+    public Bill_resource EffectCarbon;
+
 
 
     void Start()
@@ -58,6 +68,14 @@ public class Bill_Object : MonoBehaviour
 
             Countries.text = countryText;
 
+            CostEnergy.UpdateValue(Data.BillCosts.Energy);
+            CostMoney.UpdateValue(Data.BillCosts.Money);
+            CostHappiness.UpdateValue(Data.BillCosts.Happiness);
+
+            EffectEnergy.UpdateValue(Data.BillEffects.Energy);
+            EffectMoney.UpdateValue(Data.BillEffects.Money);
+            EffectHappiness.UpdateValue(Data.BillEffects.Happiness);
+            EffectCarbon.UpdateValue(Data.BillEffects.Carbon);
 
         }
 

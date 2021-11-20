@@ -14,16 +14,18 @@ public enum Regions
     All = 1 << 6
 }
 
+[System.Serializable]
 public class BillCosts
 {
-    int CurrencyCost;
-    int EnergyCost;
-    int HappinessCost;
+    public int Money;
+    public int Energy;
+    public int Happiness;
 }
 
+[System.Serializable]
 public class BillEffects : BillCosts
 {
-    int CarbonEffect;
+    public int Carbon;
 }
 
 [CreateAssetMenu(fileName = "BillData", menuName = "ScriptableObjects/BillData", order = 1)]
