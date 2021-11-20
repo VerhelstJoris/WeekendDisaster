@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WorldMapStats : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class WorldMapStats : MonoBehaviour
     private StatsView AsiaStats;
     [SerializeField]
     private StatsView AustraliaStats;
+    [SerializeField]
+    private Slider TemperatureSlider;
 
     public void UpdateStats(Simulation sim)
     {
@@ -47,12 +50,14 @@ public class WorldMapStats : MonoBehaviour
                     break;
             }
         }
+
+        TemperatureSlider.value = sim.currentTemp;
     }
 
     private void UpdateStatsView(StatsView view, RegionData data)
     {
-        view.co2Bar.SetBarValue(data.co2);
-        view.moneyBar.SetBarValue(data.money);
+        view.co2Bar.SetBarValue(data.share_global_cumulative_co2);
+        view.moneyBar.SetBarValue(data.moneyStat);
         view.happinessBar.SetBarValue(data.happinessStat);
         view.energyBar.SetBarValue(data.energy);
     }

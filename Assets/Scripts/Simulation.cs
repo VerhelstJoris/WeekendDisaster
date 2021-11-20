@@ -10,6 +10,8 @@ using Random = UnityEngine.Random;
 public class Simulation : MonoBehaviour
 {
     public event Action OnStepped;
+    public event Action OnSimPaused;
+    public event Action OnSimFinalDateReached;
 
     // Data Input
     public TextAsset dataFile;
@@ -40,6 +42,8 @@ public class Simulation : MonoBehaviour
     public int stepMonths = 3;
     public float stepDays = 29;
 
+    private DateTime PauseDate;
+
     private void Awake()
     {
         LoadData();
@@ -61,13 +65,19 @@ public class Simulation : MonoBehaviour
     
     private void Start()
     {
-        if (simMode == SimulationMode.Continuous)
-        {
-            Debug.Log("Starting Sim in continuous mode");
-            StartCoroutine(TimedUpdate());
-            return;
-        }
-        Debug.Log("Starting Sim in Step mode, Don't forget to call step!");
+        //if (simMode == SimulationMode.Continuous)
+        //{
+        //    Debug.Log("Starting Sim in continuous mode");
+        //    StartCoroutine(TimedUpdate());
+        //    return;
+        //}
+        //Debug.Log("Starting Sim in Step mode, Don't forget to call step!");
+    }
+
+    public void StartSim(int monthsToTick)
+    {
+        PauseDate = CurrentDate.AddMonths(monthsToTick).AddDays(Random.value * stepDays);
+        StartCoroutine(TimedUpdate());
     }
 
     private void LoadData()
@@ -155,16 +165,31 @@ public class Simulation : MonoBehaviour
         #endregion
 
     }
-    
+
     public void StepSim()
     {
         //  Update the Quarterly
         CurrentDate = CurrentDate.AddMonths(stepMonths).AddDays(Random.value * stepDays);
-        if (CurrentDate > EndDate || gameEnded)
+        if (CurrentDate >= EndDate)
+        {
+            gameEnded = true;
+        }
+
+        if (CurrentDate >= PauseDate)
+        {
+            gameEnded = true;
+            bills.Clear();
+            if (OnSimPaused != null)
+            {
+                OnSimPaused();
+            }
+        }
+
+        if (gameEnded)
         {
             runSim = false;
-            gameEnded = true;
             Debug.Log("Sim has finished");
+            OnSimFinalDateReached();
             return;
         }
         
@@ -191,9 +216,9 @@ public class Simulation : MonoBehaviour
             // Update the regions values based on the bills
             foreach (var r in worldData.Values.Where(r => affectedRegions.Contains(r.location)))
             {
-                
+                r.share_global_cumulative_co2 = Mathf.Clamp01(r.co2 / globalCO2);
                 r.happinessStat = Mathf.Clamp01(r.happinessStat * effects.Happiness);
-                r.money = Mathf.Clamp01(r.money * effects.Money);
+                r.moneyStat = Mathf.Clamp01(r.moneyStat * effects.Money);
                 r.energy = Mathf.Clamp01(r.energy * effects.Energy);
                 
                 r.SetCO2(effects.Industry, effects.Carbon);
@@ -238,7 +263,7 @@ public class Simulation : MonoBehaviour
                     compareValue = r.energy;
                     break;
                 case ResourceType.Money:
-                    compareValue = r.money;
+                    compareValue = r.moneyStat;
                     break;
                 case ResourceType.Energy:
                     compareValue = r.energy;

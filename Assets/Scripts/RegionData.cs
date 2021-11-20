@@ -7,8 +7,9 @@ public class RegionData
     public Regions location;
     public long population;
 
+    public float share_global_cumulative_co2;
     public float happinessStat = 1.0f;
-    public float money = 1.0f;
+    public float moneyStat = 1.0f;
     public float energy = 1.0f;
 
     public float co2;
@@ -16,7 +17,6 @@ public class RegionData
     public float co2_per_capita;
     public float share_global_co2;
     public float cumulative_co2;
-    public float share_global_cumulative_co2;
     public float coal_co2;
     public float cement_co2;
     public float flaring_co2;

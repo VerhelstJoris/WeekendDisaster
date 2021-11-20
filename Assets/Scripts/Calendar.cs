@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 using TMPro;
 
@@ -21,8 +22,8 @@ public class Calendar : MonoBehaviour
     {
         if (Sim)
         {
-            Month.text = Sim.CurrentDate.ToString("MMM");
-            Year.text = Sim.CurrentDate.ToString("yyyy");
+            Month.text = Sim.CurrentDate.ToString("MMM", CultureInfo.InvariantCulture).ToUpper();
+            Year.text = Sim.CurrentDate.ToString("yyyy", CultureInfo.InvariantCulture).ToUpper();
         }
     }
 }

@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3660460538955357038
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3660460538955357036}
+  - component: {fileID: 3660460538955357037}
+  - component: {fileID: 3660460538955357075}
+  m_Layer: 0
+  m_Name: Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3660460538955357036
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3660460538955357038}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3660460538955357037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3660460538955357038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d9a0ac122a37084e94c9ed1d306ccd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DeskViewPos: {fileID: 0}
+  MapViewPos: {fileID: 0}
+  MainBill: {fileID: 0}
+  AvailableBills: {fileID: 11400000, guid: 5cb1284f21d1502479347a7724114141, type: 2}
+  MainCam: {fileID: 0}
+  StampObj: {fileID: 0}
+  _travelTime: 1
+  soundManager: {fileID: 3660460538955357075}
+  sim: {fileID: 0}
+  worldStats: {fileID: 0}
+  monthsToNewBill: 4
+--- !u!114 &3660460538955357075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3660460538955357038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a3aee1375f34b042b36a69ff6983604, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BookPage: {fileID: 8300000, guid: 5d807431d5dfaf0419f69a624b4feb92, type: 3}
+  Writing: {fileID: 8300000, guid: ec53b4d31dbba804287eedb25c24166d, type: 3}
+  YouLose: {fileID: 8300000, guid: e378b70015a3b004cb84ce0734222333, type: 3}
+  YouWin: {fileID: 8300000, guid: 65e9e06e7cbe57a4cb598c31b44983f7, type: 3}
+  Stamp: {fileID: 8300000, guid: ea9c01b5e33026d488af94fb00124b5e, type: 3}
+  Waves: {fileID: 0}
+  State: {fileID: 3660460538955357037}

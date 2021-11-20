@@ -56,11 +56,12 @@ public class GameState : MonoBehaviour
     public Quaternion _startAssignRot; 
 
     private bool _currentlyMoving = false;
-    private bool _shouldUpdateBill = false;
+    private bool _shouldResumeSim = false;
     private Transform _startTrans;
     private Transform _goalTransform;
     private float _startTime;
-    private float _travelTime = 0.5f;
+    [SerializeField]
+    private float _travelTime = 1.0f;
 
     private bool _optionChosen = false;
     private bool _movingStamp =false;
@@ -81,6 +82,9 @@ public class GameState : MonoBehaviour
 
     [SerializeField]
     private WorldMapStats worldStats;
+
+    [SerializeField]
+    private int monthsToNewBill = 4;
 
     public void PlayAudioClip(AudioClip Clip)
     {
@@ -108,7 +112,14 @@ public class GameState : MonoBehaviour
         if (sim != null)
         {
             sim.OnStepped += UpdateWorldStats;
+            sim.OnSimPaused += UpdateWorldStats;
+            sim.OnSimFinalDateReached += GameOver;
         }
+    }
+
+    private void GameOver()
+    {
+
     }
 
     private void UpdateWorldStats()
@@ -222,10 +233,12 @@ public class GameState : MonoBehaviour
 
         }
 
-        if (!_currentlyMoving && _shouldUpdateBill)
+        if (!_currentlyMoving && _shouldResumeSim)
         {
             _selectedBill.UpdateBillData(AvailableBills.SelectNextBill(_selectedBill.Data, sim));
-            _shouldUpdateBill = false;
+            _shouldResumeSim = false;
+
+            sim.StartSim(monthsToNewBill);
         }
 
         if (_turningSet)
@@ -233,7 +246,7 @@ public class GameState : MonoBehaviour
             float distCovered = (Time.time - _startTurnTime);
 
             // Fraction of journey completed equals current distance divided by total distance.
-            float fractionOfJourney = distCovered / _travelTime;
+            float fractionOfJourney = distCovered / _stampMove;
 
 
             if(!_setTurned)
@@ -303,6 +316,8 @@ public class GameState : MonoBehaviour
                  {
                      _moveStampDown = true;
                      _movingStamp = false;
+
+                    _shouldResumeSim = true;
 
                     LerpCamera(MapViewPos);
                     TryTurnSet();
