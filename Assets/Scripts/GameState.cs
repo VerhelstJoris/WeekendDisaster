@@ -46,6 +46,7 @@ public class GameState : MonoBehaviour
 
 
     private bool _currentlyMoving = false;
+    private bool _shouldUpdateBill = false;
     private Transform _startTrans;
     private Transform _goalTransform;
     private float _startTime;
@@ -60,7 +61,9 @@ public class GameState : MonoBehaviour
 
     public SFXPlaying soundManager; 
 
-    private AudioSource _source; 
+    private AudioSource _source;
+
+    private Simulation sim;
 
     public void PlayAudioClip(AudioClip Clip)
     {
@@ -86,23 +89,11 @@ public class GameState : MonoBehaviour
             _chosenMode = mode;
             if(mode == StampMode.APPROVE)
             {
-                ApproveBill();
+                _selectedBill.Data.accepted = true;
             }
-            else
-            {
-                DenyBill();
-            }
+            sim.bills.Add(_selectedBill.Data);
+            LerpCamera(MapViewPos);
         }
-    }
-
-    public void ApproveBill()
-    {
-
-    }
-
-    public void DenyBill()
-    {
-
     }
 
     public void TrySelectBill(Bill_Object obj)
@@ -159,7 +150,13 @@ public class GameState : MonoBehaviour
 
         }
 
-        if(_turningSet)
+        if (!_currentlyMoving && _shouldUpdateBill)
+        {
+            _selectedBill.UpdateBillData(AvailableBills.SelectNextBill(_selectedBill.Data, sim));
+            _shouldUpdateBill = false;
+        }
+
+        if (_turningSet)
         {
             float distCovered = (Time.time - _startTurnTime);
 
