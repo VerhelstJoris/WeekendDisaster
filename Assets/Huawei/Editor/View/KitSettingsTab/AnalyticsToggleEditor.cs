@@ -8,13 +8,14 @@ namespace HmsPlugin
 {
     public class AnalyticsToggleEditor : ToggleEditor, IDrawer, IDependentToggle
     {
+        private Toggle.Toggle _toggle;
+
         public const string AnalyticsKitEnabled = "AnalyticsKit";
 
         public AnalyticsToggleEditor()
         {
             bool enabled = HMSMainEditorSettings.Instance.Settings.GetBool(AnalyticsKitEnabled);
             _toggle = new Toggle.Toggle("Analytics", enabled, OnStateChanged, true);
-            Enabled = enabled;
         }
 
         private void OnStateChanged(bool value)
@@ -59,8 +60,7 @@ namespace HmsPlugin
 
         public override void CreateManagers()
         {
-            if (!HMSPluginSettings.Instance.Settings.GetBool(PluginToggleEditor.PluginEnabled, true))
-                return;
+            base.CreateManagers();
             if (GameObject.FindObjectOfType<HMSAnalyticsManager>() == null)
             {
                 GameObject obj = new GameObject("HMSAnalyticsManager");
@@ -83,7 +83,7 @@ namespace HmsPlugin
             Enabled = false;
         }
 
-        public override void DisableManagers(bool removeTabs)
+        public override void DisableManagers()
         {
             var analyticManagers = GameObject.FindObjectsOfType<HMSAnalyticsManager>();
             if (analyticManagers.Length > 0)
@@ -92,14 +92,6 @@ namespace HmsPlugin
                 {
                     GameObject.DestroyImmediate(analyticManagers[i].gameObject);
                 }
-            }
-        }
-
-        public override void RefreshToggles()
-        {
-            if (_toggle != null)
-            {
-                _toggle.SetChecked(HMSMainEditorSettings.Instance.Settings.GetBool(AnalyticsKitEnabled));
             }
         }
     }

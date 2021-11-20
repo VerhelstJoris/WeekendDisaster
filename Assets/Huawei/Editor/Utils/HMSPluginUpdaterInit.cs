@@ -10,7 +10,7 @@ public class HMSPluginUpdaterInit : AssetPostprocessor
         {
             EditorApplication.delayCall += () =>
             {
-                EditorApplication.delayCall += () => HMSPluginUpdater.Request();
+                HMSPluginUpdater.Request();
             };
         };
     }

@@ -13,7 +13,5 @@ MonoBehaviour:
   m_Name: HMSPluginSettings
   m_EditorClassIdentifier: 
   settings:
-    _keys:
-    - PluginEnabled
-    _values:
-    - True
+    _keys: []
+    _values: []

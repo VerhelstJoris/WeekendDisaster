@@ -18,7 +18,6 @@ internal class HMSMainKitsTabFactory
 
     private static List<ToggleEditor> toggleEditors;
     public static DisabledDrawer _disabledDrawer;
-    private static PluginToggleEditor pluginToggleEditor;
 
     static HMSMainKitsTabFactory()
     {
@@ -32,7 +31,7 @@ internal class HMSMainKitsTabFactory
         var tab = new TabView("Kits");
         tabBar.AddTab(tab);
 
-        pluginToggleEditor = new PluginToggleEditor();
+        var pluginToggleEditor = new PluginToggleEditor();
         var adsToggleEditor = new AdsToggleEditor(tabBar);
         var accountEditor = new AccountToggleEditor();
         var gameServiceToggleEditor = new GameServiceToggleEditor(tabBar, accountEditor);
@@ -95,16 +94,5 @@ internal class HMSMainKitsTabFactory
     public static List<ToggleEditor> GetEnabledEditors()
     {
         return toggleEditors.FindAll(c => c.Enabled);
-    }
-
-    public static void RefreshPluginStatus()
-    {
-        if (pluginToggleEditor != null)
-        {
-            pluginToggleEditor.RefreshDrawer(HMSPluginSettings.Instance.Settings.GetBool(PluginToggleEditor.PluginEnabled));
-            pluginToggleEditor.RefreshToggle();
-        }
-        if (toggleEditors != null && toggleEditors.Count > 0)
-            toggleEditors.ForEach(c => c.RefreshToggles());
     }
 }

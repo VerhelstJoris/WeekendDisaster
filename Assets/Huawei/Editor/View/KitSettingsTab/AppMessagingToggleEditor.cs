@@ -10,13 +10,14 @@ namespace HmsPlugin
 {
     public class AppMessagingToggleEditor : ToggleEditor, IDrawer
     {
+        private Toggle.Toggle _toggle;
+
         public const string AppMessagingEnabled = "AppMessaging";
 
         public AppMessagingToggleEditor()
         {
             bool enabled = HMSMainEditorSettings.Instance.Settings.GetBool(AppMessagingEnabled);
             _toggle = new Toggle.Toggle("App Messaging", enabled, OnStateChanged, true);
-            Enabled = enabled;
         }
 
         private void OnStateChanged(bool value)
@@ -39,8 +40,7 @@ namespace HmsPlugin
 
         public override void CreateManagers()
         {
-            if (!HMSPluginSettings.Instance.Settings.GetBool(PluginToggleEditor.PluginEnabled, true))
-                return;
+            base.CreateManagers();
             if (GameObject.FindObjectOfType<HMSAppMessagingManager>() == null)
             {
                 GameObject obj = new GameObject("HMSAppMessagingManager");
@@ -63,7 +63,7 @@ namespace HmsPlugin
             Enabled = false;
         }
 
-        public override void DisableManagers(bool removeTabs)
+        public override void DisableManagers()
         {
             var appMessagingManagers = GameObject.FindObjectsOfType<HMSAppMessagingManager>();
             if (appMessagingManagers.Length > 0)
@@ -72,14 +72,6 @@ namespace HmsPlugin
                 {
                     GameObject.DestroyImmediate(appMessagingManagers[i].gameObject);
                 }
-            }
-        }
-
-        public override void RefreshToggles()
-        {
-            if (_toggle != null)
-            {
-                _toggle.SetChecked(HMSMainEditorSettings.Instance.Settings.GetBool(AppMessagingEnabled));
             }
         }
     }

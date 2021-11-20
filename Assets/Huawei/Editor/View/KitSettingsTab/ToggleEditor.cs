@@ -8,11 +8,13 @@ namespace HmsPlugin
 {
     public abstract class ToggleEditor
     {
-        protected Toggle.Toggle _toggle;
         public bool Enabled { get; set; }
-        public abstract void CreateManagers();
+        public virtual void CreateManagers() 
+        {
+            if (!HMSPluginSettings.Instance.Settings.GetBool(PluginToggleEditor.PluginEnabled, true))
+                return;
+        }
         public abstract void DestroyManagers();
-        public abstract void DisableManagers(bool removeTabs);
-        public abstract void RefreshToggles();
+        public abstract void DisableManagers();
     }
 }

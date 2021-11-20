@@ -8,13 +8,14 @@ namespace HmsPlugin
 {
     public class DriveKitToggleEditor : ToggleEditor, IDrawer
     {
+        private Toggle.Toggle _toggle;
+
         public const string DriveKitEnabled = "DriveKit";
 
         public DriveKitToggleEditor()
         {
             bool enabled = HMSMainEditorSettings.Instance.Settings.GetBool(DriveKitEnabled);
             _toggle = new Toggle.Toggle("Drive Kit", enabled, OnStateChanged, true);
-            Enabled = enabled;
         }
 
         private void OnStateChanged(bool value)
@@ -59,13 +60,7 @@ namespace HmsPlugin
             //throw new NotImplementedException();
         }
 
-        public override void DisableManagers(bool removeTabs)
-        {
-            //throw new NotImplementedException();
-        }
-
-
-        public override void RefreshToggles()
+        public override void DisableManagers()
         {
             //throw new NotImplementedException();
         }

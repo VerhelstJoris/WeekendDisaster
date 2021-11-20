@@ -13,31 +13,5 @@ MonoBehaviour:
   m_Name: HMSMainEditorSettings
   m_EditorClassIdentifier: 
   settings:
-    _keys:
-    - AdsKit
-    - AccountKit
-    - GameService
-    - PushKit
-    - AnalyticsKit
-    - Auth
-    - IAPKit
-    - RemoteConfig
-    - CrashKit
-    - CloudDB
-    - DriveKit
-    - NearbyService
-    - AppMessaging
-    _values:
-    - False
-    - True
-    - True
-    - False
-    - False
-    - False
-    - False
-    - False
-    - False
-    - False
-    - True
-    - False
-    - False
+    _keys: []
+    _values: []

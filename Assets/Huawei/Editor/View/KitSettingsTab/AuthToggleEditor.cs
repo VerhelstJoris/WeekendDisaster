@@ -11,13 +11,14 @@ namespace HmsPlugin
 {
     internal class AuthToggleEditor : ToggleEditor, IDrawer, IDependentToggle
     {
+        private Toggle.Toggle _toggle;
+
         public const string AuthEnabled = "Auth";
 
         public AuthToggleEditor()
         {
             bool enabled = HMSMainEditorSettings.Instance.Settings.GetBool(AuthEnabled);
             _toggle = new Toggle.Toggle("Auth", enabled, OnStateChanged, true);
-            Enabled = enabled;
         }
 
         private void OnStateChanged(bool value)
@@ -53,8 +54,7 @@ namespace HmsPlugin
 
         public override void CreateManagers()
         {
-            if (!HMSPluginSettings.Instance.Settings.GetBool(PluginToggleEditor.PluginEnabled, true))
-                return;
+            base.CreateManagers();
             if (GameObject.FindObjectOfType<HMSAuthServiceManager>() == null)
             {
                 GameObject obj = new GameObject("HMSAuthServiceManager");
@@ -77,7 +77,7 @@ namespace HmsPlugin
             Enabled = false;
         }
 
-        public override void DisableManagers(bool removeTabs)
+        public override void DisableManagers()
         {
             var authManagers = GameObject.FindObjectsOfType<HMSAuthServiceManager>();
             if (authManagers.Length > 0)
@@ -86,15 +86,6 @@ namespace HmsPlugin
                 {
                     GameObject.DestroyImmediate(authManagers[i].gameObject);
                 }
-            }
-        }
-
-
-        public override void RefreshToggles()
-        {
-            if (_toggle != null)
-            {
-                _toggle.SetChecked(HMSMainEditorSettings.Instance.Settings.GetBool(AuthEnabled));
             }
         }
     }

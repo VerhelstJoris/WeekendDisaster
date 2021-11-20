@@ -39,6 +39,14 @@ namespace HmsPlugin
 
         private void CreateGradleFiles(string[] gradleConfigs)
         {
+            if (!AssetDatabase.IsValidFolder("Assets/Plugins"))
+            {
+                AssetDatabase.CreateFolder("Assets", "Plugins");
+            }
+            if (!AssetDatabase.IsValidFolder("Assets/Plugins/Android"))
+            {
+                AssetDatabase.CreateFolder("Assets/Plugins", "Android");
+            }
 #if UNITY_2019_3_OR_NEWER
             CreateMainGradleFile(gradleConfigs);
             CreateLauncherGradleFile(gradleConfigs);
@@ -53,7 +61,7 @@ namespace HmsPlugin
         private void CreateMainGradleFile(string[] gradleConfigs)
         {
 #if UNITY_2019_3_OR_NEWER
-            using (var file = File.CreateText(Application.dataPath + "/Huawei/Plugins/Android/hmsMainTemplate.gradle"))
+            using (var file = File.CreateText(Application.dataPath + "/Plugins/Android/hmsMainTemplate.gradle"))
             {
                 file.Write("dependencies {\n\t");
                 for (int i = 0; i < gradleConfigs.Length; i++)
@@ -64,7 +72,7 @@ namespace HmsPlugin
             }
 
 #elif UNITY_2018_1_OR_NEWER
-            using (var file = File.CreateText(Application.dataPath + "/Huawei/Plugins/Android/hmsMainTemplate.gradle"))
+            using (var file = File.CreateText(Application.dataPath + "/Plugins/Android/hmsMainTemplate.gradle"))
             {
                 file.Write("buildscript {\n\t");
                 file.Write("repositories {\n\t\t");
@@ -94,7 +102,7 @@ namespace HmsPlugin
 
         private void CreateLauncherGradleFile(string[] gradleConfigs)
         {
-            using (var file = File.CreateText(Application.dataPath + "/Huawei/Plugins/Android/hmsLauncherTemplate.gradle"))
+            using (var file = File.CreateText(Application.dataPath + "/Plugins/Android/hmsLauncherTemplate.gradle"))
             {
                 file.Write("apply plugin: 'com.huawei.agconnect'\n\n");
                 file.Write("dependencies {\n\t");
@@ -110,7 +118,7 @@ namespace HmsPlugin
 
         private void BaseProjectGradleFile()
         {
-            using (var file = File.CreateText(Application.dataPath + "/Huawei/Plugins/Android/hmsBaseProjectTemplate.gradle"))
+            using (var file = File.CreateText(Application.dataPath + "/Plugins/Android/hmsBaseProjectTemplate.gradle"))
             {
                 file.Write("allprojects {\n\t");
                 file.Write("buildscript {\n\t\t");
@@ -165,10 +173,9 @@ namespace HmsPlugin
             }
 
             var huaweiMobileServicesDLL = AssetImporter.GetAtPath("Assets/Huawei/Dlls/HuaweiMobileServices.dll") as PluginImporter;
-            var appDebugAar = AssetImporter.GetAtPath("Assets/Huawei/Plugins/Android/app-debug.aar") as PluginImporter;
-            var bookInfo = AssetImporter.GetAtPath("Assets/Huawei/Plugins//Android/BookInfo.java") as PluginImporter;
-            var objectTypeInfoHelper = AssetImporter.GetAtPath("Assets/Huawei/Plugins/Android/ObjectTypeInfoHelper.java") as PluginImporter;
-            var pushKitPlugin = AssetImporter.GetAtPath("Assets/Huawei/Plugins/Android/HMSUnityPushKit.plugin") as PluginImporter;
+            var appDebugAar = AssetImporter.GetAtPath("Assets/Plugins/Android/app-debug.aar") as PluginImporter;
+            var bookInfo = AssetImporter.GetAtPath("Assets/Plugins/Android/BookInfo.java") as PluginImporter;
+            var objectTypeInfoHelper = AssetImporter.GetAtPath("Assets/Plugins/Android/ObjectTypeInfoHelper.java") as PluginImporter;
 
             if (pluginEnabled)
                 PrepareGradleFile();
@@ -179,8 +186,7 @@ namespace HmsPlugin
                 objectTypeInfoHelper.SetCompatibleWithPlatform(BuildTarget.Android, HMSMainEditorSettings.Instance.Settings.GetBool(CloudDBToggleEditor.CloudDBEnabled) && pluginEnabled);
             if (huaweiMobileServicesDLL != null)
                 huaweiMobileServicesDLL.SetCompatibleWithPlatform(BuildTarget.Android, pluginEnabled);
-            if (pushKitPlugin != null)
-                pushKitPlugin.SetCompatibleWithPlatform(BuildTarget.Android, HMSMainEditorSettings.Instance.Settings.GetBool(PushToggleEditor.PushKitEnabled) && pluginEnabled);
+            
             if (appDebugAar != null)
                 appDebugAar.SetCompatibleWithPlatform(BuildTarget.Android, pluginEnabled);
 
@@ -192,7 +198,7 @@ namespace HmsPlugin
             if (type == LogType.Error)
             {
                 Application.logMessageReceived -= OnBuildError;
-                HMSEditorUtils.HandleAssemblyDefinitions(false, false);
+                HMSEditorUtils.HandleAssemblyDefinitions(false,false);
             }
         }
     }
