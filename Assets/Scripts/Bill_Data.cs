@@ -10,17 +10,18 @@ public enum Regions
     Africa = 1 <<2,
     Australia = 1 <<3,
     Asia = 1 <<4,
-    Europe = 1 <<5
+    Europe = 1 <<5,
+    All = 1 << 6
 }
 
-public struct BillCosts
+public class BillCosts
 {
     int CurrencyCost;
     int EnergyCost;
     int HappinessCost;
 }
 
-public struct BillEffects : BillCosts
+public class BillEffects : BillCosts
 {
     int CarbonEffect;
 }
@@ -36,7 +37,7 @@ public class Bill_Data : ScriptableObject
 
    public BillCosts BillCosts;
 
-   public BillEffects;
+   public BillEffects BillEffects;
 
 }
 
