@@ -12,15 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6948453f4a4c3084c9f925a49ceb3047, type: 3}
   m_Name: Bill1
   m_EditorClassIdentifier: 
-  BillName: Green Energy Bill
-  BillText: This is a sample bill written by Joris.
-  RegionsAffected: 5
-  BillCosts:
-    Money: 25
-    Energy: 0
-    Happiness: 100
-  BillEffects:
-    Money: 150
-    Energy: 213123
-    Happiness: 0
-    Carbon: -100
+  BillName: FirstBIll
+  BillText: This is the first bill in a chain.
+  BillAcceptedOutcome: You accepted the bill.
+  BillDeniedOutcome: You denied the bill.
+  BillAcceptedEffects:
+    RegionsAffected: 9
+    Carbon: 2000
+    Industry: 4
+    Money: -5000
+    Energy: 2000
+    Happiness: -30
+  BillDeniedEffects:
+    RegionsAffected: 9
+    Carbon: 6000
+    Industry: 3
+    Money: 0
+    Energy: -1000
+    Happiness: 30
+  FollowUpAccepted: {fileID: 11400000, guid: ab3ca802b71a5db4098672b6e0dd550f, type: 2}
+  FollowUpDenied: {fileID: 11400000, guid: fc4b2fb9846698648af5ae7ee0c73599, type: 2}
+  accepted: 0

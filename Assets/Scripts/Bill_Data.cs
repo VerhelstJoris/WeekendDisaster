@@ -33,20 +33,12 @@ public class Bill_Data : ScriptableObject
 
     public string BillText;
 
-    public string BillAcceptedOutcome;
-    public string BillDeniedOutcome;
-
     public BillEffects BillAcceptedEffects;
     public BillEffects BillDeniedEffects;
 
     public Bill_Data FollowUpAccepted;
     public Bill_Data FollowUpDenied;
 
+    [HideInInspector]
     public bool accepted;
-}
-
-[CreateAssetMenu(fileName = "BillData", menuName = "ScriptableObjects/BillData", order = 1)]
-public class AvailableBillList : ScriptableObject
-{
-    List<Bill_Data> Bills;
 }

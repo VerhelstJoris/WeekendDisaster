@@ -36,6 +36,8 @@ public class GameState : MonoBehaviour
 
     private Bill_Object _selectedBill = null;
 
+    public AvailableBillList AvailableBills;
+
     public Camera MainCam;
     public GameObject StampObj;
     private bool _setTurned = false;
