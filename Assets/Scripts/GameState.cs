@@ -49,15 +49,25 @@ public class GameState : MonoBehaviour
     private float _startTime;
     private float _travelTime = 0.5f;
 
+    public SFXPlaying soundManager; 
+
+    private AudioSource _source; 
+
+    public void PlayAudioClip(AudioClip Clip)
+    {
+        _source.PlayOneShot(Clip);
+    }    
+
     public void Start()
     {
         MainCam.gameObject.transform.position = DeskViewPos.position;
         MainCam.gameObject.transform.rotation = DeskViewPos.rotation;
+        _source = MainCam.gameObject.GetComponent<AudioSource>();
 
     }
 
     public void TryStamp(Bill_Object obj)
-    {
+    {+
         if (_selectedBill == obj && !_currentlyMoving)
         {
             Debug.LogError("STAMP STAMP");
@@ -66,6 +76,8 @@ public class GameState : MonoBehaviour
 
     public void TrySelectBill(Bill_Object obj)
     {
+        soundManager.PlayBookPage();
+
         if (_selectedBill != obj)
         {
             LerpCamera(obj.CamPos);
