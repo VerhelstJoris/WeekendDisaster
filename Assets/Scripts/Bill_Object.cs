@@ -36,7 +36,7 @@ public class Bill_Object : MonoBehaviour
 
     private void UpdateText()
     {
-        if(Data !=null)
+        if (Data !=null)
         {
             Title.text = Data.BillName;
             Description.text = Data.BillText;
