@@ -19,6 +19,10 @@ public class Calendar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Sim)
+        {
+            Month.text = Sim.CurrentDate.ToString("MMM");
+            Year.text = Sim.CurrentDate.ToString("yyyy");
+        }
     }
 }
