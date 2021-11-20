@@ -88,7 +88,7 @@ public class GameState : MonoBehaviour
 
     public void PlayAudioClip(AudioClip Clip)
     {
-        _source.PlayOneShot(clip);
+        _source.PlayOneShot(Clip);
     }    
 
     public void PlayAudioClipLoop(AudioClip clip){
