@@ -46,6 +46,14 @@ public class GameState : MonoBehaviour
     private bool _turningSet = false;
     private float _startTurnTime;
 
+    public GameObject AssignmentPaper;
+
+    public bool MovingAssignMent = false;
+    public bool MovedAssignment = false;
+
+    public float _assignmentStartTime;
+
+    public Quaternion _startAssignRot; 
 
     private bool _currentlyMoving = false;
     private bool _shouldUpdateBill = false;
@@ -121,6 +129,22 @@ public class GameState : MonoBehaviour
             sim.bills.Add(_selectedBill.Data);
 
         }
+    }
+
+    public bool TryMoveAssignment()
+    {
+        if(MovedAssignment || MovingAssignMent)
+        {
+            return false;
+        }
+        else
+        {
+            _assignmentStartTime = Time.time;
+            MovingAssignMent = true;
+            _startAssignRot = AssignmentPaper.transform.rotation;
+        }
+
+        return true;
     }
 
     public void TrySelectBill(Bill_Object obj)
@@ -201,11 +225,11 @@ public class GameState : MonoBehaviour
 
             if(!_setTurned)
             {
-                StampObj.transform.rotation = Quaternion.Lerp(Quaternion.Euler(0,90,0), Quaternion.Euler(0,0,0), fractionOfJourney);
+                StampObj.transform.rotation = Quaternion.Lerp(Quaternion.Euler(0,-90,0), Quaternion.Euler(0,0,0), fractionOfJourney);
             }
             else
             {
-                StampObj.transform.rotation = Quaternion.Lerp(Quaternion.Euler(0,0,0), Quaternion.Euler(0,90,0), fractionOfJourney);
+                StampObj.transform.rotation = Quaternion.Lerp(Quaternion.Euler(0,0,0), Quaternion.Euler(0,-90,0), fractionOfJourney);
 
             }
 
@@ -275,6 +299,26 @@ public class GameState : MonoBehaviour
             }
 
         }
+    
+        if(MovingAssignMent)
+        {
+            float distCovered = (Time.time - _assignmentStartTime);
+
+            // Fraction of journey completed equals current distance divided by total distance.
+            float fractionOfJourney = distCovered / _travelTime;
+
+            AssignmentPaper.transform.rotation = Quaternion.Lerp(_startAssignRot, Quaternion.Euler(_startAssignRot.eulerAngles.x, 180, _startAssignRot.eulerAngles.z), fractionOfJourney);
+        
+        
+            if(fractionOfJourney>=1.0f)
+            {
+                MovingAssignMent = false;
+                MovedAssignment = true;
+            }
+        }
+
+
+    
     }
 
 
