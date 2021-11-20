@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Camera))]
 public class InputSelectionHelper : MonoBehaviour
@@ -39,7 +40,7 @@ public class InputSelectionHelper : MonoBehaviour
             RaycastHit hitInfo;
             if (Physics.Raycast(ray, out hitInfo))
             {
-                if(!GameState.Instance.TryMoveAssignment())
+                if(!GameState.Instance.TryMoveAssignment() && !GameState.Instance.GameFinished)
                 {
                     GameRegion hitRegion = hitInfo.collider.GetComponent<GameRegion>();
                     if (hitRegion != null)
@@ -80,6 +81,13 @@ public class InputSelectionHelper : MonoBehaviour
                     {
                          GameState.Instance.TrySelectMap();
                     }
+                }
+
+                RestartButton hitButton = hitInfo.collider.GetComponent<RestartButton>();
+                if (hitButton != null)
+                {
+                    //restart
+                     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 }
             }
         }

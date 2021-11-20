@@ -48,6 +48,13 @@ public class GameState : MonoBehaviour
 
     public GameObject AssignmentPaper;
 
+    public GameObject WinPaper;
+
+    public GameObject LosePaper;
+
+    private GameObject paperToShow;
+
+
     public bool MovingAssignMent = false;
     public bool MovedAssignment = false;
 
@@ -86,6 +93,10 @@ public class GameState : MonoBehaviour
     [SerializeField]
     private int monthsToNewBill = 4;
 
+    public bool GameFinished = false;
+
+    public GameObject RestartButton;
+
     public void PlayAudioClip(AudioClip Clip)
     {
         _source.PlayOneShot(Clip);
@@ -119,6 +130,15 @@ public class GameState : MonoBehaviour
 
     private void GameOver()
     {
+        TrySelectDesk();
+        GameFinished = true;
+
+        paperToShow = LosePaper;
+        LosePaper.transform.position = new Vector3(LosePaper.transform.position.x, 
+        LosePaper.transform.position.y + 2, 
+        LosePaper.transform.position.z);
+
+        RestartButton.SetActive(true);
 
     }
 
@@ -148,7 +168,6 @@ public class GameState : MonoBehaviour
             _stampStartTime= Time.time;
             _chosenMode = mode;
 
-            _selectedBill = null;
 
             _chosenStampObj = obj;
             _stampStartPos = _chosenStampObj.transform.localPosition;
@@ -158,6 +177,7 @@ public class GameState : MonoBehaviour
             }
             sim.bills.Add(_selectedBill.Data);
 
+            _selectedBill = null;
         }
     }
 
