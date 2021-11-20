@@ -1066,6 +1066,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 430291439}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &438332622 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4001879056178392913, guid: 1e97a15bbd82d394c9ace37d9432c1a7, type: 3}
+  m_PrefabInstance: {fileID: 6019445806601047249}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &438332623
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438332622}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 0.2, z: 10}
+  m_Center: {x: 0, y: 0, z: 0.000015258789}
 --- !u!1 &495329497
 GameObject:
   m_ObjectHideFlags: 0
@@ -4708,7 +4726,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1449524404
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5186,7 +5204,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: 'Unfortunately you have failed in your assignment to create a sustainable
-    future for us all. This means the oceans will continue to rise at an ever-increasin
+    future for us all. This means the oceans will continue to rise at an ever-increasing
     pace and all life on earth will be subjected to several mass extinctions events. '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5536,7 +5554,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1607818122}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b47e29850fceca41adc937ee3af5012, type: 3}
   m_Name: 
@@ -8104,6 +8122,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6525788691522032404, guid: 1e97a15bbd82d394c9ace37d9432c1a7, type: 3}
+    - {fileID: 2942597287145609915, guid: 1e97a15bbd82d394c9ace37d9432c1a7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1e97a15bbd82d394c9ace37d9432c1a7, type: 3}
 --- !u!1 &6019445806601047250 stripped
 GameObject:
