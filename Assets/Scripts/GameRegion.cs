@@ -5,30 +5,25 @@ public class GameRegion : MonoBehaviour
 {
 	[SerializeField]
 	private RegionData regionData = new RegionData();
-	
-    private float happiness = 1.0f, money = 1.0f, energy = 1.0f;
 
-    public float Happiness
+    private Material regionMat;
+    private const float _selectEmission = 0.2f;
+
+    private void Start()
     {
-        get { return happiness; }
-    }
-
-    public float Money {
-        get { return money; }
-    }
-
-    public float Energy
-    {
-        get { return energy; }
+        MeshRenderer renderer = GetComponent<MeshRenderer>();
+        regionMat = renderer.material;
     }
 
     public void Select()
     {
         Debug.Log("Selected: " + regionData.location.ToString());
+
+        regionMat.SetFloat("SelectionEmission", _selectEmission);
     }
 
     public void Deselect()
     {
-
+        regionMat.SetFloat("SelectionEmission", 0.0f);
     }
 }

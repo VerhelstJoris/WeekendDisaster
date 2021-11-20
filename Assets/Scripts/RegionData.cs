@@ -6,7 +6,11 @@ public class RegionData
 {
     public Regions location;
     public long population;
-    
+
+    public float happinessStat = 1.0f;
+    public float money = 1.0f;
+    public float energy = 1.0f;
+
     public float co2;
     public float co2_growth_abs;
     public float co2_per_capita;

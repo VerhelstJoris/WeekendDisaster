@@ -13,7 +13,7 @@ enum CurrentPos
 public class GameState : MonoBehaviour
 {
 
-    private static GameState _instance = new GameState();
+    private static GameState _instance;
 
     public static GameState Instance
     {
@@ -22,7 +22,14 @@ public class GameState : MonoBehaviour
 
     private void Awake()
     {
-
+        if (_instance == null)
+        {
+            _instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
     }
 
     public Bill_Object LeftBill;
@@ -93,6 +100,12 @@ public class GameState : MonoBehaviour
 
     private void LerpCamera(Transform goal)
     {
+        if (goal == null)
+        {
+            Debug.LogError("No goal set");
+            return;
+        }
+
         if (!_currentlyMoving)
         {
             _startTrans = MainCam.gameObject.transform;

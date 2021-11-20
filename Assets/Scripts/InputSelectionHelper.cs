@@ -44,6 +44,10 @@ public class InputSelectionHelper : MonoBehaviour
                 {
                     SelectRegion(hitRegion);
                 }
+                else
+                {
+                    SelectRegion(null);
+                }
 
                 Stamp hitStamp = hitInfo.collider.GetComponent<Stamp>();
                 if (hitStamp != null)
@@ -67,6 +71,9 @@ public class InputSelectionHelper : MonoBehaviour
             selectedRegion.Deselect();
         }
         selectedRegion = newRegion;
-        newRegion.Select();
+        if (newRegion != null)
+        {
+            newRegion.Select();
+        }
     }
 }
