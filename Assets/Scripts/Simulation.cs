@@ -162,7 +162,7 @@ public class Simulation : MonoBehaviour
             return;
         }
         
-        Debug.Log($"Stepping Sim for date {CurrentDate.ToString(CultureInfo.CurrentCulture)}");
+        Debug.Log($"Stepping Sim for date {CurrentDate.ToString(CultureInfo.InvariantCulture)}");
         
         // Update the bills
         foreach(var b in bills)
