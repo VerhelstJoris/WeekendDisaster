@@ -15,7 +15,7 @@ public class Bill_resource : MonoBehaviour
     {
         if(val==0)
         {
-            this.gameObject.active = false;
+            this.gameObject.SetActive(false);
         }
         else
         {

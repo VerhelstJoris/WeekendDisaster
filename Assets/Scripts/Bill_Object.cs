@@ -20,11 +20,22 @@ public class Bill_Object : MonoBehaviour
     public Bill_resource EffectMoney;
     public Bill_resource EffectHappiness;
     public Bill_resource EffectCarbon;
-    public MeshCollider StampCollider;
 
+    public Transform CamPos;
     void Start()
     {
-      
+      UpdateText();
+        
+    }
+    
+    public void UpdateBillData(Bill_Data data)
+    {
+        Data = data;
+        UpdateText();
+    }
+
+    private void UpdateText()
+    {
         if(Data !=null)
         {
             Title.text = Data.BillName;
@@ -82,7 +93,7 @@ public class Bill_Object : MonoBehaviour
         }
 
     }
-    
+
     //clicking on the stamp?
     public void OnCollisionEnter()
     {

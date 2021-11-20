@@ -8,6 +8,8 @@ public class InputSelectionHelper : MonoBehaviour
     private GameRegion selectedRegion;
     private Camera cam;
 
+    public GameState GameState;
+
     private void Start()
     {
         cam = GetComponent<Camera>();
@@ -47,6 +49,12 @@ public class InputSelectionHelper : MonoBehaviour
                 if (hitStamp != null)
                 {
                     hitStamp.DoStamp();
+                }
+
+                Bill_Object hitBill = hitInfo.collider.GetComponent<Bill_Object>();
+                if (hitBill != null)
+                {
+                    GameState.Instance.TrySelectBill(hitBill);
                 }
             }
         }

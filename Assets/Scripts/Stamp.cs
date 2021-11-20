@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Stamp : MonoBehaviour
 {
+    public Bill_Object obj;
+
     public void DoStamp()
     {
-        Debug.Log("Stampin'");
+        GameState.Instance.TryStamp(obj);
     }
 }

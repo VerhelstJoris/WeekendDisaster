@@ -9,17 +9,38 @@ enum CurrentPos
     Bill
 }
 
+
 public class GameState : MonoBehaviour
 {
+
+    private static GameState _instance = new GameState();
+
+    public static GameState Instance
+    {
+        get { return _instance; }
+    }
+
+    private void Awake()
+    {
+
+    }
+
     public Bill_Object LeftBill;
     public Bill_Object RightBill;
 
     public Transform DeskViewPos;
     public Transform MapViewPos;
-    public Transform LeftBillViewPos;
-    public Transform RightBillViewPos;
+
+    private Bill_Object _selectedBill = null;
 
     public Camera MainCam;
+
+
+    private bool _currentlyMoving = false;
+    private Transform _startTrans;
+    private Transform _goalTransform;
+    private float _startTime;
+    private float _travelTime = 0.25f;
 
     public void Start()
     {
@@ -27,4 +48,59 @@ public class GameState : MonoBehaviour
         MainCam.gameObject.transform.rotation = DeskViewPos.rotation;
 
     }
+
+    public void TryStamp(Bill_Object obj)
+    {
+        if (_selectedBill == obj && !_currentlyMoving)
+        {
+            Debug.LogError("STAMP STAMP");
+        }
+    }
+
+    public void TrySelectBill(Bill_Object obj)
+    {
+        if (_selectedBill != obj)
+        {
+            LerpCamera(obj.CamPos);
+        }
+    }
+
+    public void TrySelectMap()
+    {
+
+    }
+
+    public void Update()
+    {
+        if (_currentlyMoving)
+        {
+            //time moved
+            float distCovered = (Time.time - _startTime);
+
+            // Fraction of journey completed equals current distance divided by total distance.
+            float fractionOfJourney = distCovered / _travelTime;
+
+
+            transform.position = Vector3.Lerp(_startTrans.position, _goalTransform.position, fractionOfJourney);
+
+            if (fractionOfJourney >= 1.0f)
+            {
+                _currentlyMoving = false;
+            }
+
+        }
+    }
+
+    private void LerpCamera(Transform goal)
+    {
+        if (!_currentlyMoving)
+        {
+            _startTrans = MainCam.gameObject.transform;
+            _goalTransform = goal;
+            _currentlyMoving = true;
+            _startTime = Time.time;
+        }
+
+    }
+
 }
