@@ -177,7 +177,6 @@ public class Simulation : MonoBehaviour
 
         if (CurrentDate >= PauseDate)
         {
-            gameEnded = true;
             bills.Clear();
             if (OnSimPaused != null)
             {

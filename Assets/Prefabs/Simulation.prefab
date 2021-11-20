@@ -53,5 +53,5 @@ MonoBehaviour:
   simMode: 1
   runSim: 1
   gameEnded: 0
-  stepMonths: 3
+  stepMonths: 1
   stepDays: 0

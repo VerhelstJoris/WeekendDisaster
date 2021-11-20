@@ -50,6 +50,11 @@ MonoBehaviour:
   AvailableBills: {fileID: 11400000, guid: 5cb1284f21d1502479347a7724114141, type: 2}
   MainCam: {fileID: 0}
   StampObj: {fileID: 0}
+  AssignmentPaper: {fileID: 0}
+  MovingAssignMent: 0
+  MovedAssignment: 0
+  _assignmentStartTime: 0
+  _startAssignRot: {x: 0, y: 0, z: 0, w: 0}
   _travelTime: 1
   soundManager: {fileID: 3660460538955357075}
   sim: {fileID: 0}
@@ -72,5 +77,6 @@ MonoBehaviour:
   YouLose: {fileID: 8300000, guid: e378b70015a3b004cb84ce0734222333, type: 3}
   YouWin: {fileID: 8300000, guid: 65e9e06e7cbe57a4cb598c31b44983f7, type: 3}
   Stamp: {fileID: 8300000, guid: ea9c01b5e33026d488af94fb00124b5e, type: 3}
-  Waves: {fileID: 0}
+  Waves: {fileID: 8300000, guid: 231398a5556965e42892719527b6a6ce, type: 3}
+  BackgroundSounds: {fileID: 8300000, guid: f5d8846654f75d04fa6b3ec66e4604a9, type: 3}
   State: {fileID: 3660460538955357037}

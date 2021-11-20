@@ -129,8 +129,13 @@ public class GameState : MonoBehaviour
 
     public void TryStamp(GameObject obj,  StampMode mode)
     {
+        if (_selectedBill == null)
+        {
+            TrySelectBill(MainBill);
+            return;
+        }
 
-        if(!_currentlyMoving && !_setTurned)
+        if (!_currentlyMoving && !_setTurned)
         {
             TryTurnSet();
         }
@@ -142,6 +147,8 @@ public class GameState : MonoBehaviour
             _moveStampDown = true;
             _stampStartTime= Time.time;
             _chosenMode = mode;
+
+            _selectedBill = null;
 
             _chosenStampObj = obj;
             _stampStartPos = _chosenStampObj.transform.localPosition;
