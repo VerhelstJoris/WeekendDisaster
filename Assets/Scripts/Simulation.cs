@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class Simulation : MonoBehaviour
 {
@@ -13,8 +15,7 @@ public class Simulation : MonoBehaviour
     // Statics
     public readonly float StartTemp = 0.8f;
     public readonly float EndTemp = 2.0f;
-    public readonly DateTime StartDate = DateTime.UtcNow;
-    public readonly DateTime EndDate = new DateTime(2040, 1,1, 0,0,0).ToUniversalTime();
+    public readonly DateTime EndDate = new DateTime(2040, 1, 1, 0, 0, 0);
     
     
     // Current Data
@@ -33,7 +34,9 @@ public class Simulation : MonoBehaviour
     // Settings
     public SimulationMode simMode = SimulationMode.Step;
     public bool runSim = true;
-    public int DaysPerTick = 7;
+    public bool gameEnded = false;
+    public int stepMonths = 3;
+    public float stepDays = 29;
 
     private void Awake()
     {
@@ -149,8 +152,20 @@ public class Simulation : MonoBehaviour
     
     public void StepSim()
     {
+        //  Update the Quarterly
+        CurrentDate = CurrentDate.AddMonths(stepMonths).AddDays(Random.value * stepDays);
+        if (CurrentDate > EndDate || gameEnded)
+        {
+            runSim = false;
+            gameEnded = true;
+            Debug.Log("Sim has finished");
+            return;
+        }
+        
+        Debug.Log($"Stepping Sim for date {CurrentDate.ToString(CultureInfo.CurrentCulture)}");
+        
         // Update the bills
-        foreach(var b in bills)
+        foreach(var b in bills.Where(bill => !bill.applied))
         {
             var affectedRegions = new List<Regions>();
 
@@ -165,10 +180,18 @@ public class Simulation : MonoBehaviour
                 affectedRegions.AddRange(Enum.GetValues(typeof(Regions)).Cast<Regions>());
             }
             
+            // Update the regions values based on the bills
             foreach (var r in worldData.Values.Where(r => affectedRegions.Contains(r.location)))
             {
+                
+                r.happinessStat = Mathf.Clamp01(r.happinessStat * b.BillEffects.Happiness);
+                r.money = Mathf.Clamp01(r.money * b.BillEffects.Money);
+                r.energy = Mathf.Clamp01(r.energy * b.BillEffects.Energy);
+                
                 r.SetCO2(b.BillEffects.Industry, b.BillEffects.Carbon);
             }
+
+            b.applied = true;
         }
 
         // Update Global Totals
@@ -179,16 +202,21 @@ public class Simulation : MonoBehaviour
         GlobalIndustryOutput[SimulationIndustries.Oil] = worldData.Values.Sum(date => date.oil_co2);
         GlobalIndustryOutput[SimulationIndustries.Other] = worldData.Values.Sum(date => date.other_industry_co2);
         
+        // Work out new doomsday value (temp increase)
+
+        float diff = globalCO2Target - globalCO2;
+        currentTemp = globalCO2Target / diff;
+
         // Debug output for globals
         // foreach (var industry in Enum.GetValues(typeof(SimulationIndustries)))
         // {
         //     var i = (SimulationIndustries) industry;
         //     Debug.Log($"{Enum.GetName(typeof(SimulationIndustries), industry)} - [{GlobalIndustryOutput[i]}]");
         // }
-        
-        
+
+
         // Update Temperature
-        
+
     }
 }
 
