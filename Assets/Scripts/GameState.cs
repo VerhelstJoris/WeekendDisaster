@@ -163,10 +163,10 @@ public class GameState : MonoBehaviour
     {
         paperToShow = WinPaper;
         GameOver();
-        #if UNITY_ANDROID 
-        HMSAnalyticsManager.Instance.SendEventWithBundle("GameWon", "DateEnded", sim.CurrentDate.ToUniversalTime().ToString("s", System.Globalization.CultureInfo.InvariantCulture));
-        HMSAnalyticsManager.Instance.SendEventWithBundle("GameWon", "FinalCO2", sim.globalCO2.ToString(CultureInfo.InvariantCulture));
-        #endif
+        
+        HMSAnalyticsManager.Instance.SendEventWithBundle("GameEnd", "DateEnded", sim.CurrentDate.ToUniversalTime().ToString("s", System.Globalization.CultureInfo.InvariantCulture));
+        HMSAnalyticsManager.Instance.SendEventWithBundle("GameEnd", "FinalCO2", sim.globalCO2.ToString(CultureInfo.InvariantCulture));
+        HMSAnalyticsManager.Instance.SendEventWithBundle("GameEnd", "Reason", "Won");
     }
 
     private void GameLost()
@@ -174,10 +174,9 @@ public class GameState : MonoBehaviour
         paperToShow = LosePaper;
         GameOver();
         
-        #if UNITY_ANDROID 
-        HMSAnalyticsManager.Instance.SendEventWithBundle("GameOver", "DateEnded", sim.CurrentDate.ToUniversalTime().ToString("s", System.Globalization.CultureInfo.InvariantCulture));
-        HMSAnalyticsManager.Instance.SendEventWithBundle("GameOver", "FinalCO2", sim.globalCO2.ToString(CultureInfo.InvariantCulture));
-        #endif
+        HMSAnalyticsManager.Instance.SendEventWithBundle("GameEnd", "DateEnded", sim.CurrentDate.ToUniversalTime().ToString("s", System.Globalization.CultureInfo.InvariantCulture));
+        HMSAnalyticsManager.Instance.SendEventWithBundle("GameEnd", "FinalCO2", sim.globalCO2.ToString(CultureInfo.InvariantCulture));
+        HMSAnalyticsManager.Instance.SendEventWithBundle("GameEnd", "Reason", "Lost");
     }
 
     private void GameOver()
@@ -227,10 +226,8 @@ public class GameState : MonoBehaviour
                 _selectedBill.Data.accepted = true;
             }
             
-            #if UNITY_ANDROID 
             HMSAnalyticsManager.Instance.SendEventWithBundle("StampPressed", "StampMode", Enum.GetName(typeof(StampMode),mode));
             HMSAnalyticsManager.Instance.SendEventWithBundle("StampPressed", "SelectedBill", _selectedBill.name);
-            #endif
 
             
             sim.bills.Add(_selectedBill.Data);
