@@ -45,7 +45,7 @@ public class BillCondition
     public Regions RegionsAffected;
     public ResourceType Resource;
     public bool MoreThan;
-    public int Value;
+    public float Value;
 }
 
 [CreateAssetMenu(fileName = "BillData", menuName = "ScriptableObjects/BillData", order = 1)]
