@@ -46,7 +46,7 @@ MonoBehaviour:
   dataFile: {fileID: 4900000, guid: acb7f452843e42444ae6c33e10535d9a, type: 3}
   bills: []
   globalCO2: 0
-  globalCO2TargetMultiplier: 13.5
+  globalCO2TargetMultiplier: 10
   globalCO2Target: 0
   currentRelativeTemp: 0
   currentTemp: 0
