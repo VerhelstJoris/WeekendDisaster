@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ReOpenCoal
   m_EditorClassIdentifier: 
   BillName: Unemployment Riots
-  BillText: Due to low unemployment and fear of the future, a lot of former mine
+  BillText: Due to high unemployment and fear of the future, a lot of former mine
     workers are currently barricading the entrances to new energy facilities and
     demand the reopening of some coal plants.
   BillAcceptedEffects:
