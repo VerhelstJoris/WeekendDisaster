@@ -10,27 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6948453f4a4c3084c9f925a49ceb3047, type: 3}
-  m_Name: ShutDownCoalMining
+  m_Name: Endangered Animal Preservation
   m_EditorClassIdentifier: 
-  BillName: Shutdown Coal Mining
-  BillText: A lot of people still work in the coal industry and it still produces
-    a sizeable chunk of the world's economy and power-supply. Shutting it down may
-    be inevitable but now may not be the right time just yet.
+  BillName: Endangered Animal Preservation
+  BillText: The effects of global warming are severely affecting the survivability
+    of wildlife. Should we want to limit the biological impact of global warming,
+    we should set up worldwide preservation programs.
   BillAcceptedEffects:
     RegionsAffected: -1
-    Carbon: -2500
+    Carbon: 1.002
     Industry: 0
-    Money: 0.8
-    Energy: 0.8
-    Happiness: 0.8
+    Money: 0.949
+    Energy: 1
+    Happiness: 1.081
   BillDeniedEffects:
     RegionsAffected: -1
-    Carbon: 2500
+    Carbon: 1.003
     Industry: 0
-    Money: 1.2
-    Energy: 1.2
-    Happiness: 1.2
-  FollowUpAccepted: {fileID: 11400000, guid: acff873baf1c0544985f2e699bcab712, type: 2}
+    Money: 0.968
+    Energy: 1
+    Happiness: 0.916
+  FollowUpAccepted: {fileID: 0}
   FollowUpDenied: {fileID: 0}
   BillConditions: []
   accepted: 0

@@ -13,4 +13,21 @@ MonoBehaviour:
   m_Name: AvailableBillList
   m_EditorClassIdentifier: 
   Bills:
+  - {fileID: 11400000, guid: ad8d7b5a08efd734796932f7ba253698, type: 2}
+  - {fileID: 11400000, guid: fa713e7774fd79f489514a7b51f23890, type: 2}
+  - {fileID: 11400000, guid: ab3ca802b71a5db4098672b6e0dd550f, type: 2}
+  - {fileID: 11400000, guid: ab3ca802b71a5db4098672b6e0dd550f, type: 2}
+  - {fileID: 11400000, guid: a5fb47d85656ef74084ed7b9c01e01fb, type: 2}
   - {fileID: 11400000, guid: 8ff0bb595009e554ca011dc6ecc1eddc, type: 2}
+  - {fileID: 11400000, guid: 2c8c220ede900564d931483579b64842, type: 2}
+  - {fileID: 11400000, guid: 24521d73b35c65c42abb1caaee3e7210, type: 2}
+  - {fileID: 11400000, guid: 720ce263a16b4c94c9abf26eb69fba9b, type: 2}
+  - {fileID: 11400000, guid: c3f44b0677f50e148a8c54c823ffd456, type: 2}
+  - {fileID: 11400000, guid: a3f81a4994b786e4e8ed8c835f3838d7, type: 2}
+  - {fileID: 11400000, guid: 3b61a53d1bd27594d87d75465510438e, type: 2}
+  - {fileID: 11400000, guid: e1da69dc11c327a4a8e61457265ac573, type: 2}
+  - {fileID: 11400000, guid: 24521d73b35c65c42abb1caaee3e7210, type: 2}
+  - {fileID: 11400000, guid: 69af60c841eabe945b721888e83ad603, type: 2}
+  - {fileID: 11400000, guid: 4a1a25bb6cc856e4b921d79e4d9ce67d, type: 2}
+  - {fileID: 11400000, guid: 450491998c947134583d592b975c1cf6, type: 2}
+  - {fileID: 11400000, guid: 2059543e6d25cde4e9f13d4db234689f, type: 2}

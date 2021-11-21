@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6948453f4a4c3084c9f925a49ceb3047, type: 3}
+  m_Name: Cut Down on Trade Transport
+  m_EditorClassIdentifier: 
+  BillName: Cut Down on Trade Transport
+  BillText: Export and import is a major component of economy, but while the transport
+    vehicles we use are as polluting as they are, we need to decrease the number
+    of trucks and ships travelling each day. This should serve at least for a short
+    term decrease in carbon emissions, but will require significant investment in
+    local production.
+  BillAcceptedEffects:
+    RegionsAffected: 49
+    Carbon: 1
+    Industry: 0
+    Money: 0.85
+    Energy: 1
+    Happiness: 0.95
+  BillDeniedEffects:
+    RegionsAffected: 0
+    Carbon: 1.05
+    Industry: 0
+    Money: 1.05
+    Energy: 1
+    Happiness: 0.96
+  FollowUpAccepted: {fileID: 11400000, guid: 4b5c7ceeeb674e24486ac8c138b64e73, type: 2}
+  FollowUpDenied: {fileID: 0}
+  BillConditions: []
+  accepted: 0

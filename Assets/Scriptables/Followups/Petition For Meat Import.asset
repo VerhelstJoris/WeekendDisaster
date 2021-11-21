@@ -10,26 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6948453f4a4c3084c9f925a49ceb3047, type: 3}
-  m_Name: Build Nuclear Plants
+  m_Name: Petition For Meat Import
   m_EditorClassIdentifier: 
-  BillName: Build Nuclear Reactors
-  BillText: Nuclear reactors have become safer and more eco-friendly than ever despite
-    still having a bad reputation. Third-world countries especially would benefit
-    from this as this would replace a lot of old coal-facilites.
+  BillName: Petition for Meat Import
+  BillText: We proud Germans aim to set up a grand Octoberfest this year. However,
+    the bills passed by your legislation limit transport to such an extent that we
+    cannot procure enough bratwurst in time. Please allow an exception over the coming
+    months to be able to set up our traditional fest.
   BillAcceptedEffects:
-    RegionsAffected: 57
-    Carbon: -1500
+    RegionsAffected: 32
+    Carbon: 1.07
     Industry: 5
-    Money: 1.25
-    Energy: 1.3
-    Happiness: 0.9
+    Money: 1.05
+    Energy: 1
+    Happiness: 1.25
   BillDeniedEffects:
-    RegionsAffected: 30
-    Carbon: 500
-    Industry: 5
+    RegionsAffected: 32
+    Carbon: 1
+    Industry: 0
     Money: 1
     Energy: 1
-    Happiness: 1.15
+    Happiness: 0.65
   FollowUpAccepted: {fileID: 0}
   FollowUpDenied: {fileID: 0}
   BillConditions: []

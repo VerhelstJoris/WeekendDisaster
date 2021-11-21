@@ -15,20 +15,18 @@ public class Simulation : MonoBehaviour
 
     // Data Input
     public TextAsset dataFile;
-
+    
     // Statics
     public readonly float StartTemp = 0.8f;
     public readonly float EndTemp = 2.0f;
     public readonly DateTime EndDate = new DateTime(2040, 1, 1, 0, 0, 0);
-
-
+    
+    
     // Current Data
     public DateTime CurrentDate = DateTime.UtcNow;
     public Dictionary<Regions, RegionData> worldData = new Dictionary<Regions, RegionData>();
-
-    [FormerlySerializedAs("activeModifiers")]
-    public List<Bill_Data> bills = new List<Bill_Data>();
-
+    [FormerlySerializedAs("activeModifiers")] public List<Bill_Data> bills = new List<Bill_Data>();
+    
     public float globalCO2 = 0;
     public float globalCO2TargetMultiplier = 13.5f;
     public float globalCO2Target = 0;
@@ -44,13 +42,6 @@ public class Simulation : MonoBehaviour
     public int stepMonths = 3;
     public float stepDays = 29;
 
-    public List<RegionStatsCustom> regionStatsCustom = new List<RegionStatsCustom>();
-    public bool useCustomRegionData = true;
-
-    public bool simpleMode = true;
-
-    [Range(0.75f, 1.25f)] public float CO2IncresePerIndustryMultiplier = 1.15f;
-
     private DateTime PauseDate;
 
     private void Awake()
@@ -61,18 +52,17 @@ public class Simulation : MonoBehaviour
 
     IEnumerator TimedUpdate()
     {
-        while (runSim)
+        while(runSim)
         {
             StepSim();
             if (OnStepped != null)
             {
                 OnStepped();
             }
-
             yield return new WaitForSeconds(1);
         }
     }
-
+    
     private void Start()
     {
         //if (simMode == SimulationMode.Continuous)
@@ -93,12 +83,13 @@ public class Simulation : MonoBehaviour
 
     private void LoadData()
     {
+
         #region LoadDataFromDisk
 
         var lines = dataFile.text.Split('\n');
 
         var skipFirstLine = true;
-
+        
         foreach (var l in lines)
         {
             if (skipFirstLine)
@@ -106,7 +97,7 @@ public class Simulation : MonoBehaviour
                 skipFirstLine = false;
                 continue;
             }
-
+            
             var data = l.Split(',');
             RegionData region = new RegionData();
 
@@ -118,71 +109,52 @@ public class Simulation : MonoBehaviour
                 "Europe" => Regions.Europe,
                 "NorthAmerica" => Regions.North_America,
                 "SouthAmerica" => Regions.South_America,
-                _ => throw new NotImplementedException(
-                    $"There is some continent ({data[0]}) , I have never heard of in the data! FIXME!")
+                _ => throw new NotImplementedException($"There is some continent ({data[0]}) , I have never heard of in the data! FIXME!")
             };
+            
+             region.co2 = float.Parse(data[1]);
+             region.co2_growth_abs = float.Parse(data[2]);
+             region.co2_per_capita = float.Parse(data[3]);
+             region.share_global_co2 = float.Parse(data[4]);
+             region.cumulative_co2 = float.Parse(data[5]);
+             region.share_global_cumulative_co2 = float.Parse(data[6]);
+             region.coal_co2 = float.Parse(data[7]);
+             region.cement_co2 = float.Parse(data[8]);
+             region.flaring_co2 = float.Parse(data[9]);
+             region.gas_co2 = float.Parse(data[10]);
+             region.oil_co2 = float.Parse(data[11]);
+             region.other_industry_co2 = float.Parse(data[12]);
+             region.cement_co2_per_capita = float.Parse(data[13]);
+             region.coal_co2_per_capita = float.Parse(data[14]);
+             region.flaring_co2_per_capita = float.Parse(data[15]);
+             region.gas_co2_per_capita = float.Parse(data[16]);
+             region.oil_co2_per_capita = float.Parse(data[17]);
+             region.other_co2_per_capita = float.Parse(data[18]);
+             region.share_global_cement_co2 = float.Parse(data[19]);
+             region.share_global_coal_co2 = float.Parse(data[20]);
+             region.share_global_flaring_co2 = float.Parse(data[21]);
+             region.share_global_gas_co2 = float.Parse(data[22]);
+             region.share_global_oil_co2 = float.Parse(data[23]);
+             region.share_global_other_co2 = float.Parse(data[24]);
+             region.cumulative_cement_co2 = float.Parse(data[25]);
+             region.cumulative_coal_co2 = float.Parse(data[26]);
+             region.cumulative_flaring_co2 = float.Parse(data[27]);
+             region.cumulative_gas_co2 = float.Parse(data[28]);
+             region.cumulative_oil_co2 = float.Parse(data[29]);
+             region.cumulative_other_co2 = float.Parse(data[30]);
+             region.share_global_cumulative_cement_co2 = float.Parse(data[31]);
+             region.share_global_cumulative_coal_co2 = float.Parse(data[32]);
+             region.share_global_cumulative_flaring_co2 = float.Parse(data[33]);
+             region.share_global_cumulative_gas_co2 = float.Parse(data[34]);
+             region.share_global_cumulative_oil_co2 = float.Parse(data[35]);
+             region.share_global_cumulative_other_co2 = float.Parse(data[36]);
+             
+             region.population = long.Parse(data[37]);
 
-            region.co2 = float.Parse(data[1]);
-            region.co2_growth_abs = float.Parse(data[2]);
-            region.co2_per_capita = float.Parse(data[3]);
-            region.share_global_co2 = float.Parse(data[4]);
-            region.cumulative_co2 = float.Parse(data[5]);
-            region.share_global_cumulative_co2 = float.Parse(data[6]);
-            region.coal_co2 = float.Parse(data[7]);
-            region.cement_co2 = float.Parse(data[8]);
-            region.flaring_co2 = float.Parse(data[9]);
-            region.gas_co2 = float.Parse(data[10]);
-            region.oil_co2 = float.Parse(data[11]);
-            region.other_industry_co2 = float.Parse(data[12]);
-            region.cement_co2_per_capita = float.Parse(data[13]);
-            region.coal_co2_per_capita = float.Parse(data[14]);
-            region.flaring_co2_per_capita = float.Parse(data[15]);
-            region.gas_co2_per_capita = float.Parse(data[16]);
-            region.oil_co2_per_capita = float.Parse(data[17]);
-            region.other_co2_per_capita = float.Parse(data[18]);
-            region.share_global_cement_co2 = float.Parse(data[19]);
-            region.share_global_coal_co2 = float.Parse(data[20]);
-            region.share_global_flaring_co2 = float.Parse(data[21]);
-            region.share_global_gas_co2 = float.Parse(data[22]);
-            region.share_global_oil_co2 = float.Parse(data[23]);
-            region.share_global_other_co2 = float.Parse(data[24]);
-            region.cumulative_cement_co2 = float.Parse(data[25]);
-            region.cumulative_coal_co2 = float.Parse(data[26]);
-            region.cumulative_flaring_co2 = float.Parse(data[27]);
-            region.cumulative_gas_co2 = float.Parse(data[28]);
-            region.cumulative_oil_co2 = float.Parse(data[29]);
-            region.cumulative_other_co2 = float.Parse(data[30]);
-            region.share_global_cumulative_cement_co2 = float.Parse(data[31]);
-            region.share_global_cumulative_coal_co2 = float.Parse(data[32]);
-            region.share_global_cumulative_flaring_co2 = float.Parse(data[33]);
-            region.share_global_cumulative_gas_co2 = float.Parse(data[34]);
-            region.share_global_cumulative_oil_co2 = float.Parse(data[35]);
-            region.share_global_cumulative_other_co2 = float.Parse(data[36]);
-
-            region.population = long.Parse(data[37]);
-
-            worldData[region.location] = region;
+             worldData[region.location] = region;
         }
-
+        
         #endregion
-
-        // Use Custom region data if required 
-        if (useCustomRegionData)
-        {
-            foreach (var r in regionStatsCustom)
-            {
-                if (simpleMode)
-                {
-                    worldData[r.region].co2 = r.Carbon;
-                    worldData[r.region].cumulative_co2 = r.Carbon * 1.25f;
-                }
-
-                worldData[r.region].happinessStat = r.Happiness;
-                worldData[r.region].moneyStat = r.Money;
-                worldData[r.region].energy = r.Energy;
-            }
-        }
-
 
         #region SimSetup
 
@@ -192,6 +164,7 @@ public class Simulation : MonoBehaviour
         //
 
         #endregion
+
     }
 
     public void StepSim()
@@ -211,7 +184,6 @@ public class Simulation : MonoBehaviour
             {
                 OnSimPaused();
             }
-
             return;
         }
 
@@ -223,33 +195,13 @@ public class Simulation : MonoBehaviour
             {
                 OnSimFinalDateReached();
             }
-
             return;
         }
-
+        
         Debug.Log($"Stepping Sim for date {CurrentDate.ToString(CultureInfo.InvariantCulture)}");
-
-        // Update regional values based on increase multiplier
-
-        foreach (var r in worldData.Values)
-        {
-            if (simpleMode)
-            {
-                r.co2 *= CO2IncresePerIndustryMultiplier;
-            }
-            else
-            {
-                r.coal_co2 *= CO2IncresePerIndustryMultiplier;
-                r.cement_co2 *= CO2IncresePerIndustryMultiplier;
-                r.flaring_co2 *= CO2IncresePerIndustryMultiplier;
-                r.gas_co2 *= CO2IncresePerIndustryMultiplier;
-                r.oil_co2 *= CO2IncresePerIndustryMultiplier;
-                r.other_industry_co2 *= CO2IncresePerIndustryMultiplier;
-            }
-        }
-
+        
         // Update the bills
-        foreach (var b in bills)
+        foreach(var b in bills)
         {
             var affectedRegions = new List<Regions>();
 
@@ -265,7 +217,7 @@ public class Simulation : MonoBehaviour
             {
                 affectedRegions.AddRange(Enum.GetValues(typeof(Regions)).Cast<Regions>());
             }
-
+            
             // Update the regions values based on the bills
             foreach (var r in worldData.Values.Where(r => affectedRegions.Contains(r.location)))
             {
@@ -273,40 +225,28 @@ public class Simulation : MonoBehaviour
                 r.happinessStat = Mathf.Clamp01(r.happinessStat * effects.Happiness);
                 r.moneyStat = Mathf.Clamp01(r.moneyStat * effects.Money);
                 r.energy = Mathf.Clamp01(r.energy * effects.Energy);
-
-                if (simpleMode)
-                {
-                    r.co2 *= effects.Carbon;
-                }
-                else
-                {
-                    r.SetCO2(effects.Industry, effects.Carbon);
-                }
+                
+                r.SetCO2(effects.Industry, effects.Carbon);
             }
         }
 
         // Update Global Totals
-        if (!simpleMode)
-        {
-            GlobalIndustryOutput[SimulationIndustries.Coal] = worldData.Values.Sum(date => date.coal_co2);
-            GlobalIndustryOutput[SimulationIndustries.Cement] = worldData.Values.Sum(date => date.cement_co2);
-            GlobalIndustryOutput[SimulationIndustries.Flaring] = worldData.Values.Sum(date => date.flaring_co2);
-            GlobalIndustryOutput[SimulationIndustries.Gas] = worldData.Values.Sum(date => date.gas_co2);
-            GlobalIndustryOutput[SimulationIndustries.Oil] = worldData.Values.Sum(date => date.oil_co2);
-            GlobalIndustryOutput[SimulationIndustries.Other] =
-                worldData.Values.Sum(date => date.other_industry_co2);
-        }
-
-        // Update Global CO2 the previous world total and the new amount released
-        globalCO2 = worldData.Values.Sum(data => data.cumulative_co2 + data.co2);
-
+        GlobalIndustryOutput[SimulationIndustries.Coal] = worldData.Values.Sum(date => date.coal_co2);
+        GlobalIndustryOutput[SimulationIndustries.Cement] = worldData.Values.Sum(date => date.cement_co2);
+        GlobalIndustryOutput[SimulationIndustries.Flaring] = worldData.Values.Sum(date => date.flaring_co2);
+        GlobalIndustryOutput[SimulationIndustries.Gas] = worldData.Values.Sum(date => date.gas_co2);
+        GlobalIndustryOutput[SimulationIndustries.Oil] = worldData.Values.Sum(date => date.oil_co2);
+        GlobalIndustryOutput[SimulationIndustries.Other] = worldData.Values.Sum(date => date.other_industry_co2);
+        
         // Work out new doomsday value (temp increase)
         float diff = globalCO2Target - globalCO2;
-        currentTemp = 1 - (diff / globalCO2Target);
-
-
+        currentTemp = 1-(diff / globalCO2Target);
+        
         Debug.Log($"Current Temp {currentTemp}");
-
+        
+        // Update Global CO2
+        globalCO2 = worldData.Values.Sum(data => data.cumulative_co2);
+        
         bills.Clear();
         // Debug output for globals
         // foreach (var industry in Enum.GetValues(typeof(SimulationIndustries)))
@@ -355,10 +295,15 @@ public class Simulation : MonoBehaviour
                     continue;
                 }
             }
-
             return false;
         }
-
         return true;
     }
+
 }
+
+
+
+
+
+

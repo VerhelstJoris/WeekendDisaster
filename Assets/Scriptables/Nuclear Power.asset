@@ -17,18 +17,18 @@ MonoBehaviour:
     footprint
   BillAcceptedEffects:
     RegionsAffected: 9
-    Carbon: -50
+    Carbon: 1
     Industry: 0
     Money: 1
-    Energy: 0.85
-    Happiness: 0.95
+    Energy: 0.95
+    Happiness: 0.92
   BillDeniedEffects:
     RegionsAffected: 24
-    Carbon: 250
+    Carbon: 1.02
     Industry: 0
-    Money: 1.2
-    Energy: 1.1
-    Happiness: 0.75
+    Money: 1.1
+    Energy: 1.05
+    Happiness: 0.9
   FollowUpAccepted: {fileID: 11400000, guid: ab3ca802b71a5db4098672b6e0dd550f, type: 2}
   FollowUpDenied: {fileID: 11400000, guid: fc4b2fb9846698648af5ae7ee0c73599, type: 2}
   BillConditions:
