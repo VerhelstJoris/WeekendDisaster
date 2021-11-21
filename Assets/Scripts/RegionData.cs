@@ -4,6 +4,8 @@ using UnityEngine;
 [Serializable]
 public class RegionData 
 {
+    public const float base_co2_growth_rate_per_year = 1.08f;
+
     public Regions location;
     public long population;
 

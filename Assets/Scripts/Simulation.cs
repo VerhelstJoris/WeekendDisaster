@@ -314,6 +314,8 @@ public class Simulation : MonoBehaviour
                 if (simpleMode)
                 {
                     r.co2_growth_rate_per_year *= effectsPerTick.Carbon;
+                    r.co2_growth_rate_per_year = Mathf.Clamp(r.co2_growth_rate_per_year, RegionData.base_co2_growth_rate_per_year, 2.0f);
+
                     r.co2 *= Mathf.Pow(r.co2_growth_rate_per_year, 1f / rootFactor);
                 }
                 else
