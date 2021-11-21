@@ -66,6 +66,8 @@ public class HMSAnalyticsManager : HMSSingleton<HMSAnalyticsManager>
     void Start()
     {
         InitilizeAnalyticsInstane();
+        #if UNITY_ANDROID
         SendEventWithBundle("$LaunchApp", "", ""); 
+        #endif
     }
 }
