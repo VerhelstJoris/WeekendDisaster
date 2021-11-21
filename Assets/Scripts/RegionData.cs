@@ -49,7 +49,6 @@ public class RegionData
     public float share_global_cumulative_other_co2;
     
     public void SetCO2(SimulationIndustries industry, float value)
-    
     {
         switch (industry)
         {
@@ -76,6 +75,17 @@ public class RegionData
         }
     }
 }
+
+[Serializable]
+public class RegionStatsCustom
+{
+    public Regions region;
+    public float Happiness = 1f;
+    public float Money = 1f;
+    public float Energy = 1f;
+    public float Carbon = 1f;
+}
+
 
 public enum SimulationMode
 {
