@@ -10,25 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6948453f4a4c3084c9f925a49ceb3047, type: 3}
-  m_Name: Investment Opportunity!
+  m_Name: NuclearDisaster
   m_EditorClassIdentifier: 
-  BillName: Investment Oppertunity!
-  BillText: An African Prince is looking for someone to help them. \n They are prommising
-    a very nice reward for you help. \n\n Hopefully this isn't a scam!
+  BillName: Nuclear Meltdown
+  BillText: A nuclear plant in North-America has undergone meltdown as a result of
+    notoriously poor management. After cleanup was succesful, a decision has to be
+    made as to whether or not a new nuclear plant should be built or a new coal factory
+    should be built instead.
   BillAcceptedEffects:
-    RegionsAffected: 0
-    Carbon: 1
+    RegionsAffected: 3
+    Carbon: 1.05
     Industry: 0
-    Money: 0.85
-    Energy: 1
-    Happiness: 1
+    Money: 0.97
+    Energy: 1.05
+    Happiness: 0.97
   BillDeniedEffects:
-    RegionsAffected: 0
-    Carbon: 1
+    RegionsAffected: 3
+    Carbon: 1.05
     Industry: 0
-    Money: 1
-    Energy: 1
-    Happiness: 1
+    Money: 0.98
+    Energy: 1.03
+    Happiness: 1.03
   FollowUpAccepted: {fileID: 0}
   FollowUpDenied: {fileID: 0}
   BillConditions: []
