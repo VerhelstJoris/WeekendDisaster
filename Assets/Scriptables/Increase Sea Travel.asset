@@ -12,22 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6948453f4a4c3084c9f925a49ceb3047, type: 3}
   m_Name: Increase Sea Travel
   m_EditorClassIdentifier: 
-  BillName: 
-  BillText: 
+  BillName: Increase Sea Travel
+  BillText: We might performed some calculations and were surprised to discover that
+    according to our calculations, all other calculations were off and we should
+    divert more resources towards sea travel over land and air travel, which will
+    especially be effective in Europe and Australia.
   BillAcceptedEffects:
-    RegionsAffected: 0
-    Carbon: 1
+    RegionsAffected: 40
+    Carbon: 0.973
     Industry: 0
-    Money: 1
-    Energy: 1
-    Happiness: 1
+    Money: 0.961
+    Energy: 0.98
+    Happiness: 0.91
   BillDeniedEffects:
-    RegionsAffected: 0
-    Carbon: 1
+    RegionsAffected: 17
+    Carbon: 1.054
     Industry: 0
-    Money: 1
-    Energy: 1
-    Happiness: 1
+    Money: 1.044
+    Energy: 0.986
+    Happiness: 1.084
   FollowUpAccepted: {fileID: 0}
   FollowUpDenied: {fileID: 0}
   BillConditions: []

@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6948453f4a4c3084c9f925a49ceb3047, type: 3}
   m_Name: North America needs more energy!
   m_EditorClassIdentifier: 
-  BillName: North America needs more energy!
-  BillText: 'Increase coal production '
+  BillName: Power Shortage
+  BillText: America is lacking power to supply to the full population and needs to
+    increase its use of cheap fossil fuels in decommissioned coal generators.
   BillAcceptedEffects:
     RegionsAffected: 15
-    Carbon: 1.01
+    Carbon: 1.081
     Industry: 0
-    Money: 1.05
+    Money: 1.056
     Energy: 1.1
     Happiness: 1.02
   BillDeniedEffects:
@@ -30,5 +31,9 @@ MonoBehaviour:
     Happiness: 0.92
   FollowUpAccepted: {fileID: 0}
   FollowUpDenied: {fileID: 0}
-  BillConditions: []
+  BillConditions:
+  - RegionsAffected: 1
+    Resource: 3
+    MoreThan: 0
+    Value: 0.4
   accepted: 0

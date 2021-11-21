@@ -7759,6 +7759,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1729272923}
     - target: {fileID: 3660460538955357037, guid: 69aac010be260e5488bb360b67f22667, type: 3}
+      propertyPath: RestartButton
+      value: 
+      objectReference: {fileID: 2041625208}
+    - target: {fileID: 3660460538955357037, guid: 69aac010be260e5488bb360b67f22667, type: 3}
       propertyPath: AssignmentPaper
       value: 
       objectReference: {fileID: 351001273}

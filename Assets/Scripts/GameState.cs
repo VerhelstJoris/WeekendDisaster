@@ -124,7 +124,7 @@ public class GameState : MonoBehaviour
         {
             sim.OnStepped += UpdateWorldStats;
             sim.OnSimPaused += ReachedNewBillTime;
-            sim.OnSimFinalDateReached += GameOver;
+            sim.OnSimFinalDateReached += GameWon;
 
             if(worldStats !=null)
             {
@@ -154,15 +154,26 @@ public class GameState : MonoBehaviour
         TrySelectDesk();
     }
 
+    private void GameWon()
+    {
+        paperToShow = WinPaper;
+        GameOver();
+    }
+
+    private void GameLost()
+    {
+        paperToShow = LosePaper;
+        GameOver();
+    }
+
     private void GameOver()
     {
         TrySelectDesk();
         GameFinished = true;
 
-        paperToShow = LosePaper;
-        LosePaper.transform.position = new Vector3(LosePaper.transform.position.x, 
-        LosePaper.transform.position.y + 2, 
-        LosePaper.transform.position.z);
+        paperToShow.transform.position = new Vector3(paperToShow.transform.position.x, 
+        paperToShow.transform.position.y + 2,
+        paperToShow.transform.position.z);
 
         RestartButton.SetActive(true);
 
