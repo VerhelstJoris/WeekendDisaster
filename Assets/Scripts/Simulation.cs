@@ -45,6 +45,7 @@ public class Simulation : MonoBehaviour
     public bool gameLost = false;
     public int stepMonths = 3;
     public float stepDays = 29;
+    public float nonCO2StatGainBoost = 1.0f;
 
     public List<RegionStatsCustom> regionStatsCustom = new List<RegionStatsCustom>();
     public bool useCustomRegionData = true;
@@ -299,9 +300,9 @@ public class Simulation : MonoBehaviour
             BillEffects effectsPerTick = new BillEffects();
             float rootFactor = monthsTickingThisSim / stepMonths;
             effectsPerTick.Carbon = Mathf.Pow(effects.Carbon, 1f / rootFactor);
-            effectsPerTick.Happiness = Mathf.Pow(effects.Happiness, 1f / rootFactor);
-            effectsPerTick.Money = Mathf.Pow(effects.Money, 1f / rootFactor);
-            effectsPerTick.Energy = Mathf.Pow(effects.Energy, 1f / rootFactor);
+            effectsPerTick.Happiness = Mathf.Pow(nonCO2StatGainBoost * effects.Happiness, 1f / rootFactor);
+            effectsPerTick.Money = Mathf.Pow(nonCO2StatGainBoost * effects.Money, 1f / rootFactor);
+            effectsPerTick.Energy = Mathf.Pow(nonCO2StatGainBoost * effects.Energy, 1f / rootFactor);
 
             // Update the regions values based on the bills
             foreach (var r in worldData.Values.Where(r => affectedRegions.Contains(r.location)))
