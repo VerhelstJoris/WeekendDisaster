@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6948453f4a4c3084c9f925a49ceb3047, type: 3}
+  m_Name: Nuclear Power
+  m_EditorClassIdentifier: 
+  BillName: Nuclear Power
+  BillText: Asia and Austrailia to build nuclear reactors to reduce their carbon
+    footprint
+  BillAcceptedEffects:
+    RegionsAffected: 9
+    Carbon: -50
+    Industry: 0
+    Money: 1
+    Energy: 0.85
+    Happiness: 0.95
+  BillDeniedEffects:
+    RegionsAffected: 24
+    Carbon: 250
+    Industry: 0
+    Money: 1.2
+    Energy: 1.1
+    Happiness: 0.75
+  FollowUpAccepted: {fileID: 11400000, guid: ab3ca802b71a5db4098672b6e0dd550f, type: 2}
+  FollowUpDenied: {fileID: 11400000, guid: fc4b2fb9846698648af5ae7ee0c73599, type: 2}
+  BillConditions:
+  - RegionsAffected: 32
+    Resource: 2
+    MoreThan: 1
+    Value: 5000
+  accepted: 0
