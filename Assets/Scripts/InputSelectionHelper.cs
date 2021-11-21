@@ -34,7 +34,7 @@ public class InputSelectionHelper : MonoBehaviour
 
     private void HandleTouch(Vector2 TouchPos, TouchPhase TouchPhase)
     {
-        if (GameState.Instance.IsMoving() || GameState.Instance.TryMoveAssignment() || GameState.Instance.GameFinished || GameState.Instance.IsSimRunning())
+        if (GameState.Instance.IsMoving() || GameState.Instance.TryMoveAssignment() || GameState.Instance.IsSimRunning())
         {
             return;
         }
@@ -45,6 +45,15 @@ public class InputSelectionHelper : MonoBehaviour
             RaycastHit hitInfo;
             if (Physics.Raycast(ray, out hitInfo))
             {
+                RestartButton hitButton = hitInfo.collider.GetComponent<RestartButton>();
+                if (hitButton != null)
+                {
+                    //restart
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                }
+
+                if (GameState.Instance.GameFinished) { return; }
+
                 GameRegion hitRegion = hitInfo.collider.GetComponent<GameRegion>();
                 if (hitRegion != null)
                 {
@@ -83,13 +92,6 @@ public class InputSelectionHelper : MonoBehaviour
                 if (hitWorld != null)
                 {
                     GameState.Instance.TrySelectMap();
-                }
-
-                RestartButton hitButton = hitInfo.collider.GetComponent<RestartButton>();
-                if (hitButton != null)
-                {
-                    //restart
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 }
             }
         }
