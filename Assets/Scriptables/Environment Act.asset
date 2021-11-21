@@ -16,18 +16,18 @@ MonoBehaviour:
   BillText: 'Decrease concrete production '
   BillAcceptedEffects:
     RegionsAffected: 33
-    Carbon: 0.99
+    Carbon: -10
     Industry: 1
-    Money: 0.9
+    Money: 0.75
     Energy: 1
-    Happiness: 0.9
+    Happiness: 0.75
   BillDeniedEffects:
     RegionsAffected: 33
-    Carbon: 1.02
+    Carbon: 10
     Industry: 1
     Money: 1
     Energy: 1
-    Happiness: 1.04
+    Happiness: 1.1
   FollowUpAccepted: {fileID: 0}
   FollowUpDenied: {fileID: 0}
   BillConditions: []

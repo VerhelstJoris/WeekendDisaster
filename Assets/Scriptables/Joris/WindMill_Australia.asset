@@ -10,26 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6948453f4a4c3084c9f925a49ceb3047, type: 3}
-  m_Name: Build Nuclear Plants
+  m_Name: WindMill_Australia
   m_EditorClassIdentifier: 
-  BillName: Build Nuclear Reactors
-  BillText: Nuclear reactors have become safer and more eco-friendly than ever despite
-    still having a bad reputation. Third-world countries especially would benefit
-    from this as this would replace a lot of old coal-facilites.
+  BillName: Desert Windmill Parks
+  BillText: Australia and Africa have vast open plains that could be utilized for
+    windmill parks.  These parks would not only be the largest of their type ever
+    built but also be able to produce a significant amount of power for these nations.
+    The drawback of course is that such a monumental undertaking would come at a
+    significant cost.
   BillAcceptedEffects:
-    RegionsAffected: 57
-    Carbon: 0.98
+    RegionsAffected: 12
+    Carbon: -3000
     Industry: 5
-    Money: 1.1
-    Energy: 1.05
-    Happiness: 0.97
+    Money: 0.6
+    Energy: 1.4
+    Happiness: 1.1
   BillDeniedEffects:
-    RegionsAffected: 30
-    Carbon: 1.05
+    RegionsAffected: 0
+    Carbon: 2500
     Industry: 5
     Money: 1
     Energy: 1
-    Happiness: 1.03
+    Happiness: 0.9
   FollowUpAccepted: {fileID: 0}
   FollowUpDenied: {fileID: 0}
   BillConditions: []

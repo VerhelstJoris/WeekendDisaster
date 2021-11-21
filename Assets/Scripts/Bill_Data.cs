@@ -28,15 +28,15 @@ public enum ResourceType
 public class BillEffects
 {
     public Regions RegionsAffected;
-    [Range(0.85f, 1.15f)] 
+    [Range(.75f, 1.25f)] 
     public float Carbon = 1;
     public SimulationIndustries Industry;
     
-    [Range(0.85f, 1.15f)] 
+    [Range(.75f, 1.25f)] 
     public float Money = 1;
-    [Range(0.85f, 1.15f)] 
+    [Range(.75f, 1.25f)] 
     public float Energy = 1;
-    [Range(0.85f, 1.15f)] 
+    [Range(.75f, 1.25f)] 
     public float Happiness = 1;
 }
 
@@ -53,7 +53,6 @@ public class BillCondition
 public class Bill_Data : ScriptableObject
 {
     public string BillName;
-
     public string BillText;
 
     public BillEffects BillAcceptedEffects;

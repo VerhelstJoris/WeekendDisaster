@@ -16,18 +16,18 @@ MonoBehaviour:
   BillText: Let's push for a greener earth by lowering our Gas Emittions
   BillAcceptedEffects:
     RegionsAffected: 64
-    Carbon: 0.95
-    Industry: 0
+    Carbon: -1000
+    Industry: 3
     Money: 0.98
-    Energy: 1.03
-    Happiness: 1.05
+    Energy: 0.95
+    Happiness: 1.1
   BillDeniedEffects:
-    RegionsAffected: -1
-    Carbon: 1.02
+    RegionsAffected: 0
+    Carbon: 0
     Industry: 0
-    Money: 1.02
-    Energy: 1
-    Happiness: 0.98
+    Money: 0
+    Energy: 0
+    Happiness: 0
   FollowUpAccepted: {fileID: 0}
   FollowUpDenied: {fileID: 0}
   BillConditions: []

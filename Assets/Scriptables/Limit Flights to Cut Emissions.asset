@@ -16,18 +16,18 @@ MonoBehaviour:
   BillText: Limit flights to and from Europe to reduce carbon emissions
   BillAcceptedEffects:
     RegionsAffected: -1
-    Carbon: 0.96
+    Carbon: -1200
     Industry: 4
-    Money: 0.9
-    Energy: 1.15
-    Happiness: 0.9
+    Money: 0.65
+    Energy: 1.5
+    Happiness: 0.75
   BillDeniedEffects:
     RegionsAffected: 33
-    Carbon: 1.02
+    Carbon: 500
     Industry: 4
-    Money: 1.1
-    Energy: 0.9
-    Happiness: 1.1
+    Money: 1.25
+    Energy: 0.75
+    Happiness: 1.23
   FollowUpAccepted: {fileID: 11400000, guid: ab3ca802b71a5db4098672b6e0dd550f, type: 2}
   FollowUpDenied: {fileID: 11400000, guid: fc4b2fb9846698648af5ae7ee0c73599, type: 2}
   BillConditions: []

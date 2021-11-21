@@ -10,27 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6948453f4a4c3084c9f925a49ceb3047, type: 3}
-  m_Name: SolarPanels
+  m_Name: ReOpenCoal
   m_EditorClassIdentifier: 
-  BillName: Urban Solar Panels
-  BillText: A lot of devices in the urban environment that are currently powered
-    by the grid can often by powered on their by attaching a small solar panel to
-    the device instead. Doing this would not only cut down on long-term energy needs
-    but is also massively appreciated by the population.
+  BillName: Unemployment Riots
+  BillText: Due to low unemployment and fear of the future, a lot of former mine
+    workers are currently barricading the entrances to new energy facilities and
+    demand the reopening of some coal plants.
   BillAcceptedEffects:
-    RegionsAffected: -1
-    Carbon: 0.94
-    Industry: 5
-    Money: 0.94
-    Energy: 1.1
-    Happiness: 1.05
-  BillDeniedEffects:
-    RegionsAffected: -1
-    Carbon: 1.02
+    RegionsAffected: 22
+    Carbon: 3500
     Industry: 0
-    Money: 1.03
+    Money: 1.1
+    Energy: 1.1
+    Happiness: 1.3
+  BillDeniedEffects:
+    RegionsAffected: 22
+    Carbon: 0
+    Industry: 0
+    Money: 1
     Energy: 1
-    Happiness: 0.95
+    Happiness: 0.75
   FollowUpAccepted: {fileID: 0}
   FollowUpDenied: {fileID: 0}
   BillConditions: []

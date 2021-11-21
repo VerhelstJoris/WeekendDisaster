@@ -17,18 +17,18 @@ MonoBehaviour:
     a very nice reward for you help. \n\n Hopefully this isn't a scam!
   BillAcceptedEffects:
     RegionsAffected: 0
-    Carbon: 1
+    Carbon: 0
     Industry: 0
-    Money: 0.85
+    Money: 1.15
     Energy: 1
     Happiness: 1
   BillDeniedEffects:
     RegionsAffected: 0
-    Carbon: 1
+    Carbon: 0
     Industry: 0
-    Money: 1
-    Energy: 1
-    Happiness: 1
+    Money: 0
+    Energy: 0
+    Happiness: 0
   FollowUpAccepted: {fileID: 0}
   FollowUpDenied: {fileID: 0}
   BillConditions: []
