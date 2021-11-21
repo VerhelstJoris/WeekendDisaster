@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 
 enum CurrentPos
@@ -161,18 +163,28 @@ public class GameState : MonoBehaviour
     {
         paperToShow = WinPaper;
         GameOver();
+        #if UNITY_ANDROID 
+        HMSAnalyticsManager.Instance.SendEventWithBundle("GameWon", "DateEnded", sim.CurrentDate.ToUniversalTime().ToString("s", System.Globalization.CultureInfo.InvariantCulture));
+        HMSAnalyticsManager.Instance.SendEventWithBundle("GameWon", "FinalCO2", sim.globalCO2.ToString(CultureInfo.InvariantCulture));
+        #endif
     }
 
     private void GameLost()
     {
         paperToShow = LosePaper;
         GameOver();
+        
+        #if UNITY_ANDROID 
+        HMSAnalyticsManager.Instance.SendEventWithBundle("GameOver", "DateEnded", sim.CurrentDate.ToUniversalTime().ToString("s", System.Globalization.CultureInfo.InvariantCulture));
+        HMSAnalyticsManager.Instance.SendEventWithBundle("GameOver", "FinalCO2", sim.globalCO2.ToString(CultureInfo.InvariantCulture));
+        #endif
     }
 
     private void GameOver()
     {
         TrySelectDesk();
         GameFinished = true;
+        
 
         paperToShow.transform.position = new Vector3(paperToShow.transform.position.x, 
         paperToShow.transform.position.y + 2,
@@ -214,6 +226,13 @@ public class GameState : MonoBehaviour
             {
                 _selectedBill.Data.accepted = true;
             }
+            
+            #if UNITY_ANDROID 
+            HMSAnalyticsManager.Instance.SendEventWithBundle("StampPressed", "StampMode", Enum.GetName(typeof(StampMode),mode));
+            HMSAnalyticsManager.Instance.SendEventWithBundle("StampPressed", "SelectedBill", _selectedBill.name);
+            #endif
+
+            
             sim.bills.Add(_selectedBill.Data);
         }
     }
