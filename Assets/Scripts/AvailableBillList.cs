@@ -13,13 +13,16 @@ public class AvailableBillList : ScriptableObject
 
     public Bill_Data SelectNextBill(Bill_Data lastBill, Simulation Sim)
     {
-        if (lastBill.accepted && lastBill.FollowUpAccepted != null)
+        if (lastBill != null)
         {
-            return lastBill.FollowUpAccepted;
-        }
-        if (!lastBill.accepted && lastBill.FollowUpDenied != null)
-        {
-            return lastBill.FollowUpDenied;
+            if (lastBill.accepted && lastBill.FollowUpAccepted != null)
+            {
+                return lastBill.FollowUpAccepted;
+            }
+            if (!lastBill.accepted && lastBill.FollowUpDenied != null)
+            {
+                return lastBill.FollowUpDenied;
+            }
         }
 
         System.Random random = new System.Random();

@@ -132,6 +132,11 @@ public class GameState : MonoBehaviour
             }
         }
 
+        Bill_Object Bill = FindObjectOfType<Bill_Object>();
+        if (Bill != null)
+        {
+            Bill.UpdateBillData(AvailableBills.SelectNextBill(null, sim));
+        }
     }
 
     public bool IsSimRunning()
