@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Environment Act
   m_EditorClassIdentifier: 
   BillName: Environment Act
-  BillText: 'Decrease concrete production '
+  BillText: The concrete production industry is a severe polluter and production
+    needs to be decreased.
   BillAcceptedEffects:
     RegionsAffected: 33
     Carbon: 0.99
