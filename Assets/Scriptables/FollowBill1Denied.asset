@@ -18,9 +18,9 @@ MonoBehaviour:
     RegionsAffected: -1
     Carbon: 9999999
     Industry: 1
-    Money: -30
-    Energy: 5000
-    Happiness: 30400
+    Money: 0
+    Energy: 1
+    Happiness: 1.5
   BillDeniedEffects:
     RegionsAffected: 64
     Carbon: -200000000
@@ -30,4 +30,5 @@ MonoBehaviour:
     Happiness: -50000000
   FollowUpAccepted: {fileID: 0}
   FollowUpDenied: {fileID: 0}
-  accepted: 0
+  BillConditions: []
+  accepted: 1

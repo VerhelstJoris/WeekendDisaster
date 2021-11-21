@@ -12,15 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6948453f4a4c3084c9f925a49ceb3047, type: 3}
   m_Name: Investment Opportunity!
   m_EditorClassIdentifier: 
-  BillName: 
-  BillText: 
+  BillName: Investment Oppertunity!
+  BillText: An African Prince is looking for someone to help them. \n They are prommising
+    a very nice reward for you help. \n\n Hopefully this isn't a scam!
   BillAcceptedEffects:
     RegionsAffected: 0
     Carbon: 0
     Industry: 0
-    Money: 0
-    Energy: 0
-    Happiness: 0
+    Money: 1.15
+    Energy: 1
+    Happiness: 1
   BillDeniedEffects:
     RegionsAffected: 0
     Carbon: 0
