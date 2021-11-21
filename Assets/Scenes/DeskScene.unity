@@ -7464,8 +7464,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You have succeeded in creating a more sustainable future for manking for
-    the foreseeable. While global warming is still happening, it is now a deccelerated
+  m_text: You have succeeded in creating a more sustainable future for mankind for
+    the foreseeable. While global warming is still happening, it is now a slower
     pace, meaning earth has time to adapt to the new conditions.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
