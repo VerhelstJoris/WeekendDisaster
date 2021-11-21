@@ -225,7 +225,7 @@ public class GameState : MonoBehaviour
             {
                 
             #if UNITY_ANDROID
-                HMSAnalyticsManager.Instance.SendEventWithBundle("StampPressed", "BillApproved", _selectedBill.Title + "--Approved");
+                HMSAnalyticsManager.Instance.SendEventWithBundle("StampPressed", "BillApproved", _selectedBill.Title.text + "--Approved");
                 _selectedBill.Data.accepted = true;
             #endif
             }
@@ -233,7 +233,7 @@ public class GameState : MonoBehaviour
             {
             #if UNITY_ANDROID
                 HMSAnalyticsManager.Instance.SendEventWithBundle("StampPressed", "BillDenied",
-                    _selectedBill.Title + "--Denied") ;
+                    _selectedBill.Title.text + "--Denied") ;
             #endif
             }
 
