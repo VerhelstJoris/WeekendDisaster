@@ -28,15 +28,15 @@ public enum ResourceType
 public class BillEffects
 {
     public Regions RegionsAffected;
-    [Range(0, 2)] 
+    [Range(0.85f, 1.15f)] 
     public float Carbon = 1;
     public SimulationIndustries Industry;
     
-    [Range(0, 2)] 
+    [Range(0.85f, 1.15f)] 
     public float Money = 1;
-    [Range(0, 2)] 
+    [Range(0.85f, 1.15f)] 
     public float Energy = 1;
-    [Range(0, 2)] 
+    [Range(0.85f, 1.15f)] 
     public float Happiness = 1;
 }
 

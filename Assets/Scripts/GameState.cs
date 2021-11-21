@@ -125,7 +125,13 @@ public class GameState : MonoBehaviour
             sim.OnStepped += UpdateWorldStats;
             sim.OnSimPaused += ReachedNewBillTime;
             sim.OnSimFinalDateReached += GameOver;
+
+            if(worldStats !=null)
+            {
+                worldStats.UpdateStats(sim);
+            }
         }
+
     }
 
     public bool IsSimRunning()
