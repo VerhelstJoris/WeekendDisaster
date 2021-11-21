@@ -1,4 +1,10 @@
 {
+	"agcgw":{
+		"backurl":"connect-dre.hispace.hicloud.com",
+		"url":"connect-dre.dbankcloud.cn",
+		"websocketbackurl":"connect-ws-dre.hispace.dbankcloud.com",
+		"websocketurl":"connect-ws-dre.hispace.dbankcloud.cn"
+	},
 	"agcgw_all":{
 		"CN":"connect-drcn.dbankcloud.cn",
 		"CN_back":"connect-drcn.hispace.hicloud.com",
@@ -11,36 +17,71 @@
 	},
 	"client":{
 		"cp_id":"5190358000023459693",
-		"product_id":"737518067793748297",
-		"client_id":"764783559146752576",
-		"client_secret":"952DECF94F513B238A4C67A2D60E2F0203923A70B338E0D03FFC2772E9DFED43",
-		"project_id":"737518067793748297",
-		"app_id":"104997771",
-		"api_key":"CwEAAAAA2ftDg1RbemfX9joQNPFNrshNt8wUz0pLNLuo/Ei4fQLjchgVEnb9WpiZ86P4Ha00yU6HfzOmsaEViM0WRopIOCVnfQQ=",
-		"package_name":"uk.weekenddisaster.climate.huawei"
+		"product_id":"737518067793728360",
+		"client_id":"761559050574906560",
+		"client_secret":"6077D5B3A64414EA8087B344D99F2C1C8BAE732A35EA8A90E151A737EC33D1E7",
+		"project_id":"737518067793728360",
+		"app_id":"104998649",
+		"api_key":"CwEAAAAAGiNh/Wn0Q0KuUkZsrswT2V0yBhcNvVWGkpkXSVIoLcuUnet4TTOufPM6SRusnbfFiQI2kG5sD/zj5xfWISSMmQ4In9Y=",
+		"package_name":"uk.weekenddisaster.climategame.huawei"
 	},
 	"oauth_client":{
-		"client_id":"104997771",
+		"client_id":"104998649",
 		"client_type":1
 	},
 	"app_info":{
-		"app_id":"104997771",
-		"package_name":"uk.weekenddisaster.climate.huawei"
+		"app_id":"104998649",
+		"package_name":"uk.weekenddisaster.climategame.huawei"
 	},
+	"service":{
+		"analytics":{
+			"collector_url":"datacollector-dre.dt.hicloud.com,datacollector-dre.dt.dbankcloud.cn",
+			"collector_url_ru":"datacollector-drru.dt.hicloud.com,datacollector-drru.dt.dbankcloud.cn",
+			"collector_url_sg":"datacollector-dra.dt.hicloud.com,datacollector-dra.dt.dbankcloud.cn",
+			"collector_url_de":"datacollector-dre.dt.hicloud.com,datacollector-dre.dt.dbankcloud.cn",
+			"collector_url_cn":"datacollector-drcn.dt.hicloud.com,datacollector-drcn.dt.dbankcloud.cn",
+			"resource_id":"p1",
+			"channel_id":""
+		},
+		"search":{
+			"url":"https://search-dre.cloud.huawei.com"
+		},
+		"cloudstorage":{
+			"storage_url":"https://ops-dre.agcstorage.link"
+		},
+		"ml":{
+			"mlservice_url":"ml-api-dre.ai.dbankcloud.com,ml-api-dre.ai.dbankcloud.cn"
+		}
+	},
+	"region":"DE",
 	"configuration_version":"3.0",
 	"appInfos":[
 		{
-			"package_name":"uk.weekenddisaster.climate.huawei",
+			"package_name":"uk.weekenddisaster.climategame.huawei",
 			"client":{
-				"app_id":"104997771"
+				"app_id":"104998649"
 			},
 			"app_info":{
-				"package_name":"uk.weekenddisaster.climate.huawei",
-				"app_id":"104997771"
+				"package_name":"uk.weekenddisaster.climategame.huawei",
+				"app_id":"104998649"
 			},
 			"oauth_client":{
 				"client_type":1,
-				"client_id":"104997771"
+				"client_id":"104998649"
+			}
+		},
+		{
+			"package_name":"com.junction21.huawei",
+			"client":{
+				"app_id":"104978119"
+			},
+			"app_info":{
+				"package_name":"com.junction21.huawei",
+				"app_id":"104978119"
+			},
+			"oauth_client":{
+				"client_type":1,
+				"client_id":"104978119"
 			}
 		}
 	]
