@@ -262,7 +262,7 @@ public class GameState : MonoBehaviour
 
     public void TrySelectMap()
     {
-        soundManager.PlayWaves();
+        //soundManager.PlayWaves();
         LerpCamera(MapViewPos);
         _selectedBill = null;
     }
