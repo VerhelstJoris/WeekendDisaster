@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6948453f4a4c3084c9f925a49ceb3047, type: 3}
+  m_Name: NuclearDisaster
+  m_EditorClassIdentifier: 
+  BillName: Nuclear Meltdown
+  BillText: A nuclear plant in North-America has undergone meltdown as a result of
+    notoriously poor management. After cleanup was succesful, a decision has to be
+    made as to whether or not a new nuclear plant should be built or a new coal factory
+    should be built instead.
+  BillAcceptedEffects:
+    RegionsAffected: 3
+    Carbon: 500
+    Industry: 0
+    Money: 0.9
+    Energy: 1.25
+    Happiness: 0.8
+  BillDeniedEffects:
+    RegionsAffected: 3
+    Carbon: 2500
+    Industry: 0
+    Money: 0.95
+    Energy: 1.1
+    Happiness: 1.1
+  FollowUpAccepted: {fileID: 0}
+  FollowUpDenied: {fileID: 0}
+  BillConditions: []
+  accepted: 0
