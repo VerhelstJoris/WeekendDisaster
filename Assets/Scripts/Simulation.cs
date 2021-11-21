@@ -54,6 +54,7 @@ public class Simulation : MonoBehaviour
     [Range(0.75f, 1.25f)] public float CO2IncresePerIndustryMultiplier = 1.15f;
 
     private DateTime PauseDate;
+    private float monthsTickingThisSim;
 
     private void Awake()
     {
@@ -88,6 +89,7 @@ public class Simulation : MonoBehaviour
 
     public void StartSim(int monthsToTick)
     {
+        monthsTickingThisSim = monthsToTick;
         PauseDate = CurrentDate.AddMonths(monthsToTick).AddDays(Random.value * stepDays);
         runSim = true;
         StartCoroutine(TimedUpdate());
@@ -189,16 +191,20 @@ public class Simulation : MonoBehaviour
         #region SimSetup
 
         // Global State Values
-        globalCO2 = worldData.Values.Sum(data => data.cumulative_co2);
+        globalCO2 = worldData.Values.Sum(data => data.co2);
         globalCO2Target = globalCO2 * globalCO2TargetMultiplier;
 
         foreach (var r in worldData.Values)
         {
             r.share_global_cumulative_co2 = Mathf.Clamp01(r.co2 / globalCO2);
         }
-        
+
+        // Work out new doomsday value (temp increase)
+        float diff = globalCO2Target - globalCO2;
+        currentTemp = 1 - (diff / globalCO2Target);
+
         #endregion
-        
+
         Debug.Log("Finished setting up sim data");
     }
 
@@ -210,7 +216,7 @@ public class Simulation : MonoBehaviour
         {
             gameWon = true;
         }
-        if (currentTemp >= 1.99f)
+        if (currentTemp >= 0.99f)
         {
             gameLost = true;
         }
@@ -223,12 +229,14 @@ public class Simulation : MonoBehaviour
             {
                 OnSimPaused();
             }
+            bills.Clear();
 
             return;
         }
 
         if (gameLost)
         {
+            bills.Clear();
             if (OnSimLedToFailure != null)
             {
                 OnSimLedToFailure();
@@ -237,6 +245,7 @@ public class Simulation : MonoBehaviour
 
         if (gameWon)
         {
+            bills.Clear();
             runSim = false;
             Debug.Log("Sim has finished");
             if (OnSimFinalDateReached != null)
@@ -270,11 +279,11 @@ public class Simulation : MonoBehaviour
         }
 
         // Update the bills
-        foreach (var b in bills)
+        foreach (var currentBill in bills)
         {
             var affectedRegions = new List<Regions>();
 
-            var effects = b.accepted ? b.BillAcceptedEffects : b.BillDeniedEffects;
+            var effects = currentBill.accepted ? currentBill.BillAcceptedEffects : currentBill.BillDeniedEffects;
 
             if (effects.RegionsAffected.HasFlag(Regions.North_America)) affectedRegions.Add(Regions.North_America);
             if (effects.RegionsAffected.HasFlag(Regions.South_America)) affectedRegions.Add(Regions.South_America);
@@ -287,22 +296,44 @@ public class Simulation : MonoBehaviour
                 affectedRegions.AddRange(Enum.GetValues(typeof(Regions)).Cast<Regions>());
             }
 
+            BillEffects effectsPerTick = new BillEffects();
+            float rootFactor = monthsTickingThisSim / stepMonths;
+            effectsPerTick.Carbon = Mathf.Pow(effects.Carbon, 1f / rootFactor);
+            effectsPerTick.Happiness = Mathf.Pow(effects.Happiness, 1f / rootFactor);
+            effectsPerTick.Money = Mathf.Pow(effects.Money, 1f / rootFactor);
+            effectsPerTick.Energy = Mathf.Pow(effects.Energy, 1f / rootFactor);
+
             // Update the regions values based on the bills
             foreach (var r in worldData.Values.Where(r => affectedRegions.Contains(r.location)))
             {
-                r.share_global_cumulative_co2 = Mathf.Clamp01(r.co2 / globalCO2);
-                r.happinessStat = Mathf.Clamp01(r.happinessStat * effects.Happiness);
-                r.moneyStat = Mathf.Clamp01(r.moneyStat * effects.Money);
-                r.energy = Mathf.Clamp01(r.energy * effects.Energy);
+                r.happinessStat = Mathf.Clamp01(r.happinessStat * effectsPerTick.Happiness);
+                r.moneyStat = Mathf.Clamp01(r.moneyStat * effectsPerTick.Money);
+                r.energy = Mathf.Clamp01(r.energy * effectsPerTick.Energy);
 
                 if (simpleMode)
                 {
-                    r.co2 *= effects.Carbon;
+                    r.co2_growth_rate_per_year *= effectsPerTick.Carbon;
+                    r.co2 *= Mathf.Pow(r.co2_growth_rate_per_year, 1f / rootFactor);
                 }
                 else
                 {
-                    r.SetCO2(effects.Industry, effects.Carbon);
+                    r.SetCO2(effects.Industry, effectsPerTick.Carbon);
                 }
+
+                r.share_global_cumulative_co2 = Mathf.Clamp01(r.co2 / globalCO2);
+            }
+            foreach (var r in worldData.Values.Where(r => !affectedRegions.Contains(r.location)))
+            {
+                if (simpleMode)
+                {
+                    r.co2 *= Mathf.Pow(r.co2_growth_rate_per_year, 1f / rootFactor);
+                }
+                else
+                {
+                    //r.SetCO2(effects.Industry, effectsPerTick.Carbon);
+                }
+
+                r.share_global_cumulative_co2 = Mathf.Clamp01(r.co2 / globalCO2);
             }
         }
 
@@ -319,7 +350,7 @@ public class Simulation : MonoBehaviour
         }
 
         // Update Global CO2 the previous world total and the new amount released
-        globalCO2 = worldData.Values.Sum(data => data.cumulative_co2 + data.co2);
+        globalCO2 = worldData.Values.Sum(data => data.co2);
 
         // Work out new doomsday value (temp increase)
         float diff = globalCO2Target - globalCO2;
@@ -328,7 +359,6 @@ public class Simulation : MonoBehaviour
 
         Debug.Log($"Current Temp {currentTemp}");
 
-        bills.Clear();
         // Debug output for globals
         // foreach (var industry in Enum.GetValues(typeof(SimulationIndustries)))
         // {

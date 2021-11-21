@@ -2126,7 +2126,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 618686007972541866, guid: e5023a408809bff4387e3f2cfe915f94, type: 3}
       propertyPath: CO2IncresePerIndustryMultiplier
-      value: 1.045
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 618686007972541867, guid: e5023a408809bff4387e3f2cfe915f94, type: 3}
       propertyPath: m_RootOrder
@@ -3248,6 +3248,10 @@ PrefabInstance:
     - target: {fileID: 4659806025262147764, guid: 667be86dc551db7408a683fa0a96f1c5, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -221
+      objectReference: {fileID: 0}
+    - target: {fileID: 4659806025262147765, guid: 667be86dc551db7408a683fa0a96f1c5, type: 3}
+      propertyPath: m_Value
+      value: 0.572
       objectReference: {fileID: 0}
     - target: {fileID: 4659806025657938412, guid: 667be86dc551db7408a683fa0a96f1c5, type: 3}
       propertyPath: m_Color.b

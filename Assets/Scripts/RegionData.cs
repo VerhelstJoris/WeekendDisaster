@@ -14,6 +14,7 @@ public class RegionData
 
     public float co2;
     public float co2_growth_abs;
+    public float co2_growth_rate_per_year = 1.13f;
     public float co2_per_capita;
     public float share_global_co2;
     public float cumulative_co2;
