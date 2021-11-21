@@ -2128,6 +2128,102 @@ PrefabInstance:
       propertyPath: CO2IncresePerIndustryMultiplier
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 618686007972541866, guid: e5023a408809bff4387e3f2cfe915f94, type: 3}
+      propertyPath: regionStatsCustom.Array.data[0].Money
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 618686007972541866, guid: e5023a408809bff4387e3f2cfe915f94, type: 3}
+      propertyPath: regionStatsCustom.Array.data[1].Money
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 618686007972541866, guid: e5023a408809bff4387e3f2cfe915f94, type: 3}
+      propertyPath: regionStatsCustom.Array.data[2].Money
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 618686007972541866, guid: e5023a408809bff4387e3f2cfe915f94, type: 3}
+      propertyPath: regionStatsCustom.Array.data[3].Money
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 618686007972541866, guid: e5023a408809bff4387e3f2cfe915f94, type: 3}
+      propertyPath: regionStatsCustom.Array.data[4].Money
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 618686007972541866, guid: e5023a408809bff4387e3f2cfe915f94, type: 3}
+      propertyPath: regionStatsCustom.Array.data[5].Money
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 618686007972541866, guid: e5023a408809bff4387e3f2cfe915f94, type: 3}
+      propertyPath: regionStatsCustom.Array.data[0].Carbon
+      value: 6500000
+      objectReference: {fileID: 0}
+    - target: {fileID: 618686007972541866, guid: e5023a408809bff4387e3f2cfe915f94, type: 3}
+      propertyPath: regionStatsCustom.Array.data[0].Energy
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 618686007972541866, guid: e5023a408809bff4387e3f2cfe915f94, type: 3}
+      propertyPath: regionStatsCustom.Array.data[1].Carbon
+      value: 2500000
+      objectReference: {fileID: 0}
+    - target: {fileID: 618686007972541866, guid: e5023a408809bff4387e3f2cfe915f94, type: 3}
+      propertyPath: regionStatsCustom.Array.data[1].Energy
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 618686007972541866, guid: e5023a408809bff4387e3f2cfe915f94, type: 3}
+      propertyPath: regionStatsCustom.Array.data[2].Carbon
+      value: 2500000
+      objectReference: {fileID: 0}
+    - target: {fileID: 618686007972541866, guid: e5023a408809bff4387e3f2cfe915f94, type: 3}
+      propertyPath: regionStatsCustom.Array.data[2].Energy
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 618686007972541866, guid: e5023a408809bff4387e3f2cfe915f94, type: 3}
+      propertyPath: regionStatsCustom.Array.data[3].Carbon
+      value: 2000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 618686007972541866, guid: e5023a408809bff4387e3f2cfe915f94, type: 3}
+      propertyPath: regionStatsCustom.Array.data[3].Energy
+      value: 0.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 618686007972541866, guid: e5023a408809bff4387e3f2cfe915f94, type: 3}
+      propertyPath: regionStatsCustom.Array.data[4].Carbon
+      value: 6000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 618686007972541866, guid: e5023a408809bff4387e3f2cfe915f94, type: 3}
+      propertyPath: regionStatsCustom.Array.data[4].Energy
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 618686007972541866, guid: e5023a408809bff4387e3f2cfe915f94, type: 3}
+      propertyPath: regionStatsCustom.Array.data[5].Carbon
+      value: 3000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 618686007972541866, guid: e5023a408809bff4387e3f2cfe915f94, type: 3}
+      propertyPath: regionStatsCustom.Array.data[5].Energy
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 618686007972541866, guid: e5023a408809bff4387e3f2cfe915f94, type: 3}
+      propertyPath: regionStatsCustom.Array.data[0].Happiness
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 618686007972541866, guid: e5023a408809bff4387e3f2cfe915f94, type: 3}
+      propertyPath: regionStatsCustom.Array.data[1].Happiness
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 618686007972541866, guid: e5023a408809bff4387e3f2cfe915f94, type: 3}
+      propertyPath: regionStatsCustom.Array.data[2].Happiness
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 618686007972541866, guid: e5023a408809bff4387e3f2cfe915f94, type: 3}
+      propertyPath: regionStatsCustom.Array.data[3].Happiness
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 618686007972541866, guid: e5023a408809bff4387e3f2cfe915f94, type: 3}
+      propertyPath: regionStatsCustom.Array.data[4].Happiness
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 618686007972541866, guid: e5023a408809bff4387e3f2cfe915f94, type: 3}
+      propertyPath: regionStatsCustom.Array.data[5].Happiness
+      value: 0.9
+      objectReference: {fileID: 0}
     - target: {fileID: 618686007972541867, guid: e5023a408809bff4387e3f2cfe915f94, type: 3}
       propertyPath: m_RootOrder
       value: 14

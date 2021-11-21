@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6948453f4a4c3084c9f925a49ceb3047, type: 3}
   m_Name: Increase Rail Trade
   m_EditorClassIdentifier: 
-  BillName: Increase Rail Trade
-  BillText: Increase Rail Trade
+  BillName: Transportation Act
+  BillText: Replacing old and outdated models of transportation with newer versions
+    e.g. Diesel locomotives with full-electric ones. This will boost the economy
+    in the long run despite its initial heavy cost.
   BillAcceptedEffects:
     RegionsAffected: 33
     Carbon: 1.05
@@ -27,7 +29,7 @@ MonoBehaviour:
     Industry: 0
     Money: 0.95
     Energy: 1
-    Happiness: 0.9
+    Happiness: 1.05
   FollowUpAccepted: {fileID: 0}
   FollowUpDenied: {fileID: 0}
   BillConditions: []

@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Environment Act
   m_EditorClassIdentifier: 
   BillName: Environment Act
-  BillText: The concrete production industry is a severe polluter and production
-    needs to be decreased.
+  BillText: The building industry is a severe polluter and production needs to be
+    decreased to be able to save the local wildlife. However, this will lead to increased
+    unemployment and lower overall income as this industry is a major part of you
+    income.
   BillAcceptedEffects:
     RegionsAffected: 33
     Carbon: 0.99
@@ -24,7 +26,7 @@ MonoBehaviour:
     Happiness: 0.9
   BillDeniedEffects:
     RegionsAffected: 33
-    Carbon: 1.02
+    Carbon: 1.05
     Industry: 1
     Money: 1
     Energy: 1

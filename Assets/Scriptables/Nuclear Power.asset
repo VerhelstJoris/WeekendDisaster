@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Nuclear Power
   m_EditorClassIdentifier: 
   BillName: Nuclear Power
-  BillText: Asia and Austrailia to build nuclear reactors to reduce their carbon
-    footprint
+  BillText: Asia and Austrailia want to build nuclear reactors to reduce their carbon
+    footprint, for this they not only ask for funding, but also for a campaign to
+    convince their people of the benefits of nuclear energy as prejudices are still
+    high.
   BillAcceptedEffects:
     RegionsAffected: 9
     Carbon: 1
@@ -36,4 +38,4 @@ MonoBehaviour:
     Resource: 2
     MoreThan: 1
     Value: 5000
-  accepted: 0
+  accepted: 1

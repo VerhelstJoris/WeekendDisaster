@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6948453f4a4c3084c9f925a49ceb3047, type: 3}
   m_Name: Green Energy Bill
   m_EditorClassIdentifier: 
-  BillName: Green Energy Bill
-  BillText: Let's push for a greener earth by lowering our Gas Emittions
+  BillName: Employ people in more ecologically sustainable industries
+  BillText: To create a more sustainable future, people need to be employed in ecoligically
+    sustainable industries, this move is an initial heavy cost but itself back in
+    the long run as the economy gets boosted again.
   BillAcceptedEffects:
     RegionsAffected: 64
     Carbon: 0.95

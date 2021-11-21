@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Heat Wave
   m_EditorClassIdentifier: 
   BillName: Heatwave Relief
-  BillText: American emission levels have been too high for a long time. The effects
-    are hitting them now and they require immediate support and relief aid. We propose
-    increased spending to help the people through these times.
+  BillText: American emission levels have been too high for a long time now. The
+    effects are hitting them now and they require immediate support and relief aid.
+    We propose increased spending to help the people through these times.
   BillAcceptedEffects:
     RegionsAffected: 3
     Carbon: 1.015
