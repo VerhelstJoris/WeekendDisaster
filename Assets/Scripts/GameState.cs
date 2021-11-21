@@ -164,9 +164,9 @@ public class GameState : MonoBehaviour
         paperToShow = WinPaper;
         GameOver();
         
-        HMSAnalyticsManager.Instance.SendEventWithBundle("GameEnd", "DateEnded", sim.CurrentDate.ToUniversalTime().ToString("s", System.Globalization.CultureInfo.InvariantCulture));
-        HMSAnalyticsManager.Instance.SendEventWithBundle("GameEnd", "FinalCO2", sim.globalCO2.ToString(CultureInfo.InvariantCulture));
-        HMSAnalyticsManager.Instance.SendEventWithBundle("GameEnd", "Reason", "Won");
+        #if UNITY_ANDROID
+        HMSAnalyticsManager.Instance.SendEventWithBundle("GameEnd", "EndInfo", sim.CurrentDate.ToUniversalTime().ToString("s", CultureInfo.InvariantCulture) + "--" + sim.globalCO2.ToString(CultureInfo.InvariantCulture) + "--Won");
+        #endif
     }
 
     private void GameLost()
@@ -174,9 +174,9 @@ public class GameState : MonoBehaviour
         paperToShow = LosePaper;
         GameOver();
         
-        HMSAnalyticsManager.Instance.SendEventWithBundle("GameEnd", "DateEnded", sim.CurrentDate.ToUniversalTime().ToString("s", System.Globalization.CultureInfo.InvariantCulture));
-        HMSAnalyticsManager.Instance.SendEventWithBundle("GameEnd", "FinalCO2", sim.globalCO2.ToString(CultureInfo.InvariantCulture));
-        HMSAnalyticsManager.Instance.SendEventWithBundle("GameEnd", "Reason", "Lost");
+        #if UNITY_ANDROID
+        HMSAnalyticsManager.Instance.SendEventWithBundle("GameEnd", "EndInfo", sim.CurrentDate.ToUniversalTime().ToString("s", CultureInfo.InvariantCulture) + "--" + sim.globalCO2.ToString(CultureInfo.InvariantCulture) + "--Lost");
+        #endif
     }
 
     private void GameOver()
@@ -223,13 +223,23 @@ public class GameState : MonoBehaviour
             _stampStartPos = _chosenStampObj.transform.localPosition;
             if(mode == StampMode.APPROVE)
             {
+                
+            #if UNITY_ANDROID
+                HMSAnalyticsManager.Instance.SendEventWithBundle("StampPressed", "BillApproved", _selectedBill.Title + "--Approved");
                 _selectedBill.Data.accepted = true;
+            #endif
             }
-            
-            HMSAnalyticsManager.Instance.SendEventWithBundle("StampPressed", "StampMode", Enum.GetName(typeof(StampMode),mode));
-            HMSAnalyticsManager.Instance.SendEventWithBundle("StampPressed", "SelectedBill", _selectedBill.name);
+            else
+            {
+            #if UNITY_ANDROID
+                HMSAnalyticsManager.Instance.SendEventWithBundle("StampPressed", "BillDenied",
+                    _selectedBill.Title + "--Denied") ;
+            #endif
+            }
 
-            
+
+
+
             sim.bills.Add(_selectedBill.Data);
         }
     }
