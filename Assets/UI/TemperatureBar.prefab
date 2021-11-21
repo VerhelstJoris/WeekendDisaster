@@ -677,8 +677,8 @@ MonoBehaviour:
   Slider: {fileID: 6508710157615297794}
   Gradient:
     serializedVersion: 2
-    key0: {r: 1, g: 0.73182636, b: 0, a: 1}
-    key1: {r: 0.8679245, g: 0.28422168, b: 0.044214953, a: 1}
+    key0: {r: 1, g: 0.90058327, b: 0, a: 1}
+    key1: {r: 0.8301887, g: 0.023425734, b: 0, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
