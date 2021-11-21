@@ -32,11 +32,11 @@ public class BillEffects
     public SimulationIndustries Industry;
     
     [Range(0, 2)] 
-    public float Money;
+    public float Money = 1;
     [Range(0, 2)] 
-    public float Energy;
+    public float Energy = 1;
     [Range(0, 2)] 
-    public float Happiness;
+    public float Happiness = 1;
 }
 
 [System.Serializable]

@@ -241,13 +241,13 @@ public class Simulation : MonoBehaviour
         
         // Work out new doomsday value (temp increase)
         float diff = globalCO2Target - globalCO2;
-        currentTemp = 1-(diff / globalCO2Target)  ;
+        currentTemp = 1-(diff / globalCO2Target);
         
         Debug.Log($"Current Temp {currentTemp}");
         
         // Update Global CO2
         globalCO2 = worldData.Values.Sum(data => data.cumulative_co2);
-
+        
         // Debug output for globals
         // foreach (var industry in Enum.GetValues(typeof(SimulationIndustries)))
         // {
