@@ -180,7 +180,6 @@ public class Simulation : MonoBehaviour
         {
             runSim = false;
             Debug.Log("Sim has paused");
-            bills.Clear();
             if (OnSimPaused != null)
             {
                 OnSimPaused();
@@ -248,6 +247,7 @@ public class Simulation : MonoBehaviour
         // Update Global CO2
         globalCO2 = worldData.Values.Sum(data => data.cumulative_co2);
         
+        bills.Clear();
         // Debug output for globals
         // foreach (var industry in Enum.GetValues(typeof(SimulationIndustries)))
         // {

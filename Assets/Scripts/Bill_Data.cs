@@ -28,7 +28,8 @@ public enum ResourceType
 public class BillEffects
 {
     public Regions RegionsAffected;
-    public float Carbon;
+    [Range(0, 2)] 
+    public float Carbon = 1;
     public SimulationIndustries Industry;
     
     [Range(0, 2)] 

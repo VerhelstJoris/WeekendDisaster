@@ -16,14 +16,14 @@ MonoBehaviour:
   BillText: Increase Rail Trade
   BillAcceptedEffects:
     RegionsAffected: 33
-    Carbon: 20
+    Carbon: 2000
     Industry: 4
     Money: 1.25
     Energy: 1.25
     Happiness: 1.5
   BillDeniedEffects:
     RegionsAffected: 33
-    Carbon: 0
+    Carbon: 1000
     Industry: 0
     Money: 0.8
     Energy: 1
