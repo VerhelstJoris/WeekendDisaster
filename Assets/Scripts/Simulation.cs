@@ -12,6 +12,7 @@ public class Simulation : MonoBehaviour
     public event Action OnStepped;
     public event Action OnSimPaused;
     public event Action OnSimFinalDateReached;
+    public event Action OnSimLedToFailure;
 
     // Data Input
     public TextAsset dataFile;
@@ -40,7 +41,8 @@ public class Simulation : MonoBehaviour
     // Settings
     public SimulationMode simMode = SimulationMode.Step;
     public bool runSim = false;
-    public bool gameEnded = false;
+    public bool gameWon = false;
+    public bool gameLost = false;
     public int stepMonths = 3;
     public float stepDays = 29;
 
@@ -200,7 +202,11 @@ public class Simulation : MonoBehaviour
         CurrentDate = CurrentDate.AddMonths(stepMonths).AddDays(Random.value * stepDays);
         if (CurrentDate >= EndDate)
         {
-            gameEnded = true;
+            gameWon = true;
+        }
+        if (currentTemp >= 1.99f)
+        {
+            gameLost = true;
         }
 
         if (CurrentDate >= PauseDate)
@@ -215,7 +221,15 @@ public class Simulation : MonoBehaviour
             return;
         }
 
-        if (gameEnded)
+        if (gameLost)
+        {
+            if (OnSimLedToFailure != null)
+            {
+                OnSimLedToFailure();
+            }
+        }
+
+        if (gameWon)
         {
             runSim = false;
             Debug.Log("Sim has finished");

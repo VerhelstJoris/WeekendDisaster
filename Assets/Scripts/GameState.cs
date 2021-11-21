@@ -127,6 +127,7 @@ public class GameState : MonoBehaviour
             sim.OnStepped += UpdateWorldStats;
             sim.OnSimPaused += ReachedNewBillTime;
             sim.OnSimFinalDateReached += GameWon;
+            sim.OnSimLedToFailure += GameLost;
 
             if(worldStats !=null)
             {
