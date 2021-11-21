@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Dr. Bill D. Nye
+  m_text: Dr. Bill D. Nyed
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -207,8 +207,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.1
-  m_fontSizeBase: 0.1
+  m_fontSize: 0.09
+  m_fontSizeBase: 0.09
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -6033,12 +6033,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Dr. Bill D. Nye,\n\nAs newly appointed head of the UN's climate task force,
-    it is your responsibility to make the heavy decisions that will hopefully provide
-    us all with a better future. In your office, you will find a map displaying relevant
-    data, grouped according to the major geo-political forces. \n\nYou will be presented
-    with proposals to change international policy. It is your job to decide whether
-    or not these bills should be put into action."
+  m_text: "Dr. Bill D. Nyed,\n\nAs newly appointed head of the UN's climate task
+    force, it is your responsibility to make the heavy decisions that will hopefully
+    provide us all with a better future. In your office, you will find a map displaying
+    relevant data, grouped according to the major geo-political forces. \n\nYou will
+    be presented with proposals to change international policy. It is your job to
+    decide whether or not these bills should be put into action."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
