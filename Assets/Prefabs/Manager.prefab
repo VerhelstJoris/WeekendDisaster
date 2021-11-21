@@ -61,7 +61,7 @@ MonoBehaviour:
   soundManager: {fileID: 3660460538955357075}
   sim: {fileID: 0}
   worldStats: {fileID: 0}
-  monthsToNewBill: 4
+  monthsToNewBill: 12
   GameFinished: 0
   RestartButton: {fileID: 0}
 --- !u!114 &3660460538955357075
