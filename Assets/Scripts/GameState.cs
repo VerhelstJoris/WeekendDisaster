@@ -106,6 +106,8 @@ public class GameState : MonoBehaviour
        
         _source.clip = clip;
 
+        _source.volume = 0.05f;
+
         _source.loop = true;
         
         _source.Play();
