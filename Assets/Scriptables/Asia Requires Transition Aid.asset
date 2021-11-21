@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BillName: Asia Requires Transition Aid
   BillText: Asian power supply infrastructure is in trouble. Asian countries have
-    both very high tech areas and big farm land with limited power supply and poor
-    infrastructure. To be able to transition to renewable energy properly, these
-    areas require a boost to decrease reliance on fossil fuels.
+    both very high-tech areas as well as big farm land with limited power supply
+    and poor infrastructure. To be able to transition to renewable energy properly,
+    these areas require a boost to decrease reliance on fossil fuels.
   BillAcceptedEffects:
     RegionsAffected: 16
     Carbon: 0.97
@@ -38,4 +38,4 @@ MonoBehaviour:
     Resource: 3
     MoreThan: 0
     Value: 0.4
-  accepted: 0
+  accepted: 1
