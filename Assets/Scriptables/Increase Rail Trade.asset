@@ -12,22 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6948453f4a4c3084c9f925a49ceb3047, type: 3}
   m_Name: Increase Rail Trade
   m_EditorClassIdentifier: 
-  BillName: FirstBill Followup
-  BillText: This bill follows the first
+  BillName: Increase Rail Trade
+  BillText: Increase Rail Trade
   BillAcceptedEffects:
-    RegionsAffected: 6
-    Carbon: 2030
-    Industry: 0
-    Money: 9440
-    Energy: 2400
-    Happiness: 999
+    RegionsAffected: 33
+    Carbon: 20
+    Industry: 4
+    Money: 1.25
+    Energy: 1.25
+    Happiness: 1.5
   BillDeniedEffects:
-    RegionsAffected: 6
-    Carbon: -400
+    RegionsAffected: 33
+    Carbon: 0
     Industry: 0
-    Money: 20
-    Energy: 500
-    Happiness: 2300
+    Money: 0.8
+    Energy: 1
+    Happiness: 0.65
   FollowUpAccepted: {fileID: 0}
   FollowUpDenied: {fileID: 0}
-  accepted: 0
+  BillConditions: []
+  accepted: 1
