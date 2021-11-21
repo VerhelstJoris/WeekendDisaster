@@ -7766,14 +7766,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Manager
       objectReference: {fileID: 0}
-    - target: {fileID: 3660460538955357075, guid: 69aac010be260e5488bb360b67f22667, type: 3}
-      propertyPath: Waves
-      value: 
-      objectReference: {fileID: 8300000, guid: 231398a5556965e42892719527b6a6ce, type: 3}
-    - target: {fileID: 3660460538955357075, guid: 69aac010be260e5488bb360b67f22667, type: 3}
-      propertyPath: BackgroundSounds
-      value: 
-      objectReference: {fileID: 8300000, guid: f5d8846654f75d04fa6b3ec66e4604a9, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69aac010be260e5488bb360b67f22667, type: 3}
 --- !u!1001 &5954072636879032228
