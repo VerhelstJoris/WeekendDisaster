@@ -57,35 +57,35 @@ MonoBehaviour:
   stepDays: 0
   regionStatsCustom:
   - region: 1
-    Happiness: 0.8
-    Money: 0.9
-    Energy: 0.75
-    Carbon: 20000000
+    Happiness: 1
+    Money: 1
+    Energy: 1
+    Carbon: 1000000
   - region: 2
-    Happiness: 0.5
-    Money: 0.2
-    Energy: 0.4
-    Carbon: 5000000
+    Happiness: 1
+    Money: 1
+    Energy: 1
+    Carbon: 1000000
   - region: 4
-    Happiness: 0.7
-    Money: 0.5
-    Energy: 0.2
-    Carbon: 5000000
+    Happiness: 1
+    Money: 1
+    Energy: 1
+    Carbon: 1000000
   - region: 8
-    Happiness: 0.7
-    Money: 0.8
-    Energy: 0.8
-    Carbon: 10000000
+    Happiness: 1
+    Money: 1
+    Energy: 1
+    Carbon: 1000000
   - region: 16
-    Happiness: 0.5
-    Money: 0.8
-    Energy: 0.8
-    Carbon: 10000000
+    Happiness: 1
+    Money: 1
+    Energy: 1
+    Carbon: 1000000
   - region: 32
-    Happiness: 0.8
-    Money: 0.8
-    Energy: 0.8
-    Carbon: 100000000
+    Happiness: 1
+    Money: 1
+    Energy: 1
+    Carbon: 1000000
   useCustomRegionData: 1
   simpleMode: 1
   CO2IncresePerIndustryMultiplier: 1.15
