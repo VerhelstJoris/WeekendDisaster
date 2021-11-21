@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Investment Opportunity!
   m_EditorClassIdentifier: 
   BillName: Investment Oppertunity!
-  BillText: An African Prince is looking for someone to help them. \n They are prommising
-    a very nice reward for you help. \n\n Hopefully this isn't a scam!
+  BillText: An African Prince is looking for someone to help them. They are prommising
+    a very nice reward for you help. Hopefully this isn't a scam!
   BillAcceptedEffects:
     RegionsAffected: 0
     Carbon: 1
