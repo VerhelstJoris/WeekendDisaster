@@ -176,7 +176,7 @@ public class Simulation : MonoBehaviour
                 if (simpleMode)
                 {
                     worldData[r.region].co2 = r.Carbon;
-                    worldData[r.region].cumulative_co2 = r.Carbon * 1.25f;
+                    worldData[r.region].cumulative_co2 = r.Carbon;
                 }
 
                 worldData[r.region].happinessStat = r.Happiness;
@@ -191,9 +191,15 @@ public class Simulation : MonoBehaviour
         // Global State Values
         globalCO2 = worldData.Values.Sum(data => data.cumulative_co2);
         globalCO2Target = globalCO2 * globalCO2TargetMultiplier;
-        //
 
+        foreach (var r in worldData.Values)
+        {
+            r.share_global_cumulative_co2 = Mathf.Clamp01(r.co2 / globalCO2);
+        }
+        
         #endregion
+        
+        Debug.Log("Finished setting up sim data");
     }
 
     public void StepSim()
@@ -260,6 +266,7 @@ public class Simulation : MonoBehaviour
                 r.oil_co2 *= CO2IncresePerIndustryMultiplier;
                 r.other_industry_co2 *= CO2IncresePerIndustryMultiplier;
             }
+            
         }
 
         // Update the bills

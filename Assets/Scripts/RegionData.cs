@@ -7,7 +7,7 @@ public class RegionData
     public Regions location;
     public long population;
 
-    public float share_global_cumulative_co2;
+    public float share_global_cumulative_co2 = 0f;
     public float happinessStat = 1.0f;
     public float moneyStat = 1.0f;
     public float energy = 1.0f;
