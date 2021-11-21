@@ -238,10 +238,13 @@ public class Simulation : MonoBehaviour
         if (gameLost)
         {
             bills.Clear();
+            runSim = false;
+            Debug.Log("Sim has led to fail state");
             if (OnSimLedToFailure != null)
             {
                 OnSimLedToFailure();
             }
+            return;
         }
 
         if (gameWon)
