@@ -159,24 +159,17 @@ public class GameState : MonoBehaviour
         TrySelectDesk();
     }
 
-    private void GameWon()
-    {
+    private void GameWon(){
+        
+        //soundManager.PlayWin();
         paperToShow = WinPaper;
         GameOver();
-        
-        #if UNITY_ANDROID
-        HMSAnalyticsManager.Instance.SendEventWithBundle("GameEnd", "EndInfo", sim.CurrentDate.ToUniversalTime().ToString("s", CultureInfo.InvariantCulture) + "--" + sim.globalCO2.ToString(CultureInfo.InvariantCulture) + "--Won");
-        #endif
     }
 
     private void GameLost()
     {
         paperToShow = LosePaper;
         GameOver();
-        
-        #if UNITY_ANDROID
-        HMSAnalyticsManager.Instance.SendEventWithBundle("GameEnd", "EndInfo", sim.CurrentDate.ToUniversalTime().ToString("s", CultureInfo.InvariantCulture) + "--" + sim.globalCO2.ToString(CultureInfo.InvariantCulture) + "--Lost");
-        #endif
     }
 
     private void GameOver()
@@ -197,7 +190,6 @@ public class GameState : MonoBehaviour
     {
         worldStats.UpdateStats(sim);
     }
-
     public void TryStamp(GameObject obj,  StampMode mode)
     {
         if (_selectedBill == null)
@@ -223,22 +215,8 @@ public class GameState : MonoBehaviour
             _stampStartPos = _chosenStampObj.transform.localPosition;
             if(mode == StampMode.APPROVE)
             {
-                
-            #if UNITY_ANDROID
-                HMSAnalyticsManager.Instance.SendEventWithBundle("StampPressed", "BillApproved", _selectedBill.Title.text + "--Approved");
                 _selectedBill.Data.accepted = true;
-            #endif
             }
-            else
-            {
-            #if UNITY_ANDROID
-                HMSAnalyticsManager.Instance.SendEventWithBundle("StampPressed", "BillDenied",
-                    _selectedBill.Title.text + "--Denied") ;
-            #endif
-            }
-
-
-
 
             sim.bills.Add(_selectedBill.Data);
         }
