@@ -24,7 +24,7 @@ public class Simulation : MonoBehaviour
 
 
     // Current Data
-    public DateTime CurrentDate = DateTime.UtcNow;
+    public DateTime CurrentDate = new DateTime(2021,1, 1, 0,0,0);
     public Dictionary<Regions, RegionData> worldData = new Dictionary<Regions, RegionData>();
 
     [FormerlySerializedAs("activeModifiers")]
